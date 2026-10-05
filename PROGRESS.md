@@ -48,5 +48,13 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 - [ ] Visibility: ☐ 3 posts published ☐ open-source MCP server ☐ 1 meetup ☐ 3 referral conversations
 - [ ] Offer 🎯
 
+## AWS FDE track (weeks 6–16, in parallel)
+- [ ] Ground: ontology.md · machine-usable ontology · eval with vs. without ontology
+- [ ] Orchestrate: per-user identity on tool calls · crash-and-resume without duplicate writes · approval gate
+- [ ] Prove: policy-as-code that survives a jailbreak in the eval
+- [ ] AWS variant: ☐ Bedrock + Guardrails extractor ☐ AgentCore + Strands agent ☐ Bedrock Knowledge Bases comparison
+- [ ] Process map done for engagements: ☐1 ☐2 ☐3
+- [ ] AIP-C01 booked · [ ] AIP-C01 passed
+
 ## Phase 6: Beyond (ongoing)
 - [ ] Chosen direction for Webfront360 · [ ] 10 discovery calls · [ ] findings doc · [ ] business case · [ ] go / no-go

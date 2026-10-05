@@ -27,6 +27,9 @@ Customers usually arrive with a **solution** ("we want a chatbot"). Your job is 
 
 **Question bank:** see [templates/discovery-call.md](templates/discovery-call.md).
 
+### Then redesign the process
+Before you scope, map the current process step by step from a real recent case, and redesign it for agents: [templates/process-map.md](templates/process-map.md). AWS's FDE methodology calls this "Agentic Process Transformation": start from the business process, reimagine it, ship to production, prove the result ([AWS FDE track](../aws-fde-track/README.md)). The biggest wins usually come from removing steps that only exist to catch earlier errors, not from automating them.
+
 ## 2. Scoping: write it down
 
 A one-page scoping doc, sent within 24 hours of discovery, signed off by the sponsor. It holds the problem, the success metric with a baseline, in-scope, **explicitly out-of-scope**, what you need from them (data access, people's time) with dates, risks and milestones. Template: [templates/scoping-doc.md](templates/scoping-doc.md).

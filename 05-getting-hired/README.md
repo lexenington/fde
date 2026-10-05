@@ -12,8 +12,8 @@ That's differentiated. Most FDE applicants have never deployed into low-connecti
 |---|---|---|---|
 | **A: Reach** | Anthropic, OpenAI, Cohere, Mistral, Palantir | Forward Deployed Engineer, Applied AI Engineer, Solutions Engineer (Applied AI) | Usually hub-based (SF / NYC / London / EU) with travel. London/EU roles fit GMT. Check visa sponsorship per posting |
 | **B: Sweet spot** | AI-native application companies: customer-service agents, legal, finance, search, voice | FDE, Deployment Engineer, Implementation Engineer, Solutions Engineer | Many are remote-friendly and hire via employer-of-record (Deel, Remote, Oyster) |
-| **C: Platforms** | Databricks, Snowflake, Scale AI, MongoDB, cloud providers | Resident Solutions Architect, Customer Engineer | More data-heavy; 02/01 matters most |
-| **D: Partners & consultancies** | AI implementation partners of the labs and clouds, large SIs' AI practices | AI Engineer, Delivery Engineer | Lower bar, real client work, great stepping stone |
+| **C: Platforms** | Databricks, Snowflake, Scale AI, MongoDB, cloud providers (AWS now runs its own FDE organisation) | Resident Solutions Architect, Customer Engineer | More data-heavy; 02/01 matters most |
+| **D: Partners & consultancies** | AI implementation partners of the labs and clouds, large SIs' AI practices, **AWS partners building partner-led FDE practices** (several list FDE services on AWS Marketplace) | AI Engineer, Delivery Engineer, Forward Deployed Engineer | Lower bar, real client work, great stepping stone. AWS partners need credentialed FDEs: AIP-C01 + case studies is a direct fit |
 | **E: Regional** | Companies building or deploying AI across Africa: fintechs, telcos, health, agritech | Applied AI / Solutions / Implementation | Your local context is a direct advantage here |
 
 **Strategy:** apply to B, D and E in parallel from week ~10 to build interview reps and possibly land a role. Hold A until two case studies are published (~week 14).
@@ -68,7 +68,8 @@ FDE hiring leans heavily on referrals and visible work. Cold applications alone 
 - **Referrals:** for every tier-A company, find one person in its deployment, solutions or applied AI team and ask a specific question about their work, not for a job. Ask for the referral after the conversation, not before.
 
 ## Certifications (optional signal, never a substitute for case studies)
-- **AWS Solutions Architect – Associate:** the natural next step after your Cloud Practitioner; covers 02/04 directly.
+- **AWS Certified Generative AI Developer – Professional (AIP-C01):** your priority certification. It maps almost one to one onto this curriculum, and it's the prerequisite for AWS's **FDE Advanced** partner credential. See the [AWS FDE track](../aws-fde-track/README.md).
+- **AWS Solutions Architect – Associate:** optional. Useful for 02/04, and Associate level is enough for AWS's **FDE Validated** credential, but AIP-C01 comes first.
 - Anthropic's free courses (Anthropic Academy) on the API, tool use and MCP: cheap to do, and fine to list.
 - Skip broad certificate collecting. One case study with a real metric is worth more than five badges.
 

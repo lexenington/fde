@@ -28,6 +28,11 @@ Curated, not exhaustive. If you only do the starred ones, you're fine.
 - Stripe's engineering posts on idempotency keys
 - Ghana Data Protection Act 2012 (Act 843) + Data Protection Commission guidance
 
+## AWS FDE
+- ★ AWS APN blog: "Introducing Forward Deployed Engineering for Partners" and "New FDE Pathways for AWS Partners"
+- ★ AIP-C01 exam guide (docs.aws.amazon.com/aws-certification) and the official AWS Skill Builder exam prep
+- Amazon Bedrock AgentCore and Strands Agents docs
+
 ## Infra
 - ★ Terraform tutorials (developer.hashicorp.com/terraform/tutorials), AWS track
 - AWS Well-Architected Framework: Security and Operational Excellence pillars

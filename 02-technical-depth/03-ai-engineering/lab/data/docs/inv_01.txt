@@ -1,0 +1,19 @@
+ACCRA PACKAGING LTD
+Plot 12, Spintex Road, Accra | TIN: C0001234567
+TAX INVOICE
+
+Invoice No: INV-2026-0412
+Date: 14/03/2026
+Bill To: Kumasi Fresh Foods Ltd
+
+Qty  Description                     Unit Price    Amount
+500  Corrugated boxes 40x30x30          12.00     6,000.00
+200  Shrink wrap rolls                  20.00     4,000.00
+
+                                  Subtotal      10,000.00
+                                  NHIL 2.5%        250.00
+                                  GETFund 2.5%     250.00
+                                  VAT 15%        1,575.00
+                                  TOTAL (GHS)   12,075.00
+
+Payment: GCB Bank, Acc 1021-xxxx-xx. Terms: 30 days.

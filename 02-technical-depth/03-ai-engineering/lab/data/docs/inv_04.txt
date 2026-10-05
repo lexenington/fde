@@ -1,0 +1,14 @@
+K0FI ASANTE WH0LESALE
+Adum, Kumasi
+
+lNVOICE
+lnvoice N0: KAW-5521
+Dat e: 22-01-2026
+
+Descripti0n           Qty    Rate      Am0unt
+Rice 25kg bags         40   410.00   16,400.00
+Vegetable oil 5L       60    95.00    5,700.00
+
+Sub T0tal                          22,100.00
+Taxes (VAT+levies)                  4,530.50
+T0TAL GHS                          26,630.50

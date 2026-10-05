@@ -12,6 +12,8 @@ Personal curriculum for moving from full-stack engineer to Forward Deployed Engi
 - Messy-data lab: `python make_messy_data.py`, then `python check.py out/clusters.json` (in `02-technical-depth/01-messy-data/lab`)
 - AI lab: `python eval.py` (needs `ANTHROPIC_API_KEY`), and `python -m pytest -q` for grader tests (no key needed), in `02-technical-depth/03-ai-engineering/lab`
 
+- AI-startup lab: `python simulate.py --tenant <chopbox|medplus|sikasave>` or `--all` (needs `ANTHROPIC_API_KEY`), in `07-ai-startup-fde/lab`
+
 ## Conventions
 - Never open or print `.truth/` in the messy-data lab: it's the hidden answer key.
 - Every lab ends with a short report written for its stated audience (ops manager, CFO, IT lead), not for engineers.

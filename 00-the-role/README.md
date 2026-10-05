@@ -14,7 +14,7 @@ From 2023 the AI labs and AI-native startups adopted the title at scale, for the
 | **AI-lab FDE / Applied AI engineer** | Anthropic, OpenAI, Cohere, Mistral | Help strategic customers build production LLM systems: agents, RAG, evals. Feed patterns back to research and product | AI eng 50 / Customer 35 / Infra 15 |
 | **AI-startup FDE** | Sierra, Decagon, Harvey, Glean, Hebbia, and many Series A–C companies | Configure and extend the product per customer. Often you *are* the implementation team | App/integration 40 / AI 30 / Customer 30 |
 
-You fit best with **AI-startup FDE** today and with **AI-lab FDE** in 3–4 months. RunMySales is basically a Sierra/Decagon-style product you built yourself.
+You fit best with **AI-startup FDE** today and with **AI-lab FDE** in 3–4 months. RunMySales is basically a Sierra/Decagon-style product you built yourself. Each flavour has dedicated material: AI-startup in [07](../07-ai-startup-fde/README.md), AI-lab and enterprise across 02–04, and the cloud-platform (AWS) version in the [AWS FDE track](../aws-fde-track/README.md).
 
 ## A realistic week
 

@@ -26,9 +26,10 @@ The difference from what you do now isn't the code. It's **who defines the probl
 | 04 | [Engagements](04-engagements/README.md) | Three simulated end-to-end customer deployments = your new portfolio | 4–5 weeks |
 | 05 | [Getting hired](05-getting-hired/README.md) | Target companies, remote-from-Ghana strategy, résumé, interview loop, visibility | 2 weeks (overlaps) |
 | 06 | [Beyond](06-beyond/README.md) | Roles these skills unlock, and turning Webfront360 into a business | ongoing |
+| 07 | [AI-startup FDE](07-ai-startup-fde/README.md) | Running many customers on one AI product: implementation playbooks, simulation testing, release checks, startup interviews and offers | 1.5 weeks (before applying to tier B) |
 | ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 6–16 |
 
-**Total: ~14–16 weeks at 10–15 hrs/week.** Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
+**Total: ~16–18 weeks at 10–15 hrs/week** (07 and the AWS track overlap with other modules). Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
 
 ## How to use this repo
 

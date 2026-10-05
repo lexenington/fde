@@ -48,6 +48,16 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 - [ ] Visibility: ☐ 3 posts published ☐ open-source MCP server ☐ 1 meetup ☐ 3 referral conversations
 - [ ] Offer 🎯
 
+## 07 AI-startup FDE (before tier-B applications)
+- [ ] Baseline simulator run (`python simulate.py --all`) and failures read
+- [ ] ChopBox: config · ≥25 scenarios · hard rules in tools · passing bar · onboarding time ___ days
+- [ ] MedPlus: config · ≥25 scenarios · hard rules in tools · passing bar · onboarding time ___ days
+- [ ] SikaSave: config · ≥25 scenarios · hard rules in tools · passing bar · onboarding time ___ days
+- [ ] Shared-product change caught a tenant regression via `--all` (write-up)
+- [ ] Implementation playbook filled in · [ ] weekly account report for one tenant
+- [ ] 3-hour "build a support agent" timed practice
+- [ ] Startup due-diligence questions + equity basics ready for offers
+
 ## AWS FDE track (weeks 6–16, in parallel)
 - [ ] Ground: ontology.md · machine-usable ontology · eval with vs. without ontology
 - [ ] Orchestrate: per-user identity on tool calls · crash-and-resume without duplicate writes · approval gate

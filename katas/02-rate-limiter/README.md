@@ -9,4 +9,6 @@
 - A failed `try_acquire` must not consume tokens.
 - `wait_time` is what you'd pass to `sleep` before retrying.
 
+**Why bother.** Payment, SMS and WhatsApp providers typically rate-limit per merchant account, and some only tell you by failing the request (check the docs of the ones you use). Your integration has to be polite by construction, because a burst during a month-end bulk run is how a merchant account gets suspended.
+
 **Then.** The *quota-cut* card changes the limit to 1 request a second. Which of your numbers would you change, and where does that number come from in production (configuration, or the `Retry-After` the server sends)?

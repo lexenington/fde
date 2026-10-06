@@ -10,4 +10,6 @@
 - a falsy value (0, "") is still a value
 - real corpora need this logic *before* retrieval: your RAG should be handed the right text, and the model shouldn't be trusted to work out dates
 
+**Why it is a regulated-finance problem.** When Bank of Ghana or an auditor asks "what was the rule on 14 March, and who told the loan officers?", "the newest PDF" is the wrong answer and "we don't know" is worse. Dated, citable rules are how Esi's team defends a decision after the fact.
+
 **Then.** In your Savanna copilot, where does `as_of` enter the pipeline? Retrieval filter, prompt, or post-check? What would break if it only lived in the prompt?

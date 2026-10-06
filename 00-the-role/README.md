@@ -8,7 +8,7 @@ From 2023 the AI labs and AI-native startups adopted the title at scale, for the
 
 ## The three flavours you'll see in job posts
 
-| Flavour | Examples (verify current openings) | What you actually do | Weighting |
+| Flavour | Examples (as of Oct 2026; verify current openings) | What you actually do | Weighting |
 |---|---|---|---|
 | **Platform FDE** | Palantir, Databricks (Resident SA), Snowflake, Scale AI | Make the company's platform work on a big customer's data. Heavy data modelling and pipelines | Data eng 50 / Customer 30 / App 20 |
 | **AI-lab FDE / Applied AI engineer** | Anthropic, OpenAI, Cohere, Mistral | Help strategic customers build production LLM systems: agents, RAG, evals. Feed patterns back to research and product | AI eng 50 / Customer 35 / Infra 15 |
@@ -46,7 +46,7 @@ Notice that maybe 50% of that is code. The rest is unblocking, scoping, measurin
 
 ## Compensation & logistics (check current data)
 
-FDE pay is usually at or above SWE pay at the same company, because the role is scarce and travel-heavy. Use levels.fyi for live numbers. Many postings require travel to customer sites. For you, being in Ghana (GMT) is **UK/EMEA hours**, which is a real advantage for London and Europe-facing teams. Module 05 covers this.
+FDE pay is often comparable to or above SWE pay at the same company (the role is scarce and travel-heavy), but it varies a lot by company and level, and remote-from-Ghana offers are frequently banded differently. Use levels.fyi and the postings themselves for live numbers; don't anchor on this paragraph. Many postings require travel to customer sites. For you, being in Ghana (GMT) is **UK/EMEA hours**, which is a real advantage for London and Europe-facing teams. Module 05 covers this.
 
 ## Exercise
 

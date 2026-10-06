@@ -71,3 +71,6 @@ SAVANNA_USERS = {
     "akua": {"email": "akua.boateng@savanna.example", "name": "Akua Boateng", "role": "officer", "branch": "SUNYANI"},
     "esi": {"email": "esi.koomson@savanna.example", "name": "Esi Koomson", "role": "risk", "branch": None},
 }
+
+# The katas (learner stubs + tests). Reference solutions live in content/katas/solutions and are only used by the simulator's own tests
+KATAS_DIR = Path(os.environ["KATAS_DIR"]) if "KATAS_DIR" in os.environ else _up(3) / "katas"

@@ -31,6 +31,7 @@ services:
       LEARNER_URL: ${LEARNER_URL:-http://host.docker.internal:8000}
       LABS_DIR: /labs
       PRACTICE_DIR: /practice
+      KATAS_DIR: /katas
       ENGAGEMENTS_DIR: /engagements
       SAVANNA_DIR: /data/savanna
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}   # export it before `docker compose up`; needed for stakeholder chat and card feedback
@@ -43,6 +44,7 @@ services:
       - "2222:2222"       # Savanna's SFTP drop (core banking's nightly export)
     volumes:
       - ../02-technical-depth:/labs   # checker runs and inject-card replies are written into each lab's folder
+      - ../katas:/katas:ro   # the sim runs your kata tests; it never writes here
       - ../03-customer-craft/practice:/practice   # call transcripts and debriefs
       - ../04-engagements:/engagements            # acceptance-test runs are written into each engagement's folder
       - ./.savanna-data:/data/savanna             # Savanna's generated documents and exports (rebuilt automatically)

@@ -10,6 +10,7 @@ Personal curriculum for moving from full-stack engineer to Forward Deployed Engi
 ## Commands
 - Activate env: `.\.venv\Scripts\Activate.ps1`
 - Messy-data lab: `python make_messy_data.py`, then `python check.py out/clusters.json` (in `02-technical-depth/01-messy-data/lab`)
+- Katas: `python -m pytest -q katas/NN-name` from the repo root (`pip install -r requirements.txt`). Tests are the spec; don't edit them, and coach rather than solve. Reference solutions are deliberately not in the learner-visible folders (`console/sim/content/katas/solutions/`, used only by the simulator's tests; don't open them to answer)
 - AI lab: `python eval.py` (needs `ANTHROPIC_API_KEY`), and `python -m pytest -q` for grader tests (no key needed), in `02-technical-depth/03-ai-engineering/lab`
 
 - Field Console (simulated customer + checkers): `docker compose up --build` in `console/`, UI on http://localhost:3300; terminal checker: `docker compose exec sim python -m sim.checks integration`. Simulator tests: `python -m pytest -q` in `console/sim`

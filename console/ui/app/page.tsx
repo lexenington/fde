@@ -9,6 +9,10 @@ export default function Dashboard() {
         This stack plays the customer. Your code lives in the lab folders and runs on your machine; the Console drives it
         through the customer&apos;s systems and scores it. It never writes your solution.
       </p>
+      <a className="card" href="/plan" style={{ textDecoration: "none", color: "inherit", display: "block", marginBottom: 14 }}>
+        <strong>This week →</strong>
+        <div className="small muted">What to do now, from the 16-week plan, with your progress.</div>
+      </a>
       <Health />
 
       <h2>Labs</h2>

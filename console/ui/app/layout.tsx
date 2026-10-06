@@ -14,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="brand-sub">The customer&apos;s world, on your machine</div>
             <nav className="nav">
               <Link href="/">Dashboard</Link>
+              <Link href="/plan">This week</Link>
               <div className="nav-h">Labs</div>
               <a className="soon" title="CLI today: python check.py">01 Messy data</a>
               <Link href="/labs/integration">02 Enterprise integration</Link>

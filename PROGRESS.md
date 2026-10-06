@@ -1,6 +1,7 @@
 # Progress
 
-Started: ____  ·  Target finish: ____ (≈16 weeks)
+Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: [PLAN.md](PLAN.md)
+<!-- Write the start date as YYYY-MM-DD (e.g. Started: 2026-10-12) and the Console's "This week" page will track you -->
 
 ## Phase 1: Orient (week 1)
 - [ ] Read 00 The role

@@ -33,6 +33,7 @@ The difference from what you do now isn't the code. It's **who defines the probl
 
 ## How to use this repo
 
+0. **Open [PLAN.md](PLAN.md).** It says what to do this week, session by session, with the tool to use and what "done" looks like. The Console's *This week* page (http://localhost:3300/plan) shows the same, with your progress.
 1. Read 00 and 01 first, in full. They set the target, and everything else follows from them.
 2. Every technical module has a **"Prove it"** check up top. If you can already do it, skip the module and move on. Don't re-learn what you know.
 3. Labs live inside their module (`lab/` folders). Do the work in this repo and commit it. **The git history is evidence.**

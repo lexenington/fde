@@ -16,7 +16,7 @@ That's differentiated. Most FDE applicants have never deployed into low-connecti
 | **D: Partners & consultancies** | AI implementation partners of the labs and clouds, large SIs' AI practices, **AWS partners building partner-led FDE practices** (several list FDE services on AWS Marketplace) | AI Engineer, Delivery Engineer, Forward Deployed Engineer | Lower bar, real client work, great stepping stone. AWS partners need credentialed FDEs: AIP-C01 + case studies is a direct fit |
 | **E: Regional** | Companies building or deploying AI across Africa: fintechs, telcos, health, agritech | Applied AI / Solutions / Implementation | Your local context is a direct advantage here |
 
-**Strategy:** apply to B, D and E in parallel from week ~10 to build interview reps and possibly land a role. Hold A until two case studies are published (~week 14).
+**Strategy:** [PLAN.md](../PLAN.md) is the schedule. In short: don't apply anywhere until your first case study is published (week 11) and you've done the mock interviews (week 15); then apply to B, D and E together (week 15), and to tier A once two case studies are public (week 16). Conversations and referral asks can start earlier, since they cost nothing and need no portfolio. If a tier-E role that fits you appears sooner, apply anyway: a real interview is worth more than a mock.
 
 ### Remote-from-Ghana realities
 - FDE is the *least* remote-friendly engineering role, because customers are physical. Expect postings to say "travel 25–50%" or "based in X."
@@ -79,10 +79,12 @@ FDE hiring leans heavily on referrals and visible work. Cold applications alone 
 - **90 days:** Lead a deployment, turn one repeated workaround into a reusable tool or template for other FDEs.
 
 ## Timeline
+Matches [PLAN.md](../PLAN.md); if they ever disagree, PLAN.md wins.
+
 | Week | Action |
 |---|---|
-| 1 | Rewrite résumé + portfolio copy (fill in the blanks with real numbers) |
-| 10 | Start applying to tiers B, D, E. Aim for 5 quality applications/week, each with a 3-line note tied to their product |
-| 12 | Mock interviews: decomposition ×5, system design ×3 (Pramp, peers, or ask Claude to role-play a sceptical customer) |
-| 14 | Two case studies live → start tier A |
-| 16 | Review: what are interviewers consistently probing? Feed that back into the gaps |
+| 1 | Rewrite RunMySales, EatryCloud and Verisage as Situation → Constraint → Built → Measured (fill in the blanks with real numbers). Résumé wording waits for those numbers |
+| 2-14 | Outreach to real businesses (the pilot), plus one written post per finished lab or engagement. Referral conversations at tier-A companies: ask about their work, not for a job |
+| 11 | Case study #1 published. Rewrite the résumé and portfolio cards around it |
+| 15 | Mock interviews: decomposition ×5, system design ×3, coding ×3 (peers, or ask Claude to role-play a sceptical customer). Start applying to tiers B, D, E: about 5 quality applications a week, each with a 3-line note tied to their product |
+| 16 | Tier A applications (two case studies public). Re-score the self-assessment. Review what interviewers keep probing and feed it back into the gaps |

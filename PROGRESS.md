@@ -14,6 +14,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 ### 02/01 Messy data
 - [ ] SCOPE.md · [ ] profile.md · [ ] pipeline → Postgres · [ ] F1 ≥ 0.92 (`check.py`) · [ ] review queue < 10% · [ ] REPORT.md for ops manager · [ ] stretch: incremental load · [ ] stretch: Airflow DAG + backfill
 ### 02/02 Enterprise integration
+- [ ] Console up (`console/`) · [ ] Console checker ≥ 100/124 · [ ] Console checker 124/124
 - [ ] OIDC SSO (Okta/Entra) · [ ] SCIM provision/deprovision · [ ] group → role mapping · [ ] idempotent CRM sync · [ ] signed webhooks + DLQ · [ ] reconciliation job · [ ] audit log · [ ] SECURITY.md · [ ] 5 acceptance tests green
 ### 02/03 AI engineering & evals
 - [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO · [ ] stretch: versioned prompts + rollback · [ ] stretch: governance pack

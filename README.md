@@ -26,6 +26,7 @@ The difference from what you do now isn't the code. It's **who defines the probl
 | 04 | [Engagements](04-engagements/README.md) | Three simulated end-to-end customer deployments = your new portfolio | 4–5 weeks |
 | 05 | [Getting hired](05-getting-hired/README.md) | Target companies, remote-from-Ghana strategy, résumé, interview loop, visibility | 2 weeks (overlaps) |
 | 06 | [Beyond](06-beyond/README.md) | Roles these skills unlock, and turning Webfront360 into a business | ongoing |
+| 🖥 | [FDE Field Console](console/README.md) | A local web app that plays the customer (IdP, SCIM, CRM, webhooks) and scores your lab code against it. `docker compose up` in `console/` | use from 02/02 on |
 | ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 6–16 |
 
 **Total: ~14–16 weeks at 10–15 hrs/week.** Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
@@ -48,7 +49,7 @@ Done: Python 3.12 is installed (winget, user scope), `.venv` has the packages fr
 
 Commit after every lab step. **The git history is your evidence trail.**
 
-You'll also need Docker Desktop (for Postgres in the data lab) and an Anthropic API key (`ANTHROPIC_API_KEY`) for the AI lab.
+You'll also need Docker Desktop (for Postgres in the data lab, and for the [Field Console](console/README.md)) and an Anthropic API key (`ANTHROPIC_API_KEY`) for the AI lab.
 
 ## The one-sentence goal
 

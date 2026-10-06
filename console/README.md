@@ -15,7 +15,7 @@ Then open **http://localhost:3300**.
 | Customer simulator | http://localhost:8090 (API docs at `/docs`) | Adom Logistics' CRM API (`/crm/v3`), webhooks, rate limits, the lab checkers |
 | Customer IdP | http://localhost:8081 (admin / admin) | Keycloak, standing in for Okta / Entra ID. Realms `adom` (02/02) and `savanna` (engagement 2) |
 | Savanna SFTP drop | `sftp://savanna:sftp-pass@localhost:2222/export` | Core banking's nightly export, read-only |
-| Lakeside database | `localhost:5433` (see the Console) | Postgres: their legacy booking system |
+| Lakeside database | `localhost:5433` (see the Console) | Postgres: their legacy booking system. If 5433 is taken on your machine, put `LAKESIDE_DB_PORT=5434` in `console/.env`; the Console then shows the port you chose, and your code should use it |
 | **Your app** | http://localhost:8000 | Not in this stack. You build and run it yourself, in the lab folder |
 
 ## This week

@@ -7,7 +7,7 @@ You build a WhatsApp assistant in **your own code**, in any language, running on
 | Thing | Value |
 |---|---|
 | Database (read replica) | `postgresql://replica_ro:replica-pass@localhost:5433/lakeside` |
-| Database (write path) | `postgresql://bookings_writer:writer-pass@localhost:5433/lakeside`. It can only run `create_booking(phone, clinic, slot)` and `cancel_booking(appt)` |
+| Database (write path) | `postgresql://bookings_writer:writer-pass@localhost:5433/lakeside`. (5433 is the default; if you set `LAKESIDE_DB_PORT` in `console/.env`, use that port.) It can only run `create_booking(phone, clinic, slot)` and `cancel_booking(appt)` |
 | WhatsApp provider | `http://localhost:8090/bsp/v1`, header `Authorization: Bearer bsp-dev-token` |
 | Webhook signing secret | `bsp_whsec_lakeside` |
 | Speech-to-text | `POST http://localhost:8090/stt/v1/transcribe`, same bearer token |

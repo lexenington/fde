@@ -23,7 +23,7 @@ services:
       POSTGRES_PASSWORD: lakeside-admin
       POSTGRES_DB: lakeside
     ports:
-      - "5433:5432"
+      - "${LAKESIDE_DB_PORT:-5433}:5432"   # set LAKESIDE_DB_PORT in console/.env if 5433 is taken on your machine
 
   sim:
     build: ./sim
@@ -39,6 +39,7 @@ services:
       CRM_API_KEY: ${CRM_API_KEY:-crm-dev-key}
       CRM_WEBHOOK_SECRET: ${CRM_WEBHOOK_SECRET:-whsec_dev_adom}
       SCIM_TOKEN: ${SCIM_TOKEN:-scim-dev-token}
+      LAKESIDE_DB_PORT: ${LAKESIDE_DB_PORT:-5433}   # the host port shown to you for Lakeside's database
     ports:
       - "8090:8090"
       - "2222:2222"       # Savanna's SFTP drop (core banking's nightly export)

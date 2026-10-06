@@ -4,3 +4,4 @@ __pycache__/
 02-technical-depth/01-messy-data/lab/.truth/
 .pytest_cache/
 .savanna-data/
+console/.env

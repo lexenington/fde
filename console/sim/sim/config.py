@@ -42,7 +42,7 @@ KEYCLOAK_ADMIN_PASSWORD = os.environ.get("KEYCLOAK_ADMIN_PASSWORD", "admin")
 # Engagement worlds
 ENGAGEMENTS_DIR = Path(os.environ["ENGAGEMENTS_DIR"]) if "ENGAGEMENTS_DIR" in os.environ else _up(3) / "04-engagements"
 LAKESIDE_ADMIN_DSN = os.environ.get("LAKESIDE_ADMIN_DSN", "postgresql://postgres:lakeside-admin@lakeside-db:5432/lakeside")
-LAKESIDE_PUBLIC = {"host": "localhost", "port": 5433, "dbname": "lakeside",
+LAKESIDE_PUBLIC = {"host": "localhost", "port": int(os.environ.get("LAKESIDE_DB_PORT", "5433")), "dbname": "lakeside",
                    "read_user": "replica_ro", "read_password": "replica-pass",
                    "write_user": "bookings_writer", "write_password": "writer-pass"}
 BSP_TOKEN = os.environ.get("BSP_TOKEN", "bsp-dev-token")

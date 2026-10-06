@@ -13,7 +13,7 @@ def _meta(d):
     box = re.search(r"Time-box:\s*([^*]+)\*\*", readme)
     used = re.search(r"Used in:\s*(.+)", readme)
     return {"id": d.name, "title": title.group(1).strip() if title else d.name,
-            "timebox": box.group(1).strip() if box else "", "used_in": used.group(1).strip() if used else "",
+            "timebox": box.group(1).strip().rstrip(".") if box else "", "used_in": used.group(1).replace("*", "").strip() if used else "",
             "readme": readme}
 
 

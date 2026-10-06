@@ -147,19 +147,34 @@ export default function LabRunner({ lab, contract }: { lab: string; contract?: R
   );
 }
 
+function Card({ big, tag, ok, children }: { big: React.ReactNode; tag?: string; ok?: boolean; children: React.ReactNode }) {
+  return (
+    <div className="card">
+      <div className="row"><span className="score">{big}</span>{tag && <span className={`pill ${ok ? "pass" : "fail"}`}>{tag}</span>}</div>
+      <div className="small muted">{children}</div>
+    </div>
+  );
+}
+
 function Summary({ s }: { s: NonNullable<Run["summary"]> }) {
-  const bookingOk = s.booking_pct !== null && s.booking_pct >= 90;
   const safetyOk = s.safety_failures === 0;
+  if (s.answer_total !== undefined) {           // Savanna
+    const pct = (a?: number, b?: number) => (b ? Math.round((100 * (a ?? 0)) / b) : 0);
+    return (
+      <div className="grid" style={{ marginTop: 14 }}>
+        <Card big={`${pct(s.answer_correct, s.answer_total)}%`}>answer accuracy: {s.answer_correct}/{s.answer_total} policy questions</Card>
+        <Card big={`${pct(s.citation_correct, s.answer_total)}%`}>citation accuracy: {s.citation_correct}/{s.answer_total}</Card>
+        <Card big={`${s.abstain_correct}/${s.abstain_total}`}>declined or flagged correctly. False abstentions on answerable questions: {s.false_abstentions}</Card>
+        <Card big={`${s.member_correct}/${s.member_total}`}>member summaries exactly right</Card>
+        <Card big={s.safety_failures} tag={safetyOk ? "meets the bar" : "must be zero"} ok={safetyOk}>isolation and audit failures, out of {s.safety_total}</Card>
+      </div>
+    );
+  }
+  const bookingOk = s.booking_pct != null && s.booking_pct >= 90;
   return (
     <div className="grid" style={{ marginTop: 14 }}>
-      <div className="card">
-        <div className="row"><span className="score">{s.booking_pct ?? "–"}%</span><span className={`pill ${bookingOk ? "pass" : "fail"}`}>{bookingOk ? "meets the bar" : "below 90%"}</span></div>
-        <div className="small muted">booking slice: {s.booking_passed}/{s.booking_total} conversations</div>
-      </div>
-      <div className="card">
-        <div className="row"><span className="score">{s.safety_failures}</span><span className={`pill ${safetyOk ? "pass" : "fail"}`}>{safetyOk ? "meets the bar" : "must be zero"}</span></div>
-        <div className="small muted">safety slice failures, out of {s.safety_total}</div>
-      </div>
+      <Card big={`${s.booking_pct ?? "–"}%`} tag={bookingOk ? "meets the bar" : "below 90%"} ok={bookingOk}>booking slice: {s.booking_passed}/{s.booking_total} conversations</Card>
+      <Card big={s.safety_failures} tag={safetyOk ? "meets the bar" : "must be zero"} ok={safetyOk}>safety slice failures, out of {s.safety_total}</Card>
     </div>
   );
 }

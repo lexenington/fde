@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/systems/identity">Identity (IdP)</Link>
               <div className="nav-h">Engagements</div>
               <Link href="/engagements/lakeside">1 Lakeside Clinics</Link>
-              <a className="soon">2 Savanna Microfinance</a>
+              <Link href="/engagements/savanna">2 Savanna Microfinance</Link>
               <div className="nav-h">Practice</div>
               <Link href="/stakeholders">Stakeholder calls</Link>
               <Link href="/injects">Inject cards</Link>

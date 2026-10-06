@@ -1,0 +1,1020 @@
+{
+ "as_of": "2026-10-06",
+ "rules": [
+  {
+   "id": "max_first_loan",
+   "topic": "Individual loans",
+   "section": "4.2.1",
+   "title": "Maximum amount, first loan",
+   "base": "The maximum amount for a first individual loan is GHS 5,000.",
+   "history": [
+    {
+     "circular": "2024/02",
+     "issued": "2024-05-20",
+     "effective": "2024-07-01",
+     "text": "The maximum amount for a first individual loan is reduced from GHS 5,000 to GHS 3,500.",
+     "supersedes": null
+    },
+    {
+     "circular": "2025/01",
+     "issued": "2025-02-03",
+     "effective": "2025-03-01",
+     "text": "The maximum amount for a first individual loan is set at GHS 4,000. This circular supersedes Circular 2024/02 on this point.",
+     "supersedes": "2024/02"
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the maximum amount a first-time borrower can get on an individual loan?",
+     "include": [
+      [
+       "4,000",
+       "4000"
+      ]
+     ],
+     "forbid": [
+      "5,000",
+      "3,500"
+     ],
+     "cites": [
+      {
+       "circular": "2025/01"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    },
+    {
+     "q": "A client wants GHS 4,500 as her first individual loan. Can I approve that?",
+     "include": [
+      [
+       "not",
+       "no,",
+       "cannot",
+       "can't",
+       "exceeds",
+       "above",
+       "over",
+       "more than",
+       "maximum"
+      ],
+      [
+       "4,000",
+       "4000"
+      ]
+     ],
+     "forbid": [
+      "5,000",
+      "3,500"
+     ],
+     "cites": [
+      {
+       "circular": "2025/01"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    },
+    {
+     "q": "What was the maximum first individual loan as of 15 January 2025?",
+     "include": [
+      [
+       "3,500",
+       "3500"
+      ]
+     ],
+     "forbid": [
+      "4,000"
+     ],
+     "cites": [
+      {
+       "circular": "2024/02"
+      }
+     ],
+     "as_of": "2025-01-15",
+     "forbid_affirm": []
+    },
+    {
+     "q": "What was the maximum first individual loan as of 10 January 2024?",
+     "include": [
+      [
+       "5,000",
+       "5000"
+      ]
+     ],
+     "forbid": [
+      "3,500",
+      "4,000"
+     ],
+     "cites": [
+      {
+       "section": "4.2.1"
+      }
+     ],
+     "as_of": "2024-01-10",
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "max_repeat_loan",
+   "topic": "Individual loans",
+   "section": "4.2.2",
+   "title": "Maximum amount, repeat borrowers",
+   "base": "The maximum amount for an individual loan to a repeat borrower is GHS 20,000.",
+   "history": [
+    {
+     "circular": "2026/01",
+     "issued": "2026-01-12",
+     "effective": "2026-02-01",
+     "text": "The maximum amount for an individual loan to a repeat borrower is raised from GHS 20,000 to GHS 25,000.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the maximum individual loan for a repeat borrower?",
+     "include": [
+      [
+       "25,000",
+       "25000"
+      ]
+     ],
+     "forbid": [
+      "20,000"
+     ],
+     "cites": [
+      {
+       "circular": "2026/01"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "max_tenor",
+   "topic": "Individual loans",
+   "section": "4.3.1",
+   "title": "Maximum tenor",
+   "base": "The maximum tenor of an individual loan is 12 months.",
+   "history": [],
+   "questions": [
+    {
+     "q": "What is the longest repayment period we can give on an individual loan?",
+     "include": [
+      [
+       "12 months",
+       "twelve months",
+       "12-month",
+       "12 month"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "4.3.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "interest_cap",
+   "topic": "Pricing",
+   "section": "5.1.1",
+   "title": "Interest rate cap",
+   "base": "The interest rate on any loan shall not exceed 4.0% per month on a flat basis.",
+   "history": [
+    {
+     "circular": "2024/05",
+     "issued": "2024-08-12",
+     "effective": "2024-09-01",
+     "text": "The maximum interest rate is reduced from 4.0% to 3.5% per month on a flat basis, in line with the regulator's guidance.",
+     "supersedes": null
+    },
+    {
+     "circular": "2026/06",
+     "issued": "2026-09-21",
+     "effective": "2027-01-01",
+     "text": "The maximum interest rate is reduced from 3.5% to 3.0% per month on a flat basis with effect from 1 January 2027.",
+     "supersedes": "2024/05"
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the maximum monthly interest rate we can charge today?",
+     "include": [
+      [
+       "3.5"
+      ]
+     ],
+     "forbid": [
+      "4.0",
+      "4%"
+     ],
+     "cites": [
+      {
+       "circular": "2024/05"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    },
+    {
+     "q": "Is any change to the interest rate cap coming?",
+     "include": [
+      [
+       "3.0"
+      ],
+      [
+       "2027",
+       "january"
+      ]
+     ],
+     "forbid": [
+      "4.0"
+     ],
+     "cites": [
+      {
+       "circular": "2026/06"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "processing_fee",
+   "topic": "Pricing",
+   "section": "5.2.1",
+   "title": "Processing fee",
+   "base": "A processing fee of 1.5% of the principal is charged on every loan at disbursement.",
+   "history": [],
+   "questions": [
+    {
+     "q": "How much is the loan processing fee?",
+     "include": [
+      [
+       "1.5"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "5.2.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "guarantors",
+   "topic": "Individual loans",
+   "section": "4.4.1",
+   "title": "Guarantors",
+   "base": "Every individual loan above GHS 2,000 requires two guarantors who are not members of the borrower's household.",
+   "history": [
+    {
+     "circular": "2025/04",
+     "issued": "2025-05-12",
+     "effective": "2025-06-01",
+     "text": "The guarantor requirement now applies to every individual loan above GHS 1,500, reduced from GHS 2,000. Two guarantors are still required.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "From what loan size do we need two guarantors?",
+     "include": [
+      [
+       "1,500",
+       "1500"
+      ]
+     ],
+     "forbid": [
+      "2,000"
+     ],
+     "cites": [
+      {
+       "circular": "2025/04"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    },
+    {
+     "q": "Can I accept just one guarantor for a client who has repaid three loans on time?",
+     "include": [
+      [
+       "two",
+       "2 guarantors"
+      ],
+      [
+       "guarantor"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "4.4.1"
+      },
+      {
+       "circular": "2025/04"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": [
+      "one guarantor (is|will be|would be) (enough|sufficient|fine|ok|accepted)",
+      "a single guarantor is (enough|sufficient|fine|ok|accepted)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "group_size",
+   "topic": "Group loans",
+   "section": "6.1.1",
+   "title": "Group size",
+   "base": "A solidarity group shall have a minimum of 5 and a maximum of 30 members.",
+   "history": [],
+   "questions": [
+    {
+     "q": "What is the minimum number of members in a solidarity group?",
+     "include": [
+      [
+       "5",
+       "five"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "6.1.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "group_first_cycle",
+   "topic": "Group loans",
+   "section": "6.2.1",
+   "title": "First-cycle limit per member",
+   "base": "In the first cycle of a group loan, each member may borrow up to GHS 1,500.",
+   "history": [
+    {
+     "circular": "2024/06",
+     "issued": "2024-09-10",
+     "effective": "2024-10-01",
+     "text": "The first-cycle limit per member in a group loan is raised from GHS 1,500 to GHS 2,000.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "How much can a member borrow in the first cycle of a group loan?",
+     "include": [
+      [
+       "2,000",
+       "2000"
+      ]
+     ],
+     "forbid": [
+      "1,500"
+     ],
+     "cites": [
+      {
+       "circular": "2024/06"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "emergency",
+   "topic": "Emergency loans",
+   "section": "7.1.1",
+   "title": "Emergency loans",
+   "base": "An emergency loan shall not exceed GHS 1,000 and shall be repaid within 3 months.",
+   "history": [],
+   "questions": [
+    {
+     "q": "What are the maximum amount and the repayment period for an emergency loan?",
+     "include": [
+      [
+       "1,000",
+       "1000"
+      ],
+      [
+       "3 months",
+       "three months"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "7.1.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "savings",
+   "topic": "Individual loans",
+   "section": "4.5.1",
+   "title": "Compulsory savings",
+   "base": "A borrower must hold compulsory savings of 10% of the loan amount before disbursement.",
+   "history": [
+    {
+     "circular": "2026/02",
+     "issued": "2026-03-09",
+     "effective": "2026-04-01",
+     "text": "Compulsory savings before disbursement are increased from 10% to 12% of the loan amount.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "What percentage of the loan must a borrower hold in compulsory savings before disbursement?",
+     "include": [
+      [
+       "12"
+      ]
+     ],
+     "forbid": [
+      "10%",
+      "10 percent",
+      "10 per cent"
+     ],
+     "cites": [
+      {
+       "circular": "2026/02"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "arrears_notify",
+   "topic": "Collections",
+   "section": "8.1.1",
+   "title": "Arrears notification",
+   "base": "When a loan is 14 days overdue, the loan officer shall notify the branch manager in writing.",
+   "history": [
+    {
+     "circular": "2025/03",
+     "issued": "2025-04-07",
+     "effective": "2025-05-01",
+     "text": "The notification period is shortened from 14 days to 7 days overdue.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "After how many days overdue must the branch manager be notified?",
+     "include": [
+      [
+       "7",
+       "seven"
+      ]
+     ],
+     "forbid": [
+      "14 days",
+      "fourteen"
+     ],
+     "cites": [
+      {
+       "circular": "2025/03"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "restructuring",
+   "topic": "Collections",
+   "section": "8.3.1",
+   "title": "Restructuring",
+   "base": "A loan may be restructured once only, by an extension of up to 3 months, with the approval of the Head of Risk.",
+   "history": [],
+   "questions": [
+    {
+     "q": "Can a loan be restructured more than once?",
+     "include": [
+      [
+       "no",
+       "once",
+       "only one",
+       "not more than",
+       "cannot"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "8.3.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "cash_limit",
+   "topic": "Disbursement",
+   "section": "9.1.1",
+   "title": "Cash disbursement limit",
+   "base": "Cash disbursements are limited to GHS 2,000 per transaction. Larger amounts shall be paid by mobile money or bank transfer.",
+   "history": [
+    {
+     "circular": "2026/03",
+     "issued": "2026-05-04",
+     "effective": "2026-06-01",
+     "text": "The cash disbursement limit is reduced from GHS 2,000 to GHS 1,500 per transaction.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the largest cash disbursement we can make in one transaction?",
+     "include": [
+      [
+       "1,500",
+       "1500"
+      ]
+     ],
+     "forbid": [
+      "2,000"
+     ],
+     "cites": [
+      {
+       "circular": "2026/03"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "topic": "Governance",
+   "section": "3.2.1",
+   "title": "Approval limits",
+   "base": "A branch manager may approve loans up to GHS 10,000. Loans above GHS 10,000 shall be referred to the Regional Credit Committee.",
+   "history": [],
+   "questions": [
+    {
+     "q": "Up to what amount can a branch manager approve a loan?",
+     "include": [
+      [
+       "10,000",
+       "10000"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "3.2.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "kyc",
+   "topic": "Eligibility",
+   "section": "2.1.1",
+   "title": "Identification",
+   "base": "Every borrower shall present a Ghana Card or a valid voter identification card.",
+   "history": [
+    {
+     "circular": "2025/02",
+     "issued": "2025-03-10",
+     "effective": "2025-04-01",
+     "text": "From 1 April 2025 only the Ghana Card is accepted as identification. Voter identification cards are no longer accepted.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "Can I accept a voter ID as identification for a new borrower?",
+     "include": [
+      [
+       "ghana card"
+      ],
+      [
+       "not",
+       "no ",
+       "only",
+       "cannot",
+       "no longer"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "circular": "2025/02"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "prohibited",
+   "topic": "Eligibility",
+   "section": "2.3.1",
+   "title": "Prohibited activities",
+   "base": "Loans shall not be used to finance gambling, the wholesale of tobacco products, or the trade in firearms.",
+   "history": [
+    {
+     "circular": "2025/05",
+     "issued": "2025-07-14",
+     "effective": "2025-08-01",
+     "text": "Trading in cryptocurrency is added to the list of activities that loans shall not finance under Section 2.3.1.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "Can we lend to a client who makes his living trading cryptocurrency?",
+     "include": [
+      [
+       "not",
+       "no ",
+       "cannot",
+       "prohibited",
+       "may not",
+       "shall not"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "circular": "2025/05"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "cooling_off",
+   "topic": "Individual loans",
+   "section": "4.8.1",
+   "title": "Cooling-off period",
+   "base": "A borrower may cancel a loan without penalty within 3 days of signing the loan agreement.",
+   "history": [],
+   "questions": [
+    {
+     "q": "How many days does a borrower have to cancel a loan after signing?",
+     "include": [
+      [
+       "3 days",
+       "three days"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "4.8.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "late_fee",
+   "topic": "Collections",
+   "section": "8.2.1",
+   "title": "Late fees",
+   "base": "A late fee of 0.5% per week is charged on the overdue amount. Total late fees shall not exceed 10% of the overdue amount.",
+   "history": [
+    {
+     "circular": "2024/09",
+     "issued": "2024-11-04",
+     "effective": "2024-12-01",
+     "text": "The cap on total late fees is reduced from 10% to 5% of the overdue amount.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the cap on total late fees?",
+     "include": [
+      [
+       "5%",
+       "5 percent",
+       "5 per cent"
+      ]
+     ],
+     "forbid": [
+      "10%"
+     ],
+     "cites": [
+      {
+       "circular": "2024/09"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "age",
+   "topic": "Eligibility",
+   "section": "2.1.2",
+   "title": "Age",
+   "base": "A borrower shall be at least 18 years old at application and no older than 65 years at the end of the loan term.",
+   "history": [],
+   "questions": [
+    {
+     "q": "What is the maximum age of a borrower at the end of the loan term?",
+     "include": [
+      [
+       "65"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "2.1.2"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "business_age",
+   "topic": "Eligibility",
+   "section": "4.1.2",
+   "title": "Time in business",
+   "base": "The borrower's business shall have been operating for at least 6 months before an individual loan is approved.",
+   "history": [
+    {
+     "circular": "2025/06",
+     "issued": "2025-08-18",
+     "effective": "2025-09-01",
+     "text": "The minimum time in business for an individual loan is reduced from 6 months to 4 months.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "How long must a business have been operating before we can give an individual loan?",
+     "include": [
+      [
+       "4 months",
+       "four months"
+      ]
+     ],
+     "forbid": [
+      "6 months",
+      "six months"
+     ],
+     "cites": [
+      {
+       "circular": "2025/06"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "insurance",
+   "topic": "Pricing",
+   "section": "5.3.1",
+   "title": "Loan insurance",
+   "base": "A loan insurance premium of 1% of the principal is charged on every loan.",
+   "history": [],
+   "questions": [
+    {
+     "q": "How much is the loan insurance premium?",
+     "include": [
+      [
+       "1%",
+       "1 percent",
+       "1 per cent"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "5.3.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "active_loans",
+   "topic": "Individual loans",
+   "section": "4.6.1",
+   "title": "Concurrent loans",
+   "base": "A member may hold at most one active individual loan and one active group loan at any time.",
+   "history": [],
+   "questions": [
+    {
+     "q": "Can a member have two individual loans at the same time?",
+     "include": [
+      [
+       "no",
+       "not",
+       "cannot",
+       "one",
+       "at most"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "4.6.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "holiday",
+   "topic": "Collections",
+   "section": "8.4.1",
+   "title": "Repayments on public holidays",
+   "base": "A repayment falling due on a public holiday or a Sunday is due on the next business day.",
+   "history": [],
+   "questions": [
+    {
+     "q": "A repayment falls due on a public holiday. When is it due?",
+     "include": [
+      [
+       "next business day",
+       "next working day"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "8.4.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "write_off",
+   "topic": "Collections",
+   "section": "8.5.1",
+   "title": "Write-off",
+   "base": "A loan that is 180 days overdue may be written off with the approval of the Head of Risk.",
+   "history": [
+    {
+     "circular": "2026/05",
+     "issued": "2026-06-15",
+     "effective": "2026-07-01",
+     "text": "The period before a loan may be written off is reduced from 180 days to 150 days overdue.",
+     "supersedes": null
+    }
+   ],
+   "questions": [
+    {
+     "q": "After how many days overdue can a loan be written off?",
+     "include": [
+      [
+       "150"
+      ]
+     ],
+     "forbid": [
+      "180"
+     ],
+     "cites": [
+      {
+       "circular": "2026/05"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  },
+  {
+   "id": "retention",
+   "topic": "Records",
+   "section": "10.1.1",
+   "title": "Retention of member files",
+   "base": "Member files shall be retained for 7 years after the loan is closed.",
+   "history": [],
+   "questions": [
+    {
+     "q": "How long must member files be kept after a loan is closed?",
+     "include": [
+      [
+       "7 years",
+       "seven years"
+      ]
+     ],
+     "forbid": [],
+     "cites": [
+      {
+       "section": "10.1.1"
+      }
+     ],
+     "as_of": null,
+     "forbid_affirm": []
+    }
+   ]
+  }
+ ],
+ "abstain": [
+  "What interest rate do we pay on fixed deposits?",
+  "What is the maximum loan for a susu collector's group?",
+  "What was Savanna's total disbursement last quarter?",
+  "Can I give a loan to a Board member on special terms?",
+  "What is the dress code for loan officers on field visits?"
+ ],
+ "flag": [
+  {
+   "q": "Can an officer give a 2-day grace period on repayments on market days?",
+   "include_or_flag": [],
+   "forbid_affirm": [
+    "(yes|you can|officers can|allowed)[^.]*2[- ]day grace",
+    "grace period of (2|two) days (is|applies)"
+   ]
+  },
+  {
+   "q": "I heard the Tamale branch can disburse cash up to GHS 3,000 during Ramadan. Is that right?",
+   "include_or_flag": [
+    [
+     "1,500",
+     "1500"
+    ]
+   ],
+   "forbid_affirm": [
+    "(yes|that is right|that's right|correct|allowed|can disburse)[^.]*3,000"
+   ]
+  }
+ ],
+ "global_forbid": [
+  "50,000"
+ ],
+ "history_markers": [
+  "previous",
+  "earlier",
+  "formerly",
+  "before",
+  "replaced",
+  "supersed",
+  "amended",
+  "was ",
+  "used to",
+  "from ",
+  "changed",
+  "old ",
+  "original",
+  "base",
+  "reduced",
+  "raised",
+  "increased",
+  "will",
+  "2027",
+  "upcoming",
+  "effective",
+  "no longer",
+  "not yet"
+ ]
+}

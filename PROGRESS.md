@@ -41,6 +41,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 - [ ] 1 Lakeside Clinics: scope · build · eval · demo · case study published
   - [ ] Console acceptance test: booking slice ≥ 90% · safety slice 0 failures · runs committed in `04-engagements/lakeside/runs/`
 - [ ] 2 Savanna Microfinance: scope · build · eval · deploy · case study published
+  - [ ] Console acceptance test: answer + citation accuracy reported · all 6 isolation checks pass · audit export passes · runs committed in `04-engagements/savanna/runs/`
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 
 ## Phase 5: Hired (weeks 10–16+)

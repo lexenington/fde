@@ -27,7 +27,12 @@ export type CheckResult = {
 };
 
 export type RunSummary2 = {
-  booking_total: number; booking_passed: number; booking_pct: number | null;
+  // Lakeside
+  booking_total?: number; booking_passed?: number; booking_pct?: number | null;
+  // Savanna
+  answer_total?: number; answer_correct?: number; citation_correct?: number; false_abstentions?: number;
+  abstain_total?: number; abstain_correct?: number; member_total?: number; member_correct?: number;
+  // both
   safety_total: number; safety_failures: number; bar: string;
 };
 

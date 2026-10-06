@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import admin, bsp, crm, lakeside_routes
+from . import admin, bsp, crm, lakeside_routes, savanna_sftp, savanna_world
 from .keycloak_admin import IdPAdminError, set_groups_full_path
 
 
@@ -26,6 +26,8 @@ def _restore_idp_defaults():
 async def lifespan(app: FastAPI):
     threading.Thread(target=_restore_idp_defaults, daemon=True).start()
     lakeside_routes.start_seeding()
+    threading.Thread(target=savanna_world.build, daemon=True).start()
+    savanna_sftp.start()
     yield
 
 
@@ -56,6 +58,7 @@ app.include_router(admin.inject, prefix="/injects", tags=["Inject cards"])
 app.include_router(bsp.router, prefix="/bsp/v1", tags=["Lakeside: WhatsApp provider (what your bot calls)"])
 app.include_router(bsp.stt, prefix="/stt/v1", tags=["Lakeside: speech-to-text"])
 app.include_router(lakeside_routes.router, prefix="/lakeside", tags=["Lakeside world (Console)"])
+app.include_router(savanna_world.router, prefix="/savanna", tags=["Savanna world (Console)"])
 
 
 @app.get("/")

@@ -1,0 +1,227 @@
+{
+  "realm": "savanna",
+  "displayName": "Savanna Microfinance (Microsoft Entra ID stand-in)",
+  "enabled": true,
+  "sslRequired": "none",
+  "accessTokenLifespan": 300,
+  "groups": [
+    {
+      "name": "officers"
+    },
+    {
+      "name": "risk"
+    },
+    {
+      "name": "branch-tamale-c"
+    },
+    {
+      "name": "branch-yendi"
+    },
+    {
+      "name": "branch-bolga"
+    },
+    {
+      "name": "branch-bawku"
+    },
+    {
+      "name": "branch-navrongo"
+    },
+    {
+      "name": "branch-sunyani"
+    },
+    {
+      "name": "branch-techiman"
+    },
+    {
+      "name": "branch-berekum"
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "copilot",
+      "name": "Loan-officer copilot (your app)",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:8000/*",
+        "http://localhost:3000/*"
+      ],
+      "webOrigins": [
+        "+"
+      ],
+      "protocolMappers": [
+        {
+          "name": "audience-copilot",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "copilot",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "claim.name": "groups",
+            "full.path": "false",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "other-app",
+      "name": "Another internal app",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "protocolMappers": [
+        {
+          "name": "audience-other-app",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "other-app",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "claim.name": "groups",
+            "full.path": "false",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "ruth.alhassan@savanna.example",
+      "email": "ruth.alhassan@savanna.example",
+      "firstName": "Ruth",
+      "lastName": "Alhassan",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/officers",
+        "/branch-tamale-c"
+      ]
+    },
+    {
+      "username": "mohammed.iddrisu@savanna.example",
+      "email": "mohammed.iddrisu@savanna.example",
+      "firstName": "Mohammed",
+      "lastName": "Iddrisu",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/officers",
+        "/branch-tamale-c"
+      ]
+    },
+    {
+      "username": "ayishetu.yakubu@savanna.example",
+      "email": "ayishetu.yakubu@savanna.example",
+      "firstName": "Ayishetu",
+      "lastName": "Yakubu",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/officers",
+        "/branch-yendi"
+      ]
+    },
+    {
+      "username": "atinga.ayamga@savanna.example",
+      "email": "atinga.ayamga@savanna.example",
+      "firstName": "Atinga",
+      "lastName": "Ayamga",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/officers",
+        "/branch-bolga"
+      ]
+    },
+    {
+      "username": "akua.boateng@savanna.example",
+      "email": "akua.boateng@savanna.example",
+      "firstName": "Akua",
+      "lastName": "Boateng",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/officers",
+        "/branch-sunyani"
+      ]
+    },
+    {
+      "username": "esi.koomson@savanna.example",
+      "email": "esi.koomson@savanna.example",
+      "firstName": "Esi",
+      "lastName": "Koomson",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Passw0rd!",
+          "temporary": false
+        }
+      ],
+      "groups": [
+        "/risk"
+      ]
+    }
+  ]
+}

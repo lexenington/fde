@@ -8,7 +8,7 @@ Three simulated, end-to-end customer deployments. These are the point of the who
 | 2 | [Savanna Microfinance — loan-officer copilot](02-savanna-microfinance.md) | Messy data, permission-aware RAG, SSO, deploy in customer's AWS, risk sign-off | 2 |
 | 3 | [A real customer](03-real-customer.md) | Everything, with real stakes and a real reference | 1.5+ |
 
-**The customers' systems are simulated in the [FDE Console](../console/README.md)**: each engagement has a `WORLD.md` (the integration contract) and an acceptance test that runs against your code. Live now: [Lakeside](lakeside/WORLD.md).
+**The customers' systems are simulated in the [FDE Console](../console/README.md)**: each engagement has a `WORLD.md` (the integration contract) and an acceptance test that runs against your code. Live now: [Lakeside](lakeside/WORLD.md) and [Savanna](savanna/WORLD.md).
 
 ## How to run a simulated engagement
 

@@ -47,3 +47,16 @@ USERS = {
     "efua": {"email": "efua.asante@adom.example", "name": "Efua Asante", "group": "sales-managers"},
     "yaw": {"email": "yaw.boateng@adom.example", "name": "Yaw Boateng", "group": "sales-reps", "note": "exists in the IdP but is never provisioned to your app"},
 }
+
+# Savanna
+SAVANNA_DIR = Path(os.environ["SAVANNA_DIR"]) if "SAVANNA_DIR" in os.environ else _here.parents[2] / ".savanna-data"
+SAVANNA_REALM = "savanna"
+SAVANNA_SFTP = {"host": "localhost", "port": 2222, "user": "savanna", "password": "sftp-pass", "path": "/export"}
+SAVANNA_USERS = {
+    "ruth": {"email": "ruth.alhassan@savanna.example", "name": "Ruth Alhassan", "role": "officer", "branch": "TAMALE-C"},
+    "mohammed": {"email": "mohammed.iddrisu@savanna.example", "name": "Mohammed Iddrisu", "role": "officer", "branch": "TAMALE-C"},
+    "ayishetu": {"email": "ayishetu.yakubu@savanna.example", "name": "Ayishetu Yakubu", "role": "officer", "branch": "YENDI"},
+    "atinga": {"email": "atinga.ayamga@savanna.example", "name": "Atinga Ayamga", "role": "officer", "branch": "BOLGA"},
+    "akua": {"email": "akua.boateng@savanna.example", "name": "Akua Boateng", "role": "officer", "branch": "SUNYANI"},
+    "esi": {"email": "esi.koomson@savanna.example", "name": "Esi Koomson", "role": "risk", "branch": None},
+}

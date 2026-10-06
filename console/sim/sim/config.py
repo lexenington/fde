@@ -28,6 +28,16 @@ PRACTICE_DIR = Path(os.environ["PRACTICE_DIR"]) if "PRACTICE_DIR" in os.environ 
 KEYCLOAK_ADMIN_USER = os.environ.get("KEYCLOAK_ADMIN_USER", "admin")
 KEYCLOAK_ADMIN_PASSWORD = os.environ.get("KEYCLOAK_ADMIN_PASSWORD", "admin")
 
+# Engagement worlds
+ENGAGEMENTS_DIR = Path(os.environ["ENGAGEMENTS_DIR"]) if "ENGAGEMENTS_DIR" in os.environ else _here.parents[3] / "04-engagements"
+LAKESIDE_ADMIN_DSN = os.environ.get("LAKESIDE_ADMIN_DSN", "postgresql://postgres:lakeside-admin@lakeside-db:5432/lakeside")
+LAKESIDE_PUBLIC = {"host": "localhost", "port": 5433, "dbname": "lakeside",
+                   "read_user": "replica_ro", "read_password": "replica-pass",
+                   "write_user": "bookings_writer", "write_password": "writer-pass"}
+BSP_TOKEN = os.environ.get("BSP_TOKEN", "bsp-dev-token")
+BSP_WEBHOOK_SECRET = os.environ.get("BSP_WEBHOOK_SECRET", "bsp_whsec_lakeside")
+WORLD_TODAY = os.environ.get("WORLD_TODAY", "2026-10-06")     # Savanna's policy "as of" date
+
 RATE_LIMIT_PER_SEC = float(os.environ.get("CRM_RATE_LIMIT_PER_SEC", "5"))
 RATE_LIMIT_BURST = int(os.environ.get("CRM_RATE_LIMIT_BURST", "10"))
 
@@ -36,4 +46,17 @@ USERS = {
     "ama": {"email": "ama.owusu@adom.example", "name": "Ama Owusu", "group": "sales-reps"},
     "efua": {"email": "efua.asante@adom.example", "name": "Efua Asante", "group": "sales-managers"},
     "yaw": {"email": "yaw.boateng@adom.example", "name": "Yaw Boateng", "group": "sales-reps", "note": "exists in the IdP but is never provisioned to your app"},
+}
+
+# Savanna
+SAVANNA_DIR = Path(os.environ["SAVANNA_DIR"]) if "SAVANNA_DIR" in os.environ else _here.parents[2] / ".savanna-data"
+SAVANNA_REALM = "savanna"
+SAVANNA_SFTP = {"host": "localhost", "port": 2222, "user": "savanna", "password": "sftp-pass", "path": "/export"}
+SAVANNA_USERS = {
+    "ruth": {"email": "ruth.alhassan@savanna.example", "name": "Ruth Alhassan", "role": "officer", "branch": "TAMALE-C"},
+    "mohammed": {"email": "mohammed.iddrisu@savanna.example", "name": "Mohammed Iddrisu", "role": "officer", "branch": "TAMALE-C"},
+    "ayishetu": {"email": "ayishetu.yakubu@savanna.example", "name": "Ayishetu Yakubu", "role": "officer", "branch": "YENDI"},
+    "atinga": {"email": "atinga.ayamga@savanna.example", "name": "Atinga Ayamga", "role": "officer", "branch": "BOLGA"},
+    "akua": {"email": "akua.boateng@savanna.example", "name": "Akua Boateng", "role": "officer", "branch": "SUNYANI"},
+    "esi": {"email": "esi.koomson@savanna.example", "name": "Esi Koomson", "role": "risk", "branch": None},
 }

@@ -13,8 +13,17 @@ Then open **http://localhost:3300**.
 |---|---|---|
 | Console | http://localhost:3300 | Dashboard, lab briefs, checker runs and history, CRM and IdP views |
 | Customer simulator | http://localhost:8090 (API docs at `/docs`) | Adom Logistics' CRM API (`/crm/v3`), webhooks, rate limits, the lab checkers |
-| Customer IdP | http://localhost:8081 (admin / admin) | Keycloak, standing in for Okta / Entra ID. Realm `adom` |
+| Customer IdP | http://localhost:8081 (admin / admin) | Keycloak, standing in for Okta / Entra ID. Realms `adom` (02/02) and `savanna` (engagement 2) |
+| Savanna SFTP drop | `sftp://savanna:sftp-pass@localhost:2222/export` | Core banking's nightly export, read-only |
+| Lakeside database | `localhost:5433` (see the Console) | Postgres: their legacy booking system |
 | **Your app** | http://localhost:8000 | Not in this stack. You build and run it yourself, in the lab folder |
+
+## Engagement worlds
+
+| Engagement | What the Console plays | Status |
+|---|---|---|
+| **1 Lakeside Clinics** | Their legacy Postgres (cryptic tables, phone numbers in six formats, a non-idempotent stored procedure, a nightly backup lock), a WhatsApp provider (24-hour window, templates, signed at-least-once webhooks, delivery receipts), a speech-to-text service, a patient phone you can type on, and a hidden **36-conversation acceptance test** | **Live**. Contract: `04-engagements/lakeside/WORLD.md` |
+| **2 Savanna Microfinance** | A 140-page credit policy and 15 circulars that supersede it (one not yet in force), a WhatsApp export with informal rules and a planted prompt injection, member data from three disagreeing sources (core-banking CSVs on a read-only **SFTP** drop, field sheets), a second Keycloak realm with branch groups, a panel to try your copilot as any officer, and a hidden **53-check acceptance test** | **Live**. Contract: `04-engagements/savanna/WORLD.md` |
 
 ## Practice tools
 
@@ -58,7 +67,8 @@ docker compose exec sim python -m sim.checks integration
 | 02 Enterprise integration | **Live**: OIDC, SCIM, roles, CRM sync, webhooks (22 checks) |
 | 01 Messy data, 03 AI engineering | Still terminal-based (`check.py`, `eval.py`) |
 | Stakeholder calls and inject cards | **Live** |
-| Engagement worlds (Lakeside's legacy database and WhatsApp, Savanna's documents) | Next slice |
+| Lakeside engagement world and acceptance test | **Live** |
+| Savanna engagement world and acceptance test | **Live** |
 
 ## Troubleshooting
 
@@ -67,6 +77,7 @@ docker compose exec sim python -m sim.checks integration
 - **Issuer mismatch.** Tokens always carry `iss = http://localhost:8081/realms/adom`, whether they were fetched from your machine or from inside Docker. Validate against exactly that.
 - **"ANTHROPIC_API_KEY is not set".** Export it in the shell where you run `docker compose up`, then `docker compose up -d sim`. The dashboard shows a Claude light.
 - **A call disappeared.** Active calls live in the simulator's memory, so restarting it ends them. Transcripts are only saved when you end a call and read the debrief.
+- **Savanna's documents look wrong or stale.** They're generated into `console/.savanna-data/` on first start and rebuilt when the answer key changes. Delete that folder and restart the simulator to rebuild.
 - **Start again from scratch.** `docker compose down` resets Keycloak and the CRM (everything lives in memory). Your app's own database is yours to reset.
 
 ## Developing the Console itself

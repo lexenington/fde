@@ -12,10 +12,11 @@ async function proxy(req: Request, ctx: { params: Promise<{ path: string[] }> })
       body: ["GET", "HEAD"].includes(req.method) ? undefined : await req.text(),
       cache: "no-store",
     });
-    return new Response(await res.text(), {
-      status: res.status,
-      headers: { "content-type": res.headers.get("content-type") ?? "application/json" },
-    });
+    // pass bytes through untouched: documents (PDFs) must not be turned into text
+    const headers: Record<string, string> = { "content-type": res.headers.get("content-type") ?? "application/json" };
+    const disposition = res.headers.get("content-disposition");
+    if (disposition) headers["content-disposition"] = disposition;
+    return new Response(await res.arrayBuffer(), { status: res.status, headers });
   } catch {
     return Response.json({ detail: `simulator unreachable at ${SIM}` }, { status: 502 });
   }

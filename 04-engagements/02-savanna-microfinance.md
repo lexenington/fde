@@ -15,6 +15,9 @@ Savanna Microfinance has 22 branches across the Northern, Upper East and Bono re
 - Branch-level row security enforced in retrieval *and* in SQL, not in the prompt.
 - Deploy into a customer AWS account via Terraform (02/04), SSO via Entra ID (02/02), Claude accessed inside the customer's cloud boundary (Bedrock) or via an allow-listed egress, as decided in scoping.
 
+## The world
+The customer's systems are simulated for you: [04-engagements/savanna/WORLD.md](savanna/WORLD.md). `docker compose up --build` in `console/`, then *Engagements → 2 Savanna Microfinance* at http://localhost:3300 gives you the 140-page policy and its circulars, the WhatsApp export, the core-banking SFTP drop, the officers' field sheets, a login system with branch groups, a panel to try your copilot as any officer, and the customer's acceptance test.
+
 ## Acceptance bar
 - Eval: ≥ 80 policy questions with gold answers + gold citations, including questions where a circular overrides the base policy. Report answer accuracy, citation accuracy, and abstention rate ("I don't know, ask Risk") on questions the docs don't answer.
 - Permission tests: an officer from branch A cannot retrieve, or be told about, members of branch B, including via indirect questions and prompt injection.

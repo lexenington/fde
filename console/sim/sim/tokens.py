@@ -28,6 +28,19 @@ def get_token(user: str, client: str = "runmysales") -> str:
     return r.json()["access_token"]
 
 
+def get_realm_token(realm: str, client: str, username: str, password: str) -> str:
+    """A token from any realm the simulator hosts (Adom's, Savanna's)."""
+    url = f"{config.KEYCLOAK_INTERNAL_URL}/realms/{realm}/protocol/openid-connect/token"
+    try:
+        r = httpx.post(url, timeout=10, data={"grant_type": "password", "client_id": client, "scope": "openid email profile",
+                                              "username": username, "password": password})
+    except httpx.HTTPError as e:
+        raise IdPError(f"Keycloak unreachable at {config.KEYCLOAK_INTERNAL_URL} ({type(e).__name__}). Is it still starting?")
+    if r.status_code != 200:
+        raise IdPError(f"Keycloak refused a token for {username}: {r.status_code} {r.text[:200]}")
+    return r.json()["access_token"]
+
+
 def decode(token: str) -> dict:
     return {"header": jwt.get_unverified_header(token), "payload": jwt.decode(token, options={"verify_signature": False})}
 

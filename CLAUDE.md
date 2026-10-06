@@ -13,6 +13,7 @@ Personal curriculum for moving from full-stack engineer to Forward Deployed Engi
 - AI lab: `python eval.py` (needs `ANTHROPIC_API_KEY`), and `python -m pytest -q` for grader tests (no key needed), in `02-technical-depth/03-ai-engineering/lab`
 
 - Field Console (simulated customer + checkers): `docker compose up --build` in `console/`, UI on http://localhost:3300; terminal checker: `docker compose exec sim python -m sim.checks integration`. Simulator tests: `python -m pytest -q` in `console/sim`
+- Engagement worlds (Lakeside, Savanna): the contract for each is `04-engagements/<name>/WORLD.md`; the customer's systems and the hidden acceptance test run in the Console. Runs are saved to `04-engagements/<name>/runs/`
 - Console UI dev: `npm run dev` in `console/ui` (needs the simulator on :8090)
 
 ## Conventions

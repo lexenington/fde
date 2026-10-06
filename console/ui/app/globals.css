@@ -144,3 +144,19 @@ textarea.reply { width: 100%; min-height: 140px; background: var(--bg); color: v
 .banner { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 14px; margin: 10px 0 16px; }
 .banner ul { margin: 6px 0 0; padding-left: 18px; }
 .check { padding: 3px 0; font-size: 14px; }
+
+/* patient phone */
+.phone { background: #e9e4dc; border: 1px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; height: 560px; max-width: 420px; overflow: hidden; }
+@media (prefers-color-scheme: dark) { .phone { background: #1b1b19; } }
+.phone-top { background: #1f6f5b; color: #fff; padding: 10px 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+.phone-top .small { opacity: .85; font-weight: 400; }
+.wa { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.wa .m { max-width: 80%; padding: 6px 10px; border-radius: 8px; font-size: 14px; white-space: pre-wrap; box-shadow: 0 1px 0 rgba(0,0,0,.08); }
+.wa .m.in { align-self: flex-end; background: #d9fdd3; color: #111; }
+.wa .m.out { align-self: flex-start; background: var(--panel); }
+.wa .m .t { font-size: 10.5px; opacity: .6; text-align: right; margin-top: 2px; }
+.wa .tpl { font-size: 10.5px; opacity: .7; font-style: italic; }
+.phone-in { display: flex; gap: 6px; padding: 8px; background: var(--panel); border-top: 1px solid var(--line); }
+.phone-in input { flex: 1; }
+.two { display: grid; grid-template-columns: 420px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 1000px) { .two { grid-template-columns: 1fr; } }

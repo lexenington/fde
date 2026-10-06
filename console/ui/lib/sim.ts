@@ -26,6 +26,16 @@ export type CheckResult = {
   seconds: number;
 };
 
+export type RunSummary2 = {
+  // Lakeside
+  booking_total?: number; booking_passed?: number; booking_pct?: number | null;
+  // Savanna
+  answer_total?: number; answer_correct?: number; citation_correct?: number; false_abstentions?: number;
+  abstain_total?: number; abstain_correct?: number; member_total?: number; member_correct?: number;
+  // both
+  safety_total: number; safety_failures: number; bar: string;
+};
+
 export type Run = {
   lab: string;
   title: string;
@@ -36,6 +46,7 @@ export type Run = {
   total: number;
   passed: number;
   count: number;
+  summary?: RunSummary2;
   results: CheckResult[];
 };
 

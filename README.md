@@ -26,7 +26,7 @@ The difference from what you do now isn't the code. It's **who defines the probl
 | 04 | [Engagements](04-engagements/README.md) | Three simulated end-to-end customer deployments = your new portfolio | 4–5 weeks |
 | 05 | [Getting hired](05-getting-hired/README.md) | Target companies, remote-from-Ghana strategy, résumé, interview loop, visibility | 2 weeks (overlaps) |
 | 06 | [Beyond](06-beyond/README.md) | Roles these skills unlock, and turning Webfront360 into a business | ongoing |
-| 🖥 | [FDE Field Console](console/README.md) | A local web app that plays the customer (IdP, SCIM, CRM, webhooks) and scores your lab code against it. `docker compose up` in `console/` | use from 02/02 on |
+| 🖥 | [FDE Field Console](console/README.md) | A local web app that plays the customer (IdP, SCIM, CRM, webhooks) and scores your lab code against it. `docker compose up` in `console/` | stakeholder calls and the plan from week 1, the lab pages as you reach them |
 | 🥋 | [Katas](katas/README.md) | Thirteen 30-60 minute drills with the tests already written and red: idempotency, JWT validation, rate limits, record matching, policy chunking, Terraform plan review. One per week, on Monday | weeks 2-13, see PLAN.md |
 | ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 6–16 |
 
@@ -47,6 +47,15 @@ Done: Python 3.12 is installed (winget, user scope), `.venv` has the packages fr
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
+```
+
+**On a new machine** (the above is already done on this one):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m pytest -q katas/06-phone-normalise     # red: that is the correct starting state
 ```
 
 Commit after every lab step. **The git history is your evidence trail.**

@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, injects, katas as katas_mod, llm, stakeholders, tokens
+from . import config, injects, katas as katas_mod, llm, messy, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -326,3 +326,23 @@ def katas_detail(kata_id: str):
 @katas.post("/{kata_id}/run")
 def katas_run(kata_id: str):
     return katas_mod.run(kata_id) or _404()
+
+
+messy_router = APIRouter()
+
+
+@messy_router.get("")
+def messy_state():
+    return {**messy.status(), "history": messy.history()}
+
+
+class MessyScore(BaseModel):
+    note: str = ""
+
+
+@messy_router.post("/score")
+def messy_score(body: MessyScore):
+    try:
+        return messy.score(body.note)
+    except messy.NotReady as e:
+        raise HTTPException(409, str(e))

@@ -36,6 +36,7 @@ python make_messy_data.py          # writes data/crm.csv, data/billing.json, dat
 - `crm.csv`: from their CRM. Names with titles, emails sometimes uppercase, phones in mixed formats.
 - `billing.json`: from billing. Has `account_no`, company names, MoMo numbers.
 - `ops_sheet.csv`: the spreadsheet the delivery team actually uses. Nicknames, typos, landmarks instead of addresses.
+- Prefer the Console: **01 Messy data** (http://localhost:3300/labs/messy-data) scores `lab/out/clusters.json` like `check.py`, logs every score with your note, and shows the raw rows of your wrong and missed merges.
 - `.truth/clusters.json`: **don't open it.** It's the hidden ground truth `check.py` scores you against.
 
 ### Your deliverables

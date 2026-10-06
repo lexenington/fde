@@ -50,7 +50,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Do**
 
-- Normalise, block, score, cluster. Run `check.py` after every change and keep a log of what moved the score.
+- Normalise, block, score, cluster. Score on the Console's *01 Messy data* page after every change, with a one-line note of what you changed. It logs the F1 and shows the raw rows behind your wrong and missed merges. Commit `lab/runs/`: it is your log of what moved the score.
 - Write `REPORT.md` for the ops manager. Answer: would you rather merge two customers by mistake, or miss a merge?
 - Take **any reply** from outreach and book a first conversation.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [07 record matching](katas/07-record-matching/README.md).

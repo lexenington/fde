@@ -58,7 +58,29 @@ python simulate.py --tenant medplus --only rx-advice-trap
 python simulate.py --all                       # release check: every tenant, every scenario
 ```
 
-Out of the box, `agent.py` runs a **naive baseline agent** (Claude with the tenant brief as its system prompt) so you can see the harness work. Your job is to replace it: point `AGENT_URL` at your own product, or rewrite `reply()`.
+Out of the box, `agent.py` runs a **naive baseline agent** (a model with the tenant brief as its system prompt) so you can see the harness work. Your job is to replace it: point `AGENT_URL` at your own product, or rewrite `reply()`.
+
+### Choosing models (and keeping cost down)
+
+A full `--all` run is dozens of conversations, so model choice matters. Three roles, each set with its own variable (all default to `claude-opus-5-5`):
+
+| Variable | Role | Advice |
+|---|---|---|
+| `FDE_SIM_CUSTOMER_MODEL` | Plays the customer | The cheapest place to save. Customers don't need to be brilliant, just in character |
+| `FDE_SIM_JUDGE_MODEL` | Grades every transcript | Keep it strong. A weak judge passes broken agents, and then your release check means nothing |
+| `FDE_AGENT_MODEL` | The baseline agent (ignored when `AGENT_URL` is set) | Whatever your product would use |
+
+Names starting with `claude-` use `ANTHROPIC_API_KEY`. **Any other name goes to an OpenAI-compatible endpoint** (OpenRouter, DeepSeek, Groq, Gemini, OpenAI, a local Ollama), the same settings as the Console:
+
+```powershell
+$env:FDE_OPENAI_BASE_URL = "https://api.deepseek.com"     # endpoint URLs for each provider: console/README.md, "Using other models"
+$env:FDE_OPENAI_API_KEY = "sk-..."
+$env:FDE_SIM_CUSTOMER_MODEL = "deepseek-chat"
+$env:FDE_SIM_JUDGE_MODEL = "claude-sonnet-5-5"            # needs ANTHROPIC_API_KEY too
+python simulate.py --tenant chopbox
+```
+
+Every run prints and saves the models it used, so runs with different models stay comparable. **Validate a cheap judge before trusting it:** run the same tenant with your strong judge and with the cheap one, then compare verdicts scenario by scenario. If they disagree on more than one or two scenarios, the cheap judge isn't fit for release checks. `python -m pytest -q` tests the plumbing without any key.
 
 ### Deliverables
 1. **Per tenant:** configuration (instructions, knowledge, tools) in your product, a `scenarios.json` of **at least 25 scenarios** (happy paths, edge cases, policy traps, angry users, mixed English/Twi/Pidgin, prompt injection), and a passing rate you're willing to defend.

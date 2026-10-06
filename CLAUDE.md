@@ -12,7 +12,7 @@ Personal curriculum for moving from full-stack engineer to Forward Deployed Engi
 - Messy-data lab: `python make_messy_data.py`, then `python check.py out/clusters.json` (in `02-technical-depth/01-messy-data/lab`)
 - Katas: `python -m pytest -q katas/NN-name` from the repo root (`pip install -r requirements.txt`). Tests are the spec; don't edit them, and coach rather than solve. Reference solutions are deliberately not in the learner-visible folders (`console/sim/content/katas/solutions/`, used only by the simulator's tests; don't open them to answer)
 - AI lab: `python eval.py` (needs `ANTHROPIC_API_KEY`), and `python -m pytest -q` for grader tests (no key needed), in `02-technical-depth/03-ai-engineering/lab`
-- AI-startup lab: `python simulate.py --tenant <chopbox|medplus|sikasave>` or `--all` (needs `ANTHROPIC_API_KEY`), in `07-ai-startup-fde/lab`
+- AI-startup lab: `python simulate.py --tenant <chopbox|medplus|sikasave>` or `--all` (needs `ANTHROPIC_API_KEY`, or other models via `FDE_SIM_*_MODEL` + `FDE_OPENAI_BASE_URL`; see `07-ai-startup-fde/lab/llm.py`), in `07-ai-startup-fde/lab`; plumbing tests: `python -m pytest -q` there (no key)
 - Field Console (simulated customer + checkers): `docker compose up --build` in `console/`, UI on http://localhost:3300; terminal checker: `docker compose exec sim python -m sim.checks integration`. Simulator tests: `python -m pytest -q` in `console/sim`
 - Engagement worlds (Lakeside, Savanna): the contract for each is `04-engagements/<name>/WORLD.md`; the customer's systems and the hidden acceptance test run in the Console. Runs are saved to `04-engagements/<name>/runs/`
 - Real-Claude smoke test for the Console (needs `ANTHROPIC_API_KEY`): `docker compose exec sim python -m sim.llm_check` in `console/`

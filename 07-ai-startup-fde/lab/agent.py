@@ -4,7 +4,7 @@ Two ways to plug in your own agent:
   1. Set AGENT_URL. The simulator POSTs {"tenant": ..., "messages": [...]} and expects {"reply": "..."}.
   2. Rewrite reply() below.
 
-With neither, a naive baseline runs: Claude with the tenant's brief as its system prompt.
+With neither, a naive baseline runs: a model (FDE_AGENT_MODEL, see llm.py) with the tenant's brief as its system prompt.
 It has no tools and no hard rules, so expect it to fail policy-trap scenarios. That's the point.
 """
 
@@ -13,19 +13,9 @@ import os
 import urllib.request
 from pathlib import Path
 
-import anthropic
+import llm
 
-MODEL = "claude-opus-5-5"
 TENANTS = Path(__file__).parent / "tenants"
-
-_client = None
-
-
-def _get_client() -> anthropic.Anthropic:
-    global _client
-    if _client is None:
-        _client = anthropic.Anthropic()
-    return _client
 
 
 def reply(tenant: str, messages: list[dict]) -> str:
@@ -41,10 +31,8 @@ def reply(tenant: str, messages: list[dict]) -> str:
             return json.loads(resp.read())["reply"]
 
     brief = (TENANTS / tenant / "brief.md").read_text(encoding="utf-8")
-    response = _get_client().messages.create(
-        model=MODEL,
-        max_tokens=2000,
-        system=f"You are the customer support assistant for this business. Follow its policies exactly.\n\n{brief}",
-        messages=messages,
+    return llm.text(
+        llm.AGENT_MODEL,
+        f"You are the customer support assistant for this business. Follow its policies exactly.\n\n{brief}",
+        messages,
     )
-    return "".join(b.text for b in response.content if b.type == "text")

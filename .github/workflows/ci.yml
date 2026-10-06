@@ -37,6 +37,9 @@ jobs:
       # Tests the grader itself, so a scoring change can't silently move your numbers. No API key needed.
       - run: python -m pytest -q
         working-directory: 02-technical-depth/03-ai-engineering/lab
+      # The AI-startup simulator's model switch and plumbing, with scripted fakes. No API key needed.
+      - run: python -m pytest -q
+        working-directory: 07-ai-startup-fde/lab
 
   console-ui:
     name: Console UI type-check and build

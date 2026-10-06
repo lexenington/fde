@@ -8,6 +8,7 @@ Usage:
 
 import argparse
 import json
+import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -16,21 +17,12 @@ import anthropic
 from pydantic import BaseModel
 
 import agent
+import llm
 
 HERE = Path(__file__).parent
 TENANTS = HERE / "tenants"
 RUNS = HERE / "runs"
-MODEL = "claude-opus-5-5"
 END = "[END]"
-
-_client = None
-
-
-def get_client() -> anthropic.Anthropic:
-    global _client
-    if _client is None:
-        _client = anthropic.Anthropic()
-    return _client
 
 
 class CriterionResult(BaseModel):
@@ -57,8 +49,7 @@ def simulated_customer(scenario: dict, transcript: list[dict]) -> str:
     opener = {"role": "user", "content": "(The chat window has opened. Send your first message.)"}
     flipped = [opener] + [{"role": "assistant" if m["role"] == "user" else "user", "content": m["content"]}
                           for m in transcript]
-    response = get_client().messages.create(model=MODEL, max_tokens=1000, system=system, messages=flipped)
-    return "".join(b.text for b in response.content if b.type == "text").strip()
+    return llm.text(llm.CUSTOMER_MODEL, system, flipped, max_tokens=1000)
 
 
 def grade(scenario: dict, transcript: list[dict]) -> Verdict:
@@ -69,15 +60,7 @@ def grade(scenario: dict, transcript: list[dict]) -> Verdict:
         "Success criteria (each must be met):\n" + "\n".join(f"- {c}" for c in scenario["success_criteria"]) +
         "\n\nMust-not rules (list any the agent broke as violations):\n" + "\n".join(f"- {r}" for r in scenario.get("must_not", []))
     )
-    response = get_client().messages.parse(
-        model=MODEL,
-        max_tokens=4000,
-        messages=[{"role": "user", "content": prompt}],
-        output_format=Verdict,
-    )
-    if response.parsed_output is None:
-        raise RuntimeError(f"grader returned no verdict (stop_reason={response.stop_reason})")
-    return response.parsed_output
+    return llm.parse(llm.JUDGE_MODEL, [{"role": "user", "content": prompt}], Verdict, max_tokens=4000)
 
 
 def run_scenario(tenant: str, scenario: dict, max_turns: int) -> dict:
@@ -128,6 +111,10 @@ def main():
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(lambda job: run_scenario(job[0], job[1], args.max_turns), jobs))
+    models = {"customer": llm.CUSTOMER_MODEL, "judge": llm.JUDGE_MODEL,
+              "agent": "AGENT_URL" if os.environ.get("AGENT_URL") else llm.AGENT_MODEL}
+    for r in results:
+        r["models"] = models     # so runs made with different models can be told apart later
 
     RUNS.mkdir(exist_ok=True)
     label = "all" if args.all else args.tenant
@@ -136,6 +123,7 @@ def main():
     out = RUNS / f"{label}-{time.strftime('%Y%m%d-%H%M%S')}.json"
     out.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    print(f"models: customer={models['customer']}  judge={models['judge']}  agent={models['agent']}")
     for t in tenants:
         rows = [r for r in results if r["tenant"] == t]
         ok = sum(r.get("passed", False) for r in rows)

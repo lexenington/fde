@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { sim } from "@/lib/sim";
 
 type Users = { password: string; issuer: string; users: { key: string; email: string; name: string; group: string; note?: string }[] };
-type Info = { crm_base_url: string; crm_api_key: string; webhook_secret: string; scim_token: string; issuer: string; audience: string; learner_url: string };
+type Info = { crm_base_url: string; crm_api_key: string; webhook_secret: string | null; webhook_secret_new: string | null; scim_token: string; issuer: string; audience: string; learner_url: string };
 type Tok = { token: string; header: Record<string, unknown>; payload: Record<string, unknown> };
 
 export default function IdentityPage() {
@@ -45,7 +45,7 @@ export default function IdentityPage() {
               <tr><th>Audience</th><td><code>{info.audience}</code></td></tr>
               <tr><th>SCIM bearer token</th><td><code>{info.scim_token}</code> (the IdP sends it to your <code>/scim/v2</code>)</td></tr>
               <tr><th>CRM API</th><td><code>{info.crm_base_url}</code> with <code>Authorization: Bearer {info.crm_api_key}</code></td></tr>
-              <tr><th>Webhook secret</th><td><code>{info.webhook_secret}</code></td></tr>
+              <tr><th>Webhook secret</th><td>{info.webhook_secret ? <code>{info.webhook_secret}</code> : <span className="muted">retired</span>}{info.webhook_secret_new && <> · new (rotation): <code>{info.webhook_secret_new}</code></>}</td></tr>
               <tr><th>Keycloak admin</th><td><a href="http://localhost:8081/admin" target="_blank">localhost:8081/admin</a> (admin / admin)</td></tr>
             </tbody>
           </table>

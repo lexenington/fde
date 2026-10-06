@@ -24,6 +24,18 @@ export default function Dashboard() {
         </div>
       </div>
 
+      <h2>Practice</h2>
+      <div className="grid">
+        <a className="card" href="/stakeholders" style={{ textDecoration: "none", color: "inherit" }}>
+          <h3>Stakeholder calls</h3>
+          <div className="small muted">Ten people across three customers, played by Claude. They only tell you what you ask well for. Scored debrief and a saved transcript.</div>
+        </a>
+        <a className="card" href="/injects" style={{ textDecoration: "none", color: "inherit" }}>
+          <h3>Inject cards</h3>
+          <div className="small muted">Mid-lab curveballs: quota cuts, late webhooks, secret rotation, an IdP change. Handle them in code, then write the reply.</div>
+        </a>
+      </div>
+
       <h2>A working session</h2>
       <ol className="small">
         <li>Read the lab contract. Write <code>SCOPE.md</code> before code.</li>

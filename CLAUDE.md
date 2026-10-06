@@ -16,6 +16,6 @@ Personal curriculum for moving from full-stack engineer to Forward Deployed Engi
 - Console UI dev: `npm run dev` in `console/ui` (needs the simulator on :8090)
 
 ## Conventions
-- Never open or print `.truth/` in the messy-data lab: it's the hidden answer key.
+- Never open or print `.truth/` in the messy-data lab: it's the hidden answer key. The same goes for `console/sim/content/`: stakeholder hidden facts, card effects and rubrics.
 - The Console plays the customer and the grader. Never add lab solutions to `console/` (no reference implementations of the learner's app).
 - Every lab ends with a short report written for its stated audience (ops manager, CFO, IT lead), not for engineers.

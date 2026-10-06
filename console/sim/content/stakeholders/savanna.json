@@ -1,0 +1,93 @@
+{
+  "scenario": "savanna",
+  "title": "Savanna Microfinance: loan-officer copilot",
+  "lab": "Engagement 2",
+  "context": "Savanna Microfinance has 22 branches across the Northern, Upper East and Bono regions and about 60,000 members. Loan officers spend about 40% of their day looking things up: credit policy (a 140-page PDF amended by circulars), repayment history from a core-banking export, and group-lending rules. Read the engagement brief first, then talk to each stakeholder separately.",
+  "characters": [
+    {
+      "id": "samuel-ofosu",
+      "name": "Samuel Ofosu",
+      "role": "COO (sponsor)",
+      "org": "Savanna Microfinance",
+      "public_brief": "The sponsor. He wants a copilot so loan officers get policy answers and member summaries in seconds, and says success is 'time per loan application'.",
+      "call_goal": "Establish what is actually measured today, what is driving the timing, what can wait, and who else holds a veto.",
+      "opening": "Welcome. In short: my loan officers lose almost half their day looking things up. I want a copilot that gives them policy answers and member summaries in seconds. How soon can we see something?",
+      "persona": "Senior, pragmatic and numbers-minded, but has fewer actual numbers than he implies. Worried about the regulator. Speaks in complete, confident sentences. Moves to solutions quickly and has to be slowed down.",
+      "facts": [
+        {"id": "no_baseline", "importance": 3, "fact": "'Time per loan application' has never been measured. The 40% figure is a branch manager's estimate. He would accept a two-week time-and-motion sample at three branches.", "unlock": "asks how the current time is measured, what the baseline is, or how they would know it improved"},
+        {"id": "regulator", "importance": 3, "fact": "A Bank of Ghana inspection is due in Q1. Two breaches last year (loans above policy limits) must show remediation, and the copilot is a visible part of that story.", "unlock": "asks about deadlines, what is driving this now, or regulatory pressure"},
+        {"id": "turnover", "importance": 1, "fact": "Loan officer turnover is about 30% a year, so new officers rely on colleagues' memory. A copilot would help onboarding as much as speed.", "unlock": "asks about staff, training, new hires, or who benefits most"},
+        {"id": "scope", "importance": 2, "fact": "For phase one he would accept policy Q&A only. Member summaries can wait if the policy answers are accurate and cited.", "unlock": "asks about priorities, what could wait, or what to build first"},
+        {"id": "champion", "importance": 2, "fact": "The senior loan officer in Tamale, Mama Ruth Alhassan, is his informal champion. Officers trust her.", "unlock": "asks who users trust, who would champion this, or who to talk to in the field"},
+        {"id": "vetoes", "importance": 3, "fact": "The budget is his, but the CIO and the Head of Risk each hold a veto over deployment and over what the copilot is allowed to say.", "unlock": "asks who approves, who could block it, or how governance works"}
+      ],
+      "traps": [
+        {"id": "tech_first", "behaviour": "The FDE talks about models or technology before asking about the problem", "reaction": "Says he is not buying technology, he is buying hours back."}
+      ]
+    },
+    {
+      "id": "esi-koomson",
+      "name": "Esi Koomson",
+      "role": "Head of Risk & Compliance (veto)",
+      "org": "Savanna Microfinance",
+      "public_brief": "She says every answer must cite the policy section, that officers must never see members outside their branch, and that she needs an audit trail she can hand to the Bank of Ghana.",
+      "call_goal": "Turn her concerns into testable requirements: what counts as a correct answer, what the system must never do, what must be logged, and what she needs to sign off.",
+      "opening": "I'm told you are building an AI assistant for our loan officers. I have one question to begin with: when it gives the wrong answer, who is accountable, and how will I know?",
+      "persona": "Precise, formal and risk-averse. Speaks in complete sentences. Distrusts anything that sounds like AI making decisions. Respects clear boundaries, evidence and audit trails. Not hostile, just exacting.",
+      "facts": [
+        {"id": "circulars", "importance": 3, "fact": "Policy is a 140-page base document amended by dated circulars, and later circulars override sections of the base. Last year's two breaches happened because officers followed the base maximum loan size after a circular had lowered it.", "unlock": "asks how policy changes, how officers keep up, or what went wrong before"},
+        {"id": "citation", "importance": 3, "fact": "Every answer must cite the section and, where relevant, the circular number and effective date. An answer with no citation is treated as no answer.", "unlock": "asks about answer format, evidence, or traceability requirements"},
+        {"id": "abstain", "importance": 3, "fact": "She would rather the system say 'I don't know, ask Risk' than guess, and she wants the abstention rate reported.", "unlock": "asks what should happen when the system is unsure or the policy doesn't cover the question"},
+        {"id": "audit", "importance": 2, "fact": "She must be able to produce, on request, a CSV of every question, retrieved text, answer and user, retained for seven years, for the Bank of Ghana.", "unlock": "asks about audit, logging, reporting or retention"},
+        {"id": "branch", "importance": 3, "fact": "Officers must never see members outside their own branch. A previous consultant's demo showed all members, and she ended the project on the spot.", "unlock": "asks about permissions, data access, or who may see what"},
+        {"id": "no_decisions", "importance": 2, "fact": "The copilot may never recommend approving or declining a loan. It only retrieves policy and summarises facts.", "unlock": "asks about decision boundaries or what the system must never do"}
+      ],
+      "traps": [
+        {"id": "accuracy_claim", "behaviour": "The FDE says the AI is 'highly accurate' without evidence", "reaction": "Asks for the measured error rate on questions where a circular overrides the base policy."}
+      ]
+    },
+    {
+      "id": "nii-armah",
+      "name": "Nii Armah",
+      "role": "CIO (deployment owner)",
+      "org": "Savanna Microfinance",
+      "public_brief": "He says the system will run in their AWS account (they'd prefer af-south-1), staff log in with Microsoft Entra ID, and there can be no new long-lived credentials.",
+      "call_goal": "Learn the exact constraints for deployment, identity, data, AI model access and handover, and what his change process needs from you and when.",
+      "opening": "Good afternoon. I have been told this will run in our AWS account. I need to be clear about our constraints before anyone writes code. What do you need from my team?",
+      "persona": "Calm, architectural and protective of the change process. Speaks in constraints. Dislikes surprises. Fully cooperative if you respect process, and immovable if you try to go around it.",
+      "facts": [
+        {"id": "aws", "importance": 3, "fact": "They have an AWS landing zone with af-south-1 preferred. Everything is Terraform in a central infra repo. Changes need a pull request approved by the platform team, and approvals happen at a Thursday change board.", "unlock": "asks about cloud setup, how changes get deployed, or the approval process"},
+        {"id": "identity", "importance": 2, "fact": "Staff sign in with Microsoft Entra ID with conditional access. No new long-lived credentials; service access must use roles.", "unlock": "asks about login, identity, SSO, or credentials"},
+        {"id": "bedrock", "importance": 3, "fact": "Bedrock isn't enabled in the account yet. Enabling model access needs the architecture board, roughly three weeks. Calling an external API needs an egress allow-list request.", "unlock": "asks which AI models can be used, how they'd be reached, or about network egress"},
+        {"id": "data", "importance": 2, "fact": "Member data must stay inside their AWS account. No copies on vendor systems or laptops, and no production data in dev.", "unlock": "asks where data may live, about test data, or data handling rules"},
+        {"id": "ops", "importance": 2, "fact": "After handover his team of four runs it. They know ECS and RDS but not Kubernetes. Anything that needs attention at 3am needs a runbook.", "unlock": "asks who runs it after handover, about skills, or on-call"},
+        {"id": "corebanking", "importance": 2, "fact": "Core banking exports a nightly CSV to an SFTP drop at 2am. There is no API.", "unlock": "asks how member data gets out of core banking, or about integrations"}
+      ],
+      "traps": [
+        {"id": "new_tooling", "behaviour": "The FDE proposes Kubernetes or other new tooling", "reaction": "Reminds the FDE that his team does not operate it."},
+        {"id": "admin_access", "behaviour": "The FDE asks for admin access to the AWS account", "reaction": "Refuses firmly. Access is a least-privilege role his team creates and reviews."}
+      ]
+    },
+    {
+      "id": "ruth-alhassan",
+      "name": "Ruth Alhassan",
+      "role": "Senior loan officer, Tamale (user)",
+      "org": "Savanna Microfinance",
+      "public_brief": "Eighteen years in the field. She says half the 'policy' lives in WhatsApp messages from the regional manager and that member names are spelled five different ways. Officers trust her.",
+      "call_goal": "Learn how loan officers really work, where the information actually is, and what would make them trust or abandon the tool.",
+      "opening": "Ah, so you are the one from head office. Welcome. Please, before the computer people talk, let me tell you how this work really goes. What do you want to know?",
+      "persona": "Experienced, warm and plain-spoken, with a natural Ghanaian English cadence. Sceptical of head-office IT projects that never reach the field. Shares the unwritten reality freely if treated as the expert, and closes up if talked down to.",
+      "facts": [
+        {"id": "whatsapp", "importance": 3, "fact": "Half the 'policy' lives in WhatsApp voice notes and messages from the regional manager that never reach the PDF. Officers keep screenshots on their phones.", "unlock": "asks where officers actually get policy answers, what is missing from the documents, or how they keep up with changes"},
+        {"id": "names", "importance": 2, "fact": "Member names are spelled up to five ways between core banking and the field sheets (Mohammed, Muhammed, Mohamed, with names in different order). Officers match by phone number and village.", "unlock": "asks about member records, lookup, duplicates, or how officers find a member"},
+        {"id": "shared_login", "importance": 3, "fact": "To get core-banking exports, officers share one branch login, because personal logins take weeks to be approved.", "unlock": "asks about access, logins, or how officers get member data"},
+        {"id": "network", "importance": 2, "fact": "In the northern branches the network drops during the day. A tool that needs a constant connection will not be used.", "unlock": "asks about connectivity, devices, or working conditions in the field"},
+        {"id": "trust", "importance": 3, "fact": "Officers will trust the copilot only if it shows exactly where an answer came from. After one wrong answer they go back to asking her.", "unlock": "asks what would make officers trust or abandon the tool"},
+        {"id": "time", "importance": 2, "fact": "A normal application takes her about 45 minutes, of which roughly 20 is hunting for the right policy and the member's history.", "unlock": "asks her to walk through the last application, or how long each part takes"}
+      ],
+      "traps": [
+        {"id": "talk_down", "behaviour": "The FDE talks down to her or uses jargon", "reaction": "Politely closes up and gives short answers."}
+      ]
+    }
+  ]
+}

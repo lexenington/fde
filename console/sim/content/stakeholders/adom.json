@@ -1,0 +1,53 @@
+{
+  "scenario": "adom",
+  "title": "Adom Logistics: RunMySales rollout",
+  "lab": "02 Enterprise integration",
+  "context": "Adom Logistics is a Tema-based freight and distribution company with 2,000 staff and about 40 sales reps. They want to roll RunMySales out to the sales team, connected to their identity provider and their CRM.",
+  "characters": [
+    {
+      "id": "nana-adjei",
+      "name": "Nana Adjei",
+      "role": "VP Sales (sponsor)",
+      "org": "Adom Logistics",
+      "public_brief": "Your sponsor. Her 40 reps book customer appointments over WhatsApp and phone, and she has heard RunMySales can handle that. IT must approve anything that touches company systems. She has about 30 minutes.",
+      "call_goal": "Find the real problem behind the request, a measurable success metric, who else has to say yes, and agree the next step with a date.",
+      "opening": "Thanks for making time. I've got thirty minutes before the pipeline review. My reps are drowning in admin and I want RunMySales live for all forty of them as soon as possible. What do you need from me?",
+      "persona": "Warm but time-poor and decisive. Talks in outcomes and deadlines, never in systems. Gets impatient if asked technical questions she thinks IT should answer, and redirects them to Kwabena Ofori. Likes people who bring a plan and ask sharp questions. She does not understand SSO, SCIM or CRM internals and doesn't want to.",
+      "facts": [
+        {"id": "leavers", "importance": 3, "fact": "The real trigger: when a rep resigned in August, his CRM access stayed active for three weeks and he exported his whole pipeline before joining a competitor. Internal audit flagged it and the CEO told her to fix 'access hygiene' by year end. RunMySales is partly her answer to that.", "unlock": "asks why now, what happened recently, what has gone wrong with access or people leaving, or what pressure she is under from above"},
+        {"id": "admin_time", "importance": 2, "fact": "Reps spend about 25 minutes a day re-typing bookings into the CRM. That is her own estimate, not measured. She would love it under 5.", "unlock": "asks what a rep's day looks like, where the time goes, or how she'd know it is working"},
+        {"id": "metric", "importance": 3, "fact": "The number she reports upward is the share of bookings logged in the CRM within one hour of the customer conversation: about 55% are logged the same day today, and she wants 90%.", "unlock": "asks for a measurable success criterion, how success will be judged, or what number she reports upward"},
+        {"id": "board_demo", "importance": 2, "fact": "She promised the board a live demo in three weeks at the Q4 review. That date, not the full rollout, is the hard deadline.", "unlock": "asks about deadlines, what must be true by when, or what happens at the Q4 review"},
+        {"id": "security_gate", "importance": 3, "fact": "Nothing goes live without Kwabena Ofori, the IT Security Lead, signing off. He rejected the last vendor. She hasn't introduced the two of you yet.", "unlock": "asks who else must approve, who could block this, or who in IT to speak with"},
+        {"id": "crm_quota", "importance": 1, "fact": "The CRM contract is shared with marketing's automation tool, which runs heavy imports at month end. The CRM vendor has already warned them about throttling.", "unlock": "asks about the CRM, its usage or limits, other systems using it, or what happens at busy times"}
+      ],
+      "traps": [
+        {"id": "solution_first", "behaviour": "The FDE starts proposing features or architecture in the first minutes, before asking about the problem", "reaction": "Gets visibly impatient: 'I don't need a tour, I need to know whether this will work for my reps.'"},
+        {"id": "jargon", "behaviour": "The FDE uses unexplained jargon such as OIDC, SCIM or JWKS", "reaction": "Cuts in politely and asks for plain terms, or says to take it to Kwabena."},
+        {"id": "overpromise", "behaviour": "The FDE promises specific dates or features without checking anything", "reaction": "Writes it down, says she will hold them to it, with a hint of doubt."}
+      ]
+    },
+    {
+      "id": "kwabena-ofori",
+      "name": "Kwabena Ofori",
+      "role": "IT Security Lead (can block)",
+      "org": "Adom Logistics",
+      "public_brief": "Adom's IT Security Lead. He can block the rollout, and Nana says he rejected the last vendor. He is giving you 20 minutes.",
+      "call_goal": "Learn his non-negotiable requirements for identity, offboarding, integrations and paperwork, and agree what you will send him and by when.",
+      "opening": "Nana said you wanted to talk. I have twenty minutes. Before you start: I have already declined one vendor this quarter. Tell me what this thing touches.",
+      "persona": "Terse, methodical, sceptical of vendors because he has been burned. Answers exactly what is asked and nothing more. Respects people who ask about threat models and admit limits. Dismisses 'we take security seriously' statements. Never rude, never warm.",
+      "facts": [
+        {"id": "leavers_sla", "importance": 3, "fact": "Policy: a leaver's access to any business system must be revoked within one hour of HR's termination record. Anything relying on a nightly sync or manual removal fails the policy.", "unlock": "asks about offboarding, leavers, deprovisioning requirements, or how quickly access must be removed"},
+        {"id": "idp", "importance": 3, "fact": "Every app must authenticate through Adom's identity provider. No local passwords and no shared accounts. Tokens must be validated properly: he has seen vendors decode a token without checking its signature.", "unlock": "asks how users log in, what identity or SSO standards apply, or how tokens will be checked"},
+        {"id": "prior_incident", "importance": 2, "fact": "The previous vendor's webhook endpoint was left unauthenticated and someone posted fake deal updates into the CRM. He now requires signed webhooks with replay protection from any vendor that receives callbacks.", "unlock": "asks why he declined the last vendor, what went wrong before, or what his requirements are for integrations or webhooks"},
+        {"id": "secret_rotation", "importance": 2, "fact": "Shared secrets and API keys must be rotated quarterly with an overlap period, so the vendor must accept two valid secrets at once.", "unlock": "asks about secrets, key management, rotation, or credential policy"},
+        {"id": "questionnaire", "importance": 2, "fact": "Every vendor completes his security questionnaire (data flow, subprocessors, retention, incident response) before production. His team needs five working days to review it. Anthropic must be listed as a subprocessor.", "unlock": "asks about the approval process, paperwork, or the timeline for security sign-off"},
+        {"id": "residency", "importance": 1, "fact": "Customer contact data should stay in an African region or Ghana-hosted environment where possible. Any transfer abroad needs a documented reason.", "unlock": "asks where data may be stored or processed, or what data is involved"}
+      ],
+      "traps": [
+        {"id": "hand_wave", "behaviour": "The FDE says things like 'we take security seriously' or 'it's fully secure' without specifics", "reaction": "Says 'that is not an answer' and asks for something concrete."},
+        {"id": "pressure_to_approve", "behaviour": "The FDE asks him to approve quickly, or says it's standard", "reaction": "Refuses to discuss approval before he has seen the questionnaire."}
+      ]
+    }
+  ]
+}

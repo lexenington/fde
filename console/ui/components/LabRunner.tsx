@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Conditions from "@/components/Conditions";
 import { CheckResult, Run, RunSummary, sim } from "@/lib/sim";
 
 type Listing = { title: string; checks: { id: string; section: string; title: string; points: number }[]; runs: RunSummary[] };
@@ -54,6 +55,7 @@ export default function LabRunner({ lab, contract }: { lab: string; contract: Re
 
       {tab === "run" && (
         <>
+          <Conditions lab={lab} />
           <div className="card">
             <div className="row">
               <div>

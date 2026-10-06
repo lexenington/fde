@@ -23,10 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="nav-h">Customer: Adom Logistics</div>
               <Link href="/systems/crm">CRM</Link>
               <Link href="/systems/identity">Identity (IdP)</Link>
+              <div className="nav-h">Practice</div>
+              <Link href="/stakeholders">Stakeholder calls</Link>
+              <Link href="/injects">Inject cards</Link>
               <div className="nav-h">Coming next</div>
-              <a className="soon">Stakeholder chat</a>
-              <a className="soon">Inject cards</a>
-              <a className="soon">Engagements</a>
+              <a className="soon">Engagement worlds</a>
             </nav>
           </aside>
           <main className="main">{children}</main>

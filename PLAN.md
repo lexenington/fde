@@ -87,7 +87,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Do**
 
-- `02-technical-depth/03-ai-engineering`: run the baseline, read **every** failure, write down why. Don't fix yet.
+- `02-technical-depth/03-ai-engineering`: run the baseline, read **every** failure, write down why. Don't fix yet. The Console's *03 AI engineering* page shows each failure beside the document text and the gold answer.
 - Expand the golden set to 30+ documents, built from real invoice weirdness (Ghana VAT/NHIL/GETFund, credit notes, handwriting).
 - Start the **AWS track** reading ([aws-fde-track](aws-fde-track/README.md)): the Ground pathway and the ontology lab can run alongside.
 - Real customer: measure the **baseline** metric before you build (hours, errors, response time). Write down the number and how you got it.
@@ -99,7 +99,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Do**
 
-- Improve extraction one change at a time, with a `CHANGELOG.md` of metric deltas. Tune the review threshold. Red-team (4 injection cases). Cost per 1,000 invoices.
+- Improve extraction one change at a time, with a `CHANGELOG.md` of metric deltas. The same page diffs each run against the one before and flags regressions. Tune the review threshold (the page prices the routing table in cedis once you enter the two costs). Red-team (4 injection cases). Cost per 1,000 invoices.
 - Write `REPORT.md` for the CFO. Stretch: versioned prompts with a rollback, the governance pack, the MCP server.
 - Explain out loud in two minutes: memory and state design, why (not) multi-agent, the NIST AI RMF.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [11 routing table](katas/11-routing-table/README.md) and [10 policy as code](katas/10-policy-as-code/README.md).

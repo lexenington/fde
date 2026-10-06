@@ -37,6 +37,7 @@ Then open **http://localhost:3300**.
 | **Inject cards** | Six mid-lab curveballs for 02/02. Four change the customer's systems (CRM quota cut, duplicate and late webhooks, secret rotation, an IdP claim change), each with a one-click check that tests whether your app copes. Every card also asks for a written reply that Claude reviews against a rubric. Everything is saved in `02-technical-depth/02-enterprise-integration/lab/injects/` | `ANTHROPIC_API_KEY` for the feedback; the checks work without it |
 
 | **01 Messy data** (under Labs) | Scores `out/clusters.json` like `check.py` (pairwise F1), then shows the raw rows behind your wrong and missed merges, and logs every score with a note on what you changed (`lab/runs/`) | nothing |
+| **03 AI engineering** (under Labs) | Reads the runs `python eval.py` saves (you run it, with your key): metrics over time, what changed against the previous run, regressions, each failing document next to its text and gold answer, and the review-routing table priced in cedis | nothing |
 | **Katas** | The thirteen drills in [`katas/`](../katas/README.md): the brief, a button that runs your tests, and the first failures. The simulator only reads the folder (mounted read-only), so your files are untouched | nothing |
 
 ```powershell

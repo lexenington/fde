@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, injects, katas as katas_mod, llm, messy, stakeholders, tokens
+from . import config, injects, katas as katas_mod, evalview, llm, messy, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -346,3 +346,19 @@ def messy_score(body: MessyScore):
         return messy.score(body.note)
     except messy.NotReady as e:
         raise HTTPException(409, str(e))
+
+
+ai_router = APIRouter()
+
+
+@ai_router.get("")
+def ai_runs():
+    return {"runs": evalview.list_runs(), "lab_path": "02-technical-depth/03-ai-engineering/lab"}
+
+
+@ai_router.get("/runs/{run_id}")
+def ai_run(run_id: str, compare: str | None = None, wrong_cost: float | None = None, review_cost: float | None = None):
+    d = evalview.detail(run_id, compare, wrong_cost, review_cost)
+    if d is None:
+        raise HTTPException(404, "unknown run")
+    return d

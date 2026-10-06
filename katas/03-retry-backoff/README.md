@@ -10,4 +10,6 @@
 - Say when you give up, and don't sleep after the last attempt.
 - `sleep` and `rand` are parameters so the tests are instant and exact. Do the same in your real code.
 
+**Context.** Connections that drop mid-request are normal on mobile networks and at branch offices on shared links. Your retry logic is what separates "flaky network" from "customer-visible outage", but only if you retry the right things, at the right pace, a limited number of times.
+
 **Then.** Where does a retry become dangerous? (Hint: a retried POST that already half-worked. Kata 1 is the other half of this.)

@@ -29,7 +29,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 - Read `00-the-role` and `01-gap-analysis`. Collect 10 current FDE postings into `00-the-role/postings/` and fill the summary table.
 - Score the baseline in `01-gap-analysis/self-assessment.md`, harshly.
 - Rewrite RunMySales, EatryCloud and Verisage as Situation → Constraint → Built → Measured result. Go and get the real numbers.
-- `docker compose up --build` in `console/`. Run one **stakeholder call** (any one) just to learn the tool. Don't worry about the score.
+- `docker compose up --build` in `console/`. Export `ANTHROPIC_API_KEY` first, then run `docker compose exec sim python -m sim.llm_check` (a few cents) to prove Claude is connected. Then run one **stakeholder call** (any one) just to learn the tool. Don't worry about the score.
 - Write your list of 10 possible real customers (a school, a pharmacy chain, a logistics firm, a restaurant group on EatryCloud…), with a name and a phone number for each.
 
 **Done when:** postings summary written, baseline scored, three projects rewritten with numbers, the Console running, a list of 10 names.

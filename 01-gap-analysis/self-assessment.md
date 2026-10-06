@@ -19,4 +19,7 @@ Be harsh. Note the **evidence** (a link or file) for every 4 or 5.
 | Build a business case a CFO would accept | | | | |
 | Present a technical trade-off to a non-technical exec in 3 minutes | | | | |
 | Write a post-incident review a customer would sign off on | | | | |
+| Enforce a rule in code, not in the prompt (an approval limit, a branch boundary) and show the audit reason | | | | |
+| Make a RAG answer with the rule in force on a given date, cite it, and refuse when the documents are silent | | | | |
+| Run a discovery call that surfaces the hidden facts (the metric, the real decision-maker, the constraint nobody wrote down) | | | | |
 | Answer a decomposition interview question in a structured way, out loud | | | | |

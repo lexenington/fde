@@ -58,13 +58,4 @@ Offline-first, flaky connectivity and local payment rails are **exactly** the ki
 
 ## Exercise
 
-Create `01-gap-analysis/self-assessment.md`. Score yourself 1–5 on each item below **now**, then again at weeks 8 and 16:
-
-- Write an eval set + grader for an LLM feature and report precision/recall
-- Explain SAML vs OIDC and implement OIDC login against an enterprise IdP
-- Build an idempotent webhook consumer with retries and a dead-letter queue
-- Reconcile two datasets with no shared key and report match confidence
-- Write Terraform that deploys an app into a private subnet with no public IP
-- Run a 45-min discovery call and produce a one-page scoping doc the same day
-- Present a technical trade-off to a non-technical exec in 3 minutes
-- Write a post-incident review that a customer would sign off on
+Open [self-assessment.md](self-assessment.md). Score yourself 1–5 on every row **now** (week 1), then again at weeks 8 and 16, with a link or file as evidence for any 4 or 5. The full list lives there, and it is longer than the summary you'd write from memory: that is deliberate.

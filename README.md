@@ -50,9 +50,12 @@ Done: Python 3.12 is installed (winget, user scope), `.venv` has the packages fr
 .\.venv\Scripts\Activate.ps1
 ```
 
+If PowerShell says *"running scripts is disabled on this system"*, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once (answer `Y`), then activate again. Without changing the policy, you can call the venv's Python directly instead: `.\.venv\Scripts\python.exe`.
+
 **On a new machine** (the above is already done on this one):
 
 ```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned   # once per Windows user; otherwise Activate.ps1 is blocked
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt

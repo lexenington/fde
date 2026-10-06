@@ -15,6 +15,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 - [ ] SCOPE.md · [ ] profile.md · [ ] pipeline → Postgres · [ ] F1 ≥ 0.92 (`check.py`) · [ ] review queue < 10% · [ ] REPORT.md for ops manager · [ ] stretch: incremental load · [ ] stretch: Airflow DAG + backfill
 ### 02/02 Enterprise integration
 - [ ] Console up (`console/`) · [ ] Console checker ≥ 100/124 · [ ] Console checker 124/124
+- [ ] Inject cards handled (code + written reply): ☐ quota-cut ☐ late-events ☐ secret-rotation ☐ claims-change ☐ deadline-moved ☐ questionnaire
 - [ ] OIDC SSO (Okta/Entra) · [ ] SCIM provision/deprovision · [ ] group → role mapping · [ ] idempotent CRM sync · [ ] signed webhooks + DLQ · [ ] reconciliation job · [ ] audit log · [ ] SECURITY.md · [ ] 5 acceptance tests green
 ### 02/03 AI engineering & evals
 - [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO · [ ] stretch: versioned prompts + rollback · [ ] stretch: governance pack
@@ -28,7 +29,8 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 
 ## Phase 3: Customer craft (weeks 2–8, in parallel)
 - [ ] Read *The Mom Test*
-- [ ] Mock discovery calls: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
+- [ ] Mock discovery calls (Console → Stakeholder calls; transcripts in `03-customer-craft/practice/`): ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
+- [ ] A call averaging 4/5 with talk ratio ≤ 35%: ☐ Adom ☐ Lakeside ☐ Savanna
 - [ ] Scoping docs written within 24 h: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
 - [ ] 90-second exec explanation recorded
 - [ ] Real SME discovery call done

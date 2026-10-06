@@ -2,6 +2,8 @@
 
 You don't need a friend free every evening to practise customer calls and interviews. Paste one of these prompts into Claude (claude.ai, or Claude Code in this repo) and do the exercise **out loud or typed live**, without notes. Keep the transcripts in `05-getting-hired/answers/`.
 
+> The [Field Console](../console/README.md) now runs prompts 1 and 3 for you, with hidden facts, a talk-time meter and a scored debrief: **Stakeholder calls** and **Inject cards**. Use the prompts below when you want a character the Console doesn't have, or to practise outside the app.
+
 ## 1. Sceptical customer: discovery call
 > Role-play the sponsor in `04-engagements/01-lakeside-clinics.md` (the CEO). Stay in character. You want a 24/7 AI in 6 weeks and you're impatient with questions. Only reveal facts from the memos if I ask the right questions. Push back if I propose solutions too early. After I say "END CALL", step out of character and score me 1–5 on: problem discovery, quantified success metric, stakeholder mapping, constraint discovery, and clear next steps. Quote the moments that cost me points.
 

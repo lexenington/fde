@@ -20,6 +20,14 @@ USER_PASSWORD = os.environ.get("TEST_USER_PASSWORD", "Passw0rd!")
 _here = Path(__file__).resolve()
 LABS_DIR = Path(os.environ["LABS_DIR"]) if "LABS_DIR" in os.environ else _here.parents[3] / "02-technical-depth"
 
+# Stakeholder briefs and inject cards. The learner must not read these: they hold the hidden facts
+CONTENT_DIR = Path(os.environ.get("CONTENT_DIR", _here.parents[1] / "content"))
+# Call transcripts and debriefs are saved here (committed = evidence of reps)
+PRACTICE_DIR = Path(os.environ["PRACTICE_DIR"]) if "PRACTICE_DIR" in os.environ else _here.parents[3] / "03-customer-craft" / "practice"
+
+KEYCLOAK_ADMIN_USER = os.environ.get("KEYCLOAK_ADMIN_USER", "admin")
+KEYCLOAK_ADMIN_PASSWORD = os.environ.get("KEYCLOAK_ADMIN_PASSWORD", "admin")
+
 RATE_LIMIT_PER_SEC = float(os.environ.get("CRM_RATE_LIMIT_PER_SEC", "5"))
 RATE_LIMIT_BURST = int(os.environ.get("CRM_RATE_LIMIT_BURST", "10"))
 

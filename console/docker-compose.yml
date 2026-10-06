@@ -22,13 +22,17 @@ services:
     environment:
       LEARNER_URL: ${LEARNER_URL:-http://host.docker.internal:8000}
       LABS_DIR: /labs
+      PRACTICE_DIR: /practice
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}   # export it before `docker compose up`; needed for stakeholder chat and card feedback
+      # FDE_CHAT_MODEL / FDE_JUDGE_MODEL default to claude-opus-5-5; set claude-sonnet-5-5 here to cut cost
       CRM_API_KEY: ${CRM_API_KEY:-crm-dev-key}
       CRM_WEBHOOK_SECRET: ${CRM_WEBHOOK_SECRET:-whsec_dev_adom}
       SCIM_TOKEN: ${SCIM_TOKEN:-scim-dev-token}
     ports:
       - "8090:8090"
     volumes:
-      - ../02-technical-depth:/labs   # checker runs are written into each lab's runs/ folder
+      - ../02-technical-depth:/labs   # checker runs and inject-card replies are written into each lab's folder
+      - ../03-customer-craft/practice:/practice   # call transcripts and debriefs
     extra_hosts:
       - "host.docker.internal:host-gateway"   # needed on Linux; Docker Desktop already has it
     depends_on:

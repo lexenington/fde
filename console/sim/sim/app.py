@@ -1,13 +1,34 @@
 """Customer simulator: the CRM, the admin API the Console uses, and the lab checkers."""
 
+import threading
 import time
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from . import admin, crm
+from .keycloak_admin import IdPAdminError, set_groups_full_path
 
-app = FastAPI(title="FDE Console: customer simulator")
+
+def _restore_idp_defaults():
+    """Conditions live in memory, so a restarted simulator starts clean. Make the IdP match: a card may have
+    changed its claim format before the restart. Keycloak may still be booting, so retry for a while."""
+    for _ in range(12):
+        try:
+            set_groups_full_path(False)
+            return
+        except IdPAdminError:
+            time.sleep(5)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    threading.Thread(target=_restore_idp_defaults, daemon=True).start()
+    yield
+
+
+app = FastAPI(title="FDE Console: customer simulator", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
@@ -29,6 +50,8 @@ async def log_crm_calls(request: Request, call_next):
 app.include_router(crm.router, prefix="/crm/v3", tags=["CRM API (what your app calls)"])
 app.include_router(admin.router, prefix="/admin", tags=["Console admin"])
 app.include_router(admin.checks, prefix="/checks", tags=["Lab checkers"])
+app.include_router(admin.chat, prefix="/chat", tags=["Stakeholder chat"])
+app.include_router(admin.inject, prefix="/injects", tags=["Inject cards"])
 
 
 @app.get("/")

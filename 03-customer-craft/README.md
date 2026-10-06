@@ -80,7 +80,7 @@ These are the mistakes that end engagements, and FDE careers, fastest:
 
 ## Practice plan (runs in parallel with module 02)
 
-- **Weekly:** One mock discovery call with a friend who runs a business, any business. Use the question bank. Produce a scoping doc within 24 h. Keep them in `03-customer-craft/practice/`.
+- **Weekly:** One mock discovery call. Start with the Console's [stakeholder calls](../console/README.md) (ten people across three customers, scored debriefs, transcripts saved to `practice/`), then add one with a friend who runs a business, any business. Use the question bank. Produce a scoping doc within 24 h. Keep them in `03-customer-craft/practice/`.
 - **Do this for real at least once:** find a Ghanaian SME (a pharmacy, a logistics firm, a school; your network from freelance work is perfect for this) and run actual discovery for an AI automation. That can become engagement #3 in module 04, and a genuine reference.
 
 ## Reading

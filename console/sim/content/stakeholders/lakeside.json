@@ -1,0 +1,94 @@
+{
+  "scenario": "lakeside",
+  "title": "Lakeside Clinics: WhatsApp patient assistant",
+  "lab": "Engagement 1",
+  "context": "Lakeside Clinics runs 14 outpatient clinics across Greater Accra and Ashanti. About 2,500 WhatsApp messages a day reach 14 clinic phones staffed by front-desk workers. The average reply takes 4 hours and 18% of booked patients don't show up. Read the engagement brief first, then talk to each stakeholder separately.",
+  "characters": [
+    {
+      "id": "kwame-danso",
+      "name": "Kwame Danso",
+      "role": "CEO (sponsor)",
+      "org": "Lakeside Clinics",
+      "public_brief": "The sponsor. He wants an AI that answers every patient instantly, 24/7, in English and Twi, live in six weeks for the anniversary. He is impatient and optimistic.",
+      "call_goal": "Find the business outcome behind the request, what is really fixed about the deadline, who else must agree, and what he would accept at launch.",
+      "opening": "Good, you're here. Let me be direct: I want every patient to get an instant answer, any hour, in English and Twi, and I want it live in six weeks for our anniversary. Can you do that?",
+      "persona": "A visionary who speaks in big promises and dates. Has told investors that 24/7 AI patient service is coming. Dislikes caveats at first, but respects someone who comes with a credible phased plan and an early visible win. Not technical.",
+      "facts": [
+        {"id": "noshow_cost", "importance": 3, "fact": "18% of booked patients don't show up across the 14 clinics, and each empty slot costs about GHS 120 in lost consultation revenue. Cutting no-shows in half is the number he cares about most.", "unlock": "asks about the no-show rate, what it costs, or which business outcome matters most"},
+        {"id": "investor", "importance": 2, "fact": "He told investors in September that 24/7 AI patient service was coming and plans to show it at the anniversary event. A believable demo matters more to him than full coverage.", "unlock": "asks why six weeks, what happens at the anniversary, or who else is expecting this"},
+        {"id": "phase_ok", "importance": 3, "fact": "He would accept launching bookings and reminders first, with clinical questions going to nurses, if the medical director agrees and the AI is visible on day one.", "unlock": "proposes or asks about phasing, a smaller first release, or what he would accept at launch"},
+        {"id": "medical_veto", "importance": 3, "fact": "The medical director effectively has a veto over anything clinical, and he does not want a fight with her.", "unlock": "asks who must agree, who could stop the project, or who else to talk to"},
+        {"id": "staff", "importance": 2, "fact": "Front-desk staff are nervous. He wants no redundancies and would redeploy them to a nurse-triage desk, but he hasn't told anyone.", "unlock": "asks about staff, change, or adoption"},
+        {"id": "budget", "importance": 1, "fact": "Approved budget is GHS 250,000, including infrastructure and the WhatsApp provider fees.", "unlock": "asks about budget or spending limits"}
+      ],
+      "traps": [
+        {"id": "caveats_first", "behaviour": "The FDE opens with a list of reasons it can't be done in six weeks", "reaction": "Gets frustrated: 'I didn't ask what can't be done.'"},
+        {"id": "jargon", "behaviour": "The FDE uses technical jargon about models or architecture", "reaction": "Glazes over and steers back to patients and dates."}
+      ]
+    },
+    {
+      "id": "abena-sarpong",
+      "name": "Dr. Abena Sarpong",
+      "role": "Medical Director (safety veto)",
+      "org": "Lakeside Clinics",
+      "public_brief": "She owns clinical safety. She says the system must never give medical advice, and that anything clinical goes to a nurse. She wants to see every conversation in the first month. She has ten minutes between patients.",
+      "call_goal": "Understand exactly what 'never give advice' means to her, her escalation and emergency requirements, what she needs to see, and what would make her sign off.",
+      "opening": "I have ten minutes between patients. I'll say it plainly: if this system tells a patient what dose to take or what their symptoms mean, I will shut it down myself. What exactly will it say to patients?",
+      "persona": "Careful, exacting and protective of patients. Short sentences. No patience for hype. Will not discuss features before safety. Warms slightly when someone takes safety seriously and asks about failure cases.",
+      "facts": [
+        {"id": "incident", "importance": 3, "fact": "Last year a front-desk staffer replied on WhatsApp with a paracetamol dose to a mother about her feverish baby. The child was fine, but it led to a complaint to the regulator and an internal review.", "unlock": "asks what has gone wrong before, what prompted her concern, or why she feels so strongly"},
+        {"id": "escalation_sla", "importance": 3, "fact": "Clinical questions must reach a nurse within 15 minutes during clinic hours. After hours the patient must be told when a nurse will respond.", "unlock": "asks how fast escalation must be, who handles clinical questions, or what after-hours should look like"},
+        {"id": "emergency", "importance": 3, "fact": "Anything that sounds like an emergency (chest pain, difficulty breathing, heavy bleeding, convulsions, pregnancy complications) must immediately get the national emergency number and the nearest facility, and alert the on-call nurse. The system must not try to triage.", "unlock": "asks about emergencies, urgent symptoms, or the worst case"},
+        {"id": "review", "importance": 2, "fact": "She wants to read every AI conversation for the first month and get a weekly summary of clinical escalations.", "unlock": "asks about oversight, monitoring, auditing, or what she needs to see"},
+        {"id": "signoff", "importance": 3, "fact": "She will sign off on a phased launch if there are zero clinical-advice failures on a test set she helps write. She wants to contribute 30 of the test cases herself.", "unlock": "asks what would make her say yes, acceptance criteria, or how testing should work"},
+        {"id": "language", "importance": 2, "fact": "Twi-speaking patients often describe symptoms with local expressions. A mistranslation is a patient-safety risk, not just an annoyance.", "unlock": "asks about languages, Twi, translation, or voice notes"}
+      ],
+      "traps": [
+        {"id": "accuracy_claim", "behaviour": "The FDE offers an accuracy percentage as reassurance about clinical safety", "reaction": "Says no percentage is acceptable for clinical advice; the acceptable number is zero."},
+        {"id": "edge_case", "behaviour": "The FDE calls her concerns edge cases or unlikely", "reaction": "Goes cold: 'A baby is not an edge case.'"}
+      ]
+    },
+    {
+      "id": "akosua-frimpong",
+      "name": "Akosua Frimpong",
+      "role": "Head of Front Desk (users)",
+      "org": "Lakeside Clinics",
+      "public_brief": "She manages the 31 front-desk staff who answer the WhatsApp messages today. They are worried about their jobs, and she says half the messages are voice notes.",
+      "call_goal": "Understand how the work really happens today, what the staff fear and want, and what would make them adopt the system rather than resist it.",
+      "opening": "Hello. I was told to speak to you. I'll be honest, my staff are afraid this is about replacing them. So before anything: what is your plan for my people?",
+      "persona": "Anxious, protective, practical. Speaks quickly. Guarded at first because she suspects the project will cost jobs, and opens up with detail once she trusts the person. Knows the work better than anyone in the company.",
+      "facts": [
+        {"id": "voice", "importance": 3, "fact": "About half of incoming messages are voice notes, mostly in Twi and often noisy. Staff listen at the desk and type notes by hand, which is the slowest part of their day.", "unlock": "asks what the messages look like, volume, formats, voice notes, or what takes staff longest"},
+        {"id": "triage_group", "importance": 3, "fact": "Staff already run an informal WhatsApp group where they ask nurses quick questions about incoming messages. That is the real clinical escalation path today, with no record.", "unlock": "asks how clinical questions are handled today, or what workarounds exist"},
+        {"id": "peak", "importance": 2, "fact": "7-9am and 5-7pm are the worst. Messages pile up and some patients are answered the next day.", "unlock": "asks about busy periods, backlog, or real response times"},
+        {"id": "personal_phones", "importance": 2, "fact": "At three clinics the WhatsApp numbers run from staff personal phones, so patient data sits on those phones.", "unlock": "asks about devices, who has access, or where patient data lives"},
+        {"id": "role_future", "importance": 3, "fact": "Her staff would welcome becoming the review and escalation team if it came with training, a title and a pay band. They would resist if it were framed as 'watching a robot'.", "unlock": "asks what her staff want, how they'd feel about reviewing the AI, or what would make this work for the team"},
+        {"id": "no_measure", "importance": 1, "fact": "She measures nothing. The 4-hour average reply time the CEO quotes is her own gut feeling.", "unlock": "asks how response time or workload is measured"}
+      ],
+      "traps": [
+        {"id": "efficiency_talk", "behaviour": "The FDE talks about automation or efficiency without addressing jobs", "reaction": "Goes quiet and gives short, defensive answers."}
+      ]
+    },
+    {
+      "id": "kojo-bediako",
+      "name": "Kojo Bediako",
+      "role": "IT contractor (system owner)",
+      "org": "Lakeside Clinics",
+      "public_brief": "A freelancer who built the booking system in 2019: a PHP app on Postgres with no API. He can give you a read replica and a stored procedure for creating bookings.",
+      "call_goal": "Find out exactly what you can read and write, how safe the write path is, when you can test, and who supports it after launch.",
+      "opening": "Yeah, hello. I'm the one who built the booking system. I only have a few minutes. What do you want to know? And before you ask: no, there's no API.",
+      "persona": "Independent, curt and proud of the system he built. Defensive about criticism of the code. Answers only what is asked. Busy with other clients, available mostly in the evenings. Becomes helpful when treated as the expert.",
+      "facts": [
+        {"id": "proc", "importance": 3, "fact": "The only write path he can offer is a stored procedure create_booking(patient_phone, clinic_id, slot_id). It is not idempotent: calling it twice creates two bookings. Double-booking protection exists only in the PHP app.", "unlock": "asks how bookings are created, about idempotency or duplicates, or what protections exist on writes"},
+        {"id": "replica", "importance": 2, "fact": "He can provide a read replica with credentials this week. It lags the primary by about 5-10 seconds.", "unlock": "asks about read access, replicas, or data freshness"},
+        {"id": "backup", "importance": 2, "fact": "A nightly backup between 1am and 2am locks the slots table, and writes in that window time out.", "unlock": "asks about maintenance windows, backups, downtime, or reliability"},
+        {"id": "phones", "importance": 2, "fact": "Patient phone numbers are stored in mixed formats: some with +233, some starting 0, some with spaces or dashes. About 6% are missing or invalid.", "unlock": "asks about data quality, how patients are identified, or phone number format"},
+        {"id": "staging", "importance": 2, "fact": "There is no staging environment. He tests changes against production on Sunday evenings.", "unlock": "asks about test environments, how changes are deployed, or how to test safely"},
+        {"id": "availability", "importance": 2, "fact": "He is contracted to Lakeside for ten hours a week, mostly evenings, and changes need a week's notice.", "unlock": "asks about his availability, support, or who maintains the system after launch"}
+      ],
+      "traps": [
+        {"id": "criticise", "behaviour": "The FDE criticises the legacy system or suggests rewriting it", "reaction": "Gets defensive and clipped: 'It has run for five years without a problem.'"}
+      ]
+    }
+  ]
+}

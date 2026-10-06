@@ -34,23 +34,43 @@ def _id(prefix: str) -> str:
 class Store:
     def __init__(self):
         self.lock = threading.RLock()
+        # Conditions are changed by inject cards. They survive a CRM wipe; only clear_conditions() undoes them.
+        self.conditions: dict = {}
+        self.clear_conditions()
         self.reset()
         self.learner_url = config.LEARNER_URL
 
+    def clear_conditions(self):
+        with self.lock:
+            self.conditions = {
+                "rate_per_sec": config.RATE_LIMIT_PER_SEC,
+                "burst": config.RATE_LIMIT_BURST,
+                "webhook_secret_mode": "normal",   # normal | overlap | new_only
+                "webhook_secret_new": None,
+                "idp_full_path": False,
+                "active": [],                       # human-readable list shown in the Console
+            }
+
     def reset(self):
-        with getattr(self, "lock", threading.RLock()):
+        with self.lock:
             self.contacts: dict[str, dict] = {}
             self.deals: dict[str, dict] = {}
             self.requests: deque = deque(maxlen=1000)
             self.deliveries: deque = deque(maxlen=300)
             self.events: dict[str, dict] = {}
             self.chaos = {"force_429": 0, "retry_after": 2}
-            self.tokens = float(config.RATE_LIMIT_BURST)
+            self.tokens = float(self.conditions["burst"])
+            self.last_refill = time.monotonic()
+
+    def reset_tokens(self):
+        with self.lock:
+            self.tokens = float(self.conditions["burst"])
             self.last_refill = time.monotonic()
 
     def take_token(self) -> bool:
         now = time.monotonic()
-        self.tokens = min(config.RATE_LIMIT_BURST, self.tokens + (now - self.last_refill) * config.RATE_LIMIT_PER_SEC)
+        burst, rate = self.conditions["burst"], self.conditions["rate_per_sec"]
+        self.tokens = min(burst, self.tokens + (now - self.last_refill) * rate)
         self.last_refill = now
         if self.tokens >= 1:
             self.tokens -= 1
@@ -194,24 +214,36 @@ def patch_deal(deal_id: str, body: DealPatch):
 
 # ---------- Webhooks (CRM -> learner app) ----------
 
+def _mac(secret: str, body: bytes, ts: int) -> str:
+    return hmac.new(secret.encode(), f"{ts}.".encode() + body, hashlib.sha256).hexdigest()
+
+
 def sign(body: bytes, ts: int, secret: str | None = None) -> str:
-    secret = secret or config.CRM_WEBHOOK_SECRET
-    mac = hmac.new(secret.encode(), f"{ts}.".encode() + body, hashlib.sha256).hexdigest()
-    return f"t={ts},v1={mac}"
+    """Signature header. During a secret rotation the CRM signs with the new secret too (overlap),
+    then only the new one (new_only), exactly as Stripe-style providers do."""
+    if secret:  # explicit secret: used to make deliberately bad signatures
+        return f"t={ts},v1={_mac(secret, body, ts)}"
+    c = store.conditions
+    old, new = config.CRM_WEBHOOK_SECRET, c["webhook_secret_new"]
+    if c["webhook_secret_mode"] == "overlap" and new:
+        return f"t={ts},v1={_mac(new, body, ts)},v1={_mac(old, body, ts)}"
+    if c["webhook_secret_mode"] == "new_only" and new:
+        return f"t={ts},v1={_mac(new, body, ts)}"
+    return f"t={ts},v1={_mac(old, body, ts)}"
 
 
-def make_event(event_type: str, data: dict) -> dict:
-    evt = {"id": _id("evt"), "type": event_type, "occurred_at": _now_iso(), "data": data}
+def make_event(event_type: str, data: dict, occurred_at: str | None = None) -> dict:
+    evt = {"id": _id("evt"), "type": event_type, "occurred_at": occurred_at or _now_iso(), "data": data}
     with store.lock:
         store.events[evt["id"]] = evt
     return evt
 
 
-def deliver(evt: dict, *, ts: int | None = None, bad_signature: bool = False, label: str = "") -> int | None:
+def deliver(evt: dict, *, ts: int | None = None, bad_signature: bool = False, secret: str | None = None, label: str = "") -> int | None:
     """Send one webhook delivery. Returns the HTTP status, or None if the learner's app was unreachable."""
     body = json.dumps(evt, separators=(",", ":")).encode()
     ts = ts if ts is not None else int(time.time())
-    sig = sign(body, ts, "wrong-secret" if bad_signature else None)
+    sig = sign(body, ts, "wrong-secret" if bad_signature else secret)
     url = store.learner_url.rstrip("/") + "/webhooks/crm"
     rec = {"at": _now_iso(), "event_id": evt["id"], "type": evt["type"], "url": url, "label": label}
     try:

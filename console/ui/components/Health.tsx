@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { sim } from "@/lib/sim";
 
-type H = { sim: boolean; keycloak: boolean; learner: { ok: boolean; status?: number; url: string; error?: string } };
+type H = { sim: boolean; llm: boolean; keycloak: boolean; learner: { ok: boolean; status?: number; url: string; error?: string } };
 
 export default function Health() {
   const [h, setH] = useState<H | null>(null);
@@ -28,6 +28,10 @@ export default function Health() {
         <div className="small muted">
           {h && !h.keycloak ? "Starting up (takes ~30s on first boot)…" : "Realm adom on localhost:8081"}
         </div>
+      </div>
+      <div className="card">
+        <h3>{dot(err ? false : h?.llm)}Claude (stakeholders, feedback)</h3>
+        <div className="small muted">{h && !h.llm ? "No ANTHROPIC_API_KEY in the simulator. Calls and card feedback need it." : "Ready for stakeholder calls and card feedback"}</div>
       </div>
       <div className="card">
         <h3>{dot(err ? false : h?.learner.ok)}Your app</h3>

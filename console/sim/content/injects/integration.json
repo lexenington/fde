@@ -1,0 +1,126 @@
+{
+  "lab": "integration",
+  "title": "02 Enterprise integration",
+  "cards": [
+    {
+      "id": "quota-cut",
+      "title": "The CRM quota gets cut",
+      "from": "Kwabena Ofori, IT Security Lead",
+      "subject": "CRM API allowance reduced: effective now",
+      "body": "Our CRM vendor has cut our API allowance after marketing's import job blew through the shared limit. **Your integration now gets 1 request per second, burst of 2, until further notice.**\n\nOn Monday morning 40 reps log in and start logging bookings within the same few minutes. I don't want to hear that it will probably be fine. Tell Nana what actually happens on Monday, and what you are changing.",
+      "effect": {"type": "tighten_rate", "per_sec": 1, "burst": 2},
+      "symptom": "Open the CRM page: the API calls table shows 429s with Retry-After: 1, and bookings take much longer when several arrive together.",
+      "action": {"id": "burst", "label": "Run launch-day burst (6 reps book at once)", "help": "Six reps book at the same moment under the new quota. Passes if every booking lands exactly once and you didn't hammer the CRM."},
+      "deliverable": {
+        "prompt": "Write the reply to Nana (VP Sales, not technical). What will reps experience on Monday morning, what are your options, and what do you recommend?",
+        "rubric": [
+          "Leads with the answer and the impact on reps in business terms, not with rate-limit mechanics",
+          "Offers two or more real options (for example queue and drain, batching, asking the CRM vendor for quota) with the trade-off of each",
+          "Makes a clear recommendation and says what is needed from whom, by when",
+          "No unexplained jargon; under about 200 words",
+          "Honest about what is not yet handled, with no overpromising"
+        ]
+      }
+    },
+    {
+      "id": "late-events",
+      "title": "Webhooks arrive twice, and late",
+      "from": "Efosa Mensah, Adom CRM administrator",
+      "subject": "CRM vendor incident: duplicate and out-of-order webhooks yesterday",
+      "body": "Our CRM vendor had a delivery incident yesterday morning. Their queue retried a backlog, so customers saw **webhooks delivered more than once and out of order**: an older stage change sometimes arrived after a newer one. Each event carries the time it actually happened in `occurred_at`.\n\nSeveral reps reported deals showing the wrong stage in your app. Please confirm that your app copes, and tell me what happened on your side.",
+      "effect": null,
+      "symptom": "Deals in your app showing an older stage than the CRM. Look at each event's `occurred_at` and at which event arrived last.",
+      "action": {"id": "storm", "label": "Replay the incident", "help": "Sends a mix of duplicate and late events for one of your deals. Passes if your app ends on the stage the CRM has."},
+      "deliverable": {
+        "prompt": "Write the incident note to Efosa and Nana: what happened on your side, who was affected, the root cause, what you fixed and how you will know it stays fixed. Blameless and specific.",
+        "rubric": [
+          "States plainly what the customer saw and how many were affected, or says honestly what is not known",
+          "Separates cause (what the system did wrong) from trigger (the vendor incident), without blaming a person or the vendor",
+          "Describes the fix in terms the reader can verify",
+          "Action items have an owner and a date",
+          "Short enough to read in two minutes"
+        ]
+      }
+    },
+    {
+      "id": "secret-rotation",
+      "title": "Secrets must rotate",
+      "from": "Kwabena Ofori, IT Security Lead",
+      "subject": "Quarterly secret rotation: your webhook secret",
+      "body": "Quarterly rotation is due for the CRM webhook secret.\n\n**New secret:** `{{new_secret}}`\n\nFor the next 24 hours the CRM signs every webhook with **both** the old and the new secret. After that, only the new one. Anything still verifying with the old secret will be rejected by us as non-compliant.\n\nBefore I approve, I need to know in writing how you will switch with no dropped events, and how you will prove it worked.",
+      "effect": {"type": "rotate_secret"},
+      "symptom": "The signature header now carries two `v1=` values. Check how your code parses it.",
+      "action": {"id": "end_overlap", "label": "End the 24-hour overlap now", "help": "Checks that an event signed with both secrets is accepted, then that a new-secret-only event is accepted, and that an old-secret-only event is rejected. It leaves the CRM on the new secret only; use 'Clear conditions' to go back."},
+      "deliverable": {
+        "prompt": "Write the plan for Kwabena: how you rotate without downtime, how you prove it, and how you roll back.",
+        "rubric": [
+          "Accepts two secrets during the overlap and describes the exact order of steps",
+          "Secrets come from configuration or a secrets manager, not code",
+          "Explains how to test before and after the cut-over",
+          "Includes a rollback and who does what",
+          "Does not claim anything the app does not actually do"
+        ]
+      }
+    },
+    {
+      "id": "claims-change",
+      "title": "Managers see nothing",
+      "from": "Nana Adjei, VP Sales",
+      "subject": "Efua's team page is empty since this morning",
+      "body": "Efua logged in this morning and her team's deals page is empty. She can only see her own. This worked yesterday and nothing changed on our side, I asked.\n\nI have the pipeline review at 2. What is going on?",
+      "effect": {"type": "idp_full_path"},
+      "symptom": "Get a token for Efua on the Identity page and read the `groups` claim carefully, then compare with what your code expects.",
+      "action": {"id": "check_roles", "label": "Check roles now", "help": "Fetches fresh tokens for Efua (manager) and Kofi (rep) and calls /api/me. Passes if roles are right."},
+      "deliverable": {
+        "prompt": "Write the message to Nana: what was wrong, in plain words, what you changed, and how you stop this class of surprise next time. She reads it at 1:55pm.",
+        "rubric": [
+          "States the cause in plain words without technical jargon",
+          "Takes ownership of the part that was theirs to handle (assumption about token contents) without blaming IT",
+          "Says what was changed and that managers can see their team again",
+          "Names a concrete prevention (for example a contract test on token claims, or agreeing a change notice with IT)",
+          "Under about 150 words"
+        ]
+      }
+    },
+    {
+      "id": "deadline-moved",
+      "title": "The board demo moves up",
+      "from": "Nana Adjei, VP Sales",
+      "subject": "Board demo is now next Thursday",
+      "body": "The board moved the demo up. It's now **next Thursday**, four days from now.\n\nI need to show: reps logging in with their company account, a booking landing in the CRM, and ideally Kwabena's favourite: a leaver being switched off live. I know you said the full rollout takes longer. Can you still do it?",
+      "effect": null,
+      "symptom": null,
+      "action": null,
+      "deliverable": {
+        "prompt": "Write your reply to Nana. She has about a minute to read it.",
+        "rubric": [
+          "Says what is possible by Thursday in plain words, and what moves, in the form 'Yes, and it means X moves to phase 2 or the date moves. Which do you prefer?'",
+          "Protects the part auditors and the security lead care about (deprovisioning) or says clearly why it is being cut and what that risks",
+          "Proposes a concrete demo script, not just a promise",
+          "Names the biggest risk to Thursday and what is needed from Nana or IT",
+          "Makes the trade-off her decision, in writing"
+        ]
+      }
+    },
+    {
+      "id": "questionnaire",
+      "title": "The security questionnaire arrives",
+      "from": "Kwabena Ofori, IT Security Lead",
+      "subject": "Vendor questionnaire: five questions, answers by Friday",
+      "body": "Short version of our questionnaire. Answer in plain sentences. 'We take security seriously' will be returned unread.\n\n1. **Data flow.** What customer data leaves Adom, where does it go, and who can read it there?\n2. **Secrets.** Where do your tokens and secrets live, and who can read them?\n3. **Leavers.** How long after HR's termination record can a leaver still use your app, and how do you prove it?\n4. **Subprocessors.** Which third parties (including any AI provider) see customer data, and what do they retain?\n5. **Failure.** If your app is down, or the CRM is down, are bookings lost?",
+      "effect": null,
+      "symptom": null,
+      "action": null,
+      "deliverable": {
+        "prompt": "Answer the five questions as you would send them to Kwabena. Be truthful about what your app does today versus what is planned. This is a draft of your SECURITY.md.",
+        "rubric": [
+          "Each answer is specific and verifiable, with no vague assurances",
+          "Clearly separates what exists now from what is planned",
+          "Lists the AI provider as a subprocessor and says what is sent to it",
+          "The leaver answer matches the app's real behaviour (see the deprovisioning check)",
+          "Failure answer explains what is stored, retried, or lost"
+        ]
+      }
+    }
+  ]
+}

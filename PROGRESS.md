@@ -28,6 +28,9 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 ### Extras
 - [ ] Invoice extractor wrapped as an MCP server · [ ] grader tests green (`pytest`) · [ ] Twi/code-switched eval slice (engagement 1)
 
+### Katas (green = tests pass, and you can explain each edge case)
+- [ ] 01 idempotency · [ ] 02 token bucket · [ ] 03 retry/backoff · [ ] 04 webhook signature · [ ] 05 JWT validation · [ ] 06 phone numbers · [ ] 07 clusters + F1 · [ ] 08 rule as-of · [ ] 09 policy chunking · [ ] 10 policy as code · [ ] 11 routing table · [ ] 12 SQL analysis · [ ] 13 Terraform plan review
+
 ## Phase 3: Customer craft (weeks 2–8, in parallel)
 - [ ] Read *The Mom Test*
 - [ ] Mock discovery calls (Console → Stakeholder calls; transcripts in `03-customer-craft/practice/`): ☐1 ☐2 ☐3 ☐4 ☐5 ☐6

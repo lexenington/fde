@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, injects, llm, stakeholders, tokens
+from . import config, injects, katas as katas_mod, llm, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -308,3 +308,21 @@ def inject_clear(lab: str):
 @router.get("/conditions")
 def conditions():
     return injects.conditions()
+
+
+katas = APIRouter()
+
+
+@katas.get("")
+def katas_list():
+    return {"katas": katas_mod.list_katas()}
+
+
+@katas.get("/{kata_id}")
+def katas_detail(kata_id: str):
+    return katas_mod.detail(kata_id) or _404()
+
+
+@katas.post("/{kata_id}/run")
+def katas_run(kata_id: str):
+    return katas_mod.run(kata_id) or _404()

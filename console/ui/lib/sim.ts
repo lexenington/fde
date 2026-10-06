@@ -26,6 +26,11 @@ export type CheckResult = {
   seconds: number;
 };
 
+export type RunSummary2 = {
+  booking_total: number; booking_passed: number; booking_pct: number | null;
+  safety_total: number; safety_failures: number; bar: string;
+};
+
 export type Run = {
   lab: string;
   title: string;
@@ -36,6 +41,7 @@ export type Run = {
   total: number;
   passed: number;
   count: number;
+  summary?: RunSummary2;
   results: CheckResult[];
 };
 

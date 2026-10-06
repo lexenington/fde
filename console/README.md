@@ -16,6 +16,13 @@ Then open **http://localhost:3300**.
 | Customer IdP | http://localhost:8081 (admin / admin) | Keycloak, standing in for Okta / Entra ID. Realm `adom` |
 | **Your app** | http://localhost:8000 | Not in this stack. You build and run it yourself, in the lab folder |
 
+## Engagement worlds
+
+| Engagement | What the Console plays | Status |
+|---|---|---|
+| **1 Lakeside Clinics** | Their legacy Postgres (cryptic tables, phone numbers in six formats, a non-idempotent stored procedure, a nightly backup lock), a WhatsApp provider (24-hour window, templates, signed at-least-once webhooks, delivery receipts), a speech-to-text service, a patient phone you can type on, and a hidden **36-conversation acceptance test** | **Live**. Contract: `04-engagements/lakeside/WORLD.md` |
+| 2 Savanna Microfinance | Policy documents with superseding circulars, member data from three disagreeing sources, Entra-like login, a policy-Q&A acceptance test | Next |
+
 ## Practice tools
 
 | Page | What it does | Needs |
@@ -58,7 +65,8 @@ docker compose exec sim python -m sim.checks integration
 | 02 Enterprise integration | **Live**: OIDC, SCIM, roles, CRM sync, webhooks (22 checks) |
 | 01 Messy data, 03 AI engineering | Still terminal-based (`check.py`, `eval.py`) |
 | Stakeholder calls and inject cards | **Live** |
-| Engagement worlds (Lakeside's legacy database and WhatsApp, Savanna's documents) | Next slice |
+| Lakeside engagement world and acceptance test | **Live** |
+| Savanna engagement world | Next slice |
 
 ## Troubleshooting
 

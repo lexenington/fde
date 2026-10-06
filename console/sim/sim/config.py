@@ -28,6 +28,16 @@ PRACTICE_DIR = Path(os.environ["PRACTICE_DIR"]) if "PRACTICE_DIR" in os.environ 
 KEYCLOAK_ADMIN_USER = os.environ.get("KEYCLOAK_ADMIN_USER", "admin")
 KEYCLOAK_ADMIN_PASSWORD = os.environ.get("KEYCLOAK_ADMIN_PASSWORD", "admin")
 
+# Engagement worlds
+ENGAGEMENTS_DIR = Path(os.environ["ENGAGEMENTS_DIR"]) if "ENGAGEMENTS_DIR" in os.environ else _here.parents[3] / "04-engagements"
+LAKESIDE_ADMIN_DSN = os.environ.get("LAKESIDE_ADMIN_DSN", "postgresql://postgres:lakeside-admin@lakeside-db:5432/lakeside")
+LAKESIDE_PUBLIC = {"host": "localhost", "port": 5433, "dbname": "lakeside",
+                   "read_user": "replica_ro", "read_password": "replica-pass",
+                   "write_user": "bookings_writer", "write_password": "writer-pass"}
+BSP_TOKEN = os.environ.get("BSP_TOKEN", "bsp-dev-token")
+BSP_WEBHOOK_SECRET = os.environ.get("BSP_WEBHOOK_SECRET", "bsp_whsec_lakeside")
+WORLD_TODAY = os.environ.get("WORLD_TODAY", "2026-10-06")     # Savanna's policy "as of" date
+
 RATE_LIMIT_PER_SEC = float(os.environ.get("CRM_RATE_LIMIT_PER_SEC", "5"))
 RATE_LIMIT_BURST = int(os.environ.get("CRM_RATE_LIMIT_BURST", "10"))
 

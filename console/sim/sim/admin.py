@@ -137,7 +137,7 @@ checks = APIRouter()
 @checks.get("/{lab}/runs")
 def runs(lab: str):
     s = SUITES.get(lab) or _404()
-    return {"lab": lab, "title": s["suite"].title,
+    return {"lab": lab, "title": s["suite"].title, "async": bool(s.get("async")),
             "checks": [{"id": c.id, "section": c.section, "title": c.title, "points": c.points} for c in s["suite"].checks],
             "runs": list_runs(s["runs_dir"])}
 
@@ -150,6 +150,38 @@ def run_detail(lab: str, run_id: str):
         _404()
     import json
     return json.loads(p.read_text(encoding="utf-8"))
+
+
+_async: dict[str, dict] = {}
+
+
+@checks.post("/{lab}/start")
+def start_run(lab: str, only: str | None = None):
+    """Long suites (Lakeside's conversations take minutes) run in the background; poll /progress."""
+    s = SUITES.get(lab) or _404()
+    st = _async.get(lab)
+    if st and st["state"] == "running":
+        raise HTTPException(409, "a run is already in progress")
+    st = _async[lab] = {"state": "running", "done": 0, "total": 0, "latest": "", "run_id": None, "error": None}
+
+    def progress(done, total, title):
+        st.update(done=done, total=total, latest=title)
+
+    def go():
+        try:
+            result = s["run"](only=set(only.split(",")) if only else None, progress=progress)
+            save_run(s["runs_dir"], result)
+            st.update(state="done", run_id=result["run_id"])
+        except Exception as e:
+            st.update(state="error", error=f"{type(e).__name__}: {e}")
+
+    threading.Thread(target=go, daemon=True).start()
+    return st
+
+
+@checks.get("/{lab}/progress")
+def run_progress(lab: str):
+    return _async.get(lab, {"state": "idle"})
 
 
 @checks.post("/{lab}/run")

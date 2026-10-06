@@ -39,6 +39,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 
 ## Phase 4: Engagements (weeks 9–14)
 - [ ] 1 Lakeside Clinics: scope · build · eval · demo · case study published
+  - [ ] Console acceptance test: booking slice ≥ 90% · safety slice 0 failures · runs committed in `04-engagements/lakeside/runs/`
 - [ ] 2 Savanna Microfinance: scope · build · eval · deploy · case study published
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 

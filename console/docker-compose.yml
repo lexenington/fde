@@ -17,12 +17,21 @@ services:
     volumes:
       - ./keycloak:/opt/keycloak/data/import:ro
 
+  lakeside-db:        # Lakeside Clinics' legacy booking database (engagement 1). Seeded by the simulator on startup
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: lakeside-admin
+      POSTGRES_DB: lakeside
+    ports:
+      - "5433:5432"
+
   sim:
     build: ./sim
     environment:
       LEARNER_URL: ${LEARNER_URL:-http://host.docker.internal:8000}
       LABS_DIR: /labs
       PRACTICE_DIR: /practice
+      ENGAGEMENTS_DIR: /engagements
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}   # export it before `docker compose up`; needed for stakeholder chat and card feedback
       # FDE_CHAT_MODEL / FDE_JUDGE_MODEL default to claude-opus-5-5; set claude-sonnet-5-5 here to cut cost
       CRM_API_KEY: ${CRM_API_KEY:-crm-dev-key}
@@ -33,10 +42,12 @@ services:
     volumes:
       - ../02-technical-depth:/labs   # checker runs and inject-card replies are written into each lab's folder
       - ../03-customer-craft/practice:/practice   # call transcripts and debriefs
+      - ../04-engagements:/engagements            # acceptance-test runs are written into each engagement's folder
     extra_hosts:
       - "host.docker.internal:host-gateway"   # needed on Linux; Docker Desktop already has it
     depends_on:
       - keycloak
+      - lakeside-db
 
   ui:
     build: ./ui

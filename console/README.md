@@ -94,6 +94,7 @@ docker compose exec sim python -m sim.checks integration
 
 - **Simulator:** `cd sim`, then `pip install -r requirements.txt`, `python -m pytest -q`, and `uvicorn sim.app:app --port 8090 --reload`.
 - **UI:** `cd ui`, then `npm install` and `npm run dev`. It serves on :3300 and proxies to the simulator at `SIM_INTERNAL_URL`, which defaults to `http://localhost:8090`.
+- **First contact with the real model:** after exporting `ANTHROPIC_API_KEY`, run `docker compose exec sim python -m sim.llm_check`. It plays one short real stakeholder call, has the judge score it and gets feedback on one card reply, in throwaway folders, for a few cents. It tells you which of the three failed and why. Everything else in the suite runs against a scripted fake, so this is the one place that proves the real API shapes work.
 - **Tests use a scripted fake instead of Claude** (`llm.set_backend`), so `python -m pytest -q` needs no API key and costs nothing.
 - **Adding a stakeholder:** add a character to a JSON file in `sim/content/stakeholders/` (the content test checks the shape). **Adding a card:** add it to `sim/content/injects/<lab>.json`; a new effect or check goes in `sim/sim/injects.py`.
 - **Adding a lab checker:** write a `Suite` in `sim/sim/checks/`, register it in `checks/__init__.py`, and add a page under `ui/app/labs/`.

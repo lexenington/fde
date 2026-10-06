@@ -6,7 +6,8 @@ const ROOT = process.env.REPO_DIR ?? path.resolve(process.cwd(), "..", "..");
 
 export async function readRepoFile(rel: string): Promise<string | null> {
   try {
-    return await readFile(path.join(ROOT, rel), "utf-8");
+    // the repo is read at request time from a path the build can't know, so keep it out of the build trace
+    return await readFile(path.join(/*turbopackIgnore: true*/ ROOT, /*turbopackIgnore: true*/ rel), "utf-8");
   } catch {
     return null;
   }

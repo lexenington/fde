@@ -7,6 +7,9 @@ You've freelanced in Ghana since 2016. Go back to that network: a school, a phar
 
 > "I'm building case studies in AI automation. I'd like to spend 3 weeks, free, solving one painful manual process for you. In exchange, I'd like to write it up (anonymised if you prefer) and use you as a reference."
 
+## The kit
+Start sending in **week 2**: [outreach tracker and message drafts](real-customer/outreach.md), a one-page [pilot agreement](real-customer/pilot-agreement.md) to send before you see any data, and the [baseline template](real-customer/baseline.md) for the number you must measure first.
+
 ## Rules
 - Run real discovery ([template](../03-customer-craft/templates/discovery-call.md)). Don't decide the solution before the call.
 - The scope must have a **baseline metric measured before you build**.

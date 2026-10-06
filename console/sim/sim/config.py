@@ -18,18 +18,29 @@ USER_PASSWORD = os.environ.get("TEST_USER_PASSWORD", "Passw0rd!")
 
 # Where checker runs are written. Mounted to the lab folders, so runs are committed as evidence
 _here = Path(__file__).resolve()
-LABS_DIR = Path(os.environ["LABS_DIR"]) if "LABS_DIR" in os.environ else _here.parents[3] / "02-technical-depth"
+
+
+def _up(n: int) -> Path:
+    """The n-th parent of this file, or a harmless placeholder when the code isn't inside a repo checkout
+    (the Docker image): docker-compose.yml sets every folder explicitly there."""
+    try:
+        return _here.parents[n]
+    except IndexError:
+        return Path("/nonexistent-repo")
+
+
+LABS_DIR = Path(os.environ["LABS_DIR"]) if "LABS_DIR" in os.environ else _up(3) / "02-technical-depth"
 
 # Stakeholder briefs and inject cards. The learner must not read these: they hold the hidden facts
 CONTENT_DIR = Path(os.environ.get("CONTENT_DIR", _here.parents[1] / "content"))
 # Call transcripts and debriefs are saved here (committed = evidence of reps)
-PRACTICE_DIR = Path(os.environ["PRACTICE_DIR"]) if "PRACTICE_DIR" in os.environ else _here.parents[3] / "03-customer-craft" / "practice"
+PRACTICE_DIR = Path(os.environ["PRACTICE_DIR"]) if "PRACTICE_DIR" in os.environ else _up(3) / "03-customer-craft" / "practice"
 
 KEYCLOAK_ADMIN_USER = os.environ.get("KEYCLOAK_ADMIN_USER", "admin")
 KEYCLOAK_ADMIN_PASSWORD = os.environ.get("KEYCLOAK_ADMIN_PASSWORD", "admin")
 
 # Engagement worlds
-ENGAGEMENTS_DIR = Path(os.environ["ENGAGEMENTS_DIR"]) if "ENGAGEMENTS_DIR" in os.environ else _here.parents[3] / "04-engagements"
+ENGAGEMENTS_DIR = Path(os.environ["ENGAGEMENTS_DIR"]) if "ENGAGEMENTS_DIR" in os.environ else _up(3) / "04-engagements"
 LAKESIDE_ADMIN_DSN = os.environ.get("LAKESIDE_ADMIN_DSN", "postgresql://postgres:lakeside-admin@lakeside-db:5432/lakeside")
 LAKESIDE_PUBLIC = {"host": "localhost", "port": 5433, "dbname": "lakeside",
                    "read_user": "replica_ro", "read_password": "replica-pass",
@@ -49,7 +60,7 @@ USERS = {
 }
 
 # Savanna
-SAVANNA_DIR = Path(os.environ["SAVANNA_DIR"]) if "SAVANNA_DIR" in os.environ else _here.parents[2] / ".savanna-data"
+SAVANNA_DIR = Path(os.environ["SAVANNA_DIR"]) if "SAVANNA_DIR" in os.environ else _up(2) / ".savanna-data"
 SAVANNA_REALM = "savanna"
 SAVANNA_SFTP = {"host": "localhost", "port": 2222, "user": "savanna", "password": "sftp-pass", "path": "/export"}
 SAVANNA_USERS = {

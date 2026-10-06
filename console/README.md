@@ -18,6 +18,10 @@ Then open **http://localhost:3300**.
 | Lakeside database | `localhost:5433` (see the Console) | Postgres: their legacy booking system |
 | **Your app** | http://localhost:8000 | Not in this stack. You build and run it yourself, in the lab folder |
 
+## This week
+
+**This week** (http://localhost:3300/plan) reads `PLAN.md` and `PROGRESS.md` straight from the repo: it works out which of the 16 weeks you're in from your start date (write `Started: YYYY-MM-DD` in `PROGRESS.md`, or set it on the page), shows that week's sessions and what "done" looks like, and counts what you've ticked per phase.
+
 ## Engagement worlds
 
 | Engagement | What the Console plays | Status |

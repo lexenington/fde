@@ -45,6 +45,8 @@ LLM-specific wrinkle: customers increasingly want models served through *their* 
 6. Write `RUNBOOK.md`: how to deploy, roll back, rotate the API key, read the dashboard, and what each alarm means and what to do about it.
 7. Write `HANDOVER.md`: what the customer's team owns now, what they need to learn, open risks.
 
+**Console:** *04 Deploy anywhere* (http://localhost:3300/labs/deploy) reviews `lab/infra/plan.json` (from `terraform show -json plan.out`) for public exposure and missing components, times the teardown drill, and checks that `lab/RUNBOOK.md` and `lab/HANDOVER.md` have the sections above. It never touches AWS.
+
 ### Stretch
 - **Azure variant (paper or real):** write `AZURE.md` mapping every resource in your Terraform to its Azure equivalent, with the one or two places the design has to change. If you have credits, deploy it.
 - **Self-hosted fallback:** run an open-weight model with vLLM or Ollama, point the extractor at it, and re-run the 02/03 eval. Write the table a customer would need: quality, latency and cost per 1,000 invoices vs Claude in their cloud boundary. Then try a quantised variant and add a row.

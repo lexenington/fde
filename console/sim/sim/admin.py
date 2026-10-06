@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, injects, katas as katas_mod, evalview, llm, messy, stakeholders, tokens
+from . import config, deploycheck, injects, katas as katas_mod, evalview, llm, messy, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -362,3 +362,34 @@ def ai_run(run_id: str, compare: str | None = None, wrong_cost: float | None = N
     if d is None:
         raise HTTPException(404, "unknown run")
     return d
+
+
+deploy_router = APIRouter()
+
+
+class DrillStop(BaseModel):
+    note: str = ""
+
+
+@deploy_router.get("")
+def deploy_state():
+    return deploycheck.state()
+
+
+@deploy_router.post("/drill/start")
+def deploy_drill_start():
+    return deploycheck.drill_start()
+
+
+@deploy_router.post("/drill/stop")
+def deploy_drill_stop(body: DrillStop):
+    try:
+        return deploycheck.drill_stop(body.note)
+    except ValueError as e:
+        raise HTTPException(409, str(e))
+
+
+@deploy_router.post("/drill/cancel")
+def deploy_drill_cancel():
+    deploycheck.drill_cancel()
+    return deploycheck.drill_state()

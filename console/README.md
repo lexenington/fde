@@ -36,6 +36,7 @@ Then open **http://localhost:3300**.
 | **Stakeholder calls** | Ten people across three customers (Adom, Lakeside, Savanna), played by Claude. Each knows things you don't and only says them when you ask well. Ends with a scored debrief: six skills, which hidden facts you found and missed, the exact question that would have unlocked each miss, and your talk ratio. The transcript is saved to `03-customer-craft/practice/` | `ANTHROPIC_API_KEY` |
 | **Inject cards** | Six mid-lab curveballs for 02/02. Four change the customer's systems (CRM quota cut, duplicate and late webhooks, secret rotation, an IdP claim change), each with a one-click check that tests whether your app copes. Every card also asks for a written reply that Claude reviews against a rubric. Everything is saved in `02-technical-depth/02-enterprise-integration/lab/injects/` | `ANTHROPIC_API_KEY` for the feedback; the checks work without it |
 
+| **01 Messy data** (under Labs) | Scores `out/clusters.json` like `check.py` (pairwise F1), then shows the raw rows behind your wrong and missed merges, and logs every score with a note on what you changed (`lab/runs/`) | nothing |
 | **Katas** | The thirteen drills in [`katas/`](../katas/README.md): the brief, a button that runs your tests, and the first failures. The simulator only reads the folder (mounted read-only), so your files are untouched | nothing |
 
 ```powershell

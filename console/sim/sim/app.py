@@ -54,6 +54,7 @@ app.include_router(crm.router, prefix="/crm/v3", tags=["CRM API (what your app c
 app.include_router(admin.router, prefix="/admin", tags=["Console admin"])
 app.include_router(admin.checks, prefix="/checks", tags=["Lab checkers"])
 app.include_router(admin.chat, prefix="/chat", tags=["Stakeholder chat"])
+app.include_router(admin.messy_router, prefix="/labs/messy", tags=["Lab 02/01 scorer"])
 app.include_router(admin.katas, prefix="/katas", tags=["Katas"])
 app.include_router(admin.inject, prefix="/injects", tags=["Inject cards"])
 app.include_router(bsp.router, prefix="/bsp/v1", tags=["Lakeside: WhatsApp provider (what your bot calls)"])

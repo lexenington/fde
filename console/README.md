@@ -39,6 +39,7 @@ Then open **http://localhost:3300**.
 | **01 Messy data** (under Labs) | Scores `out/clusters.json` like `check.py` (pairwise F1), then shows the raw rows behind your wrong and missed merges, and logs every score with a note on what you changed (`lab/runs/`) | nothing |
 | **03 AI engineering** (under Labs) | Reads the runs `python eval.py` saves (you run it, with your key): metrics over time, what changed against the previous run, regressions, each failing document next to its text and gold answer, and the review-routing table priced in cedis | nothing |
 | **04 Deploy anywhere** (under Labs) | Reviews your `terraform show -json` plan like the customer's platform team (public ALB/IP/subnet, open ingress or egress, unencrypted or public RDS, secrets in env, missing alarms or dashboard), runs the 30-minute teardown timer, and checks the runbook and handover have their sections. Reads files only; never touches AWS | nothing |
+| **05 Unfamiliar territory** (under Labs) | The ramp-day clock: six milestones stamped as you reach them, a `RAMP-LOG.md` timeline built from your stamps, shape checks on ARCHITECTURE / GLOSSARY / DATA-MAP / RAMP-LOG, and ramp #2 beside ramp #1 | nothing |
 | **Katas** | The thirteen drills in [`katas/`](../katas/README.md): the brief, a button that runs your tests, and the first failures. The simulator only reads the folder (mounted read-only), so your files are untouched | nothing |
 
 ```powershell

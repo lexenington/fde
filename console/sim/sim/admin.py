@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, deploycheck, injects, katas as katas_mod, evalview, llm, messy, stakeholders, tokens
+from . import config, deploycheck, injects, katas as katas_mod, evalview, llm, messy, ramp, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -393,3 +393,46 @@ def deploy_drill_stop(body: DrillStop):
 def deploy_drill_cancel():
     deploycheck.drill_cancel()
     return deploycheck.drill_state()
+
+
+ramp_router = APIRouter()
+
+
+class RampStart(BaseModel):
+    codebase: str
+
+
+class RampMark(BaseModel):
+    note: str = ""
+
+
+def _ramp(fn, *a, **k):
+    try:
+        return fn(*a, **k)
+    except ValueError as e:
+        raise HTTPException(409, str(e))
+
+
+@ramp_router.get("")
+def ramp_state():
+    return ramp.state()
+
+
+@ramp_router.post("/start")
+def ramp_start(body: RampStart):
+    return _ramp(ramp.start, body.codebase)
+
+
+@ramp_router.post("/mark/{key}")
+def ramp_mark(key: str, body: RampMark):
+    return _ramp(ramp.mark, key, body.note)
+
+
+@ramp_router.post("/unmark/{key}")
+def ramp_unmark(key: str):
+    return ramp.unmark(key)
+
+
+@ramp_router.post("/finish")
+def ramp_finish(abandon: bool = False):
+    return _ramp(ramp.finish, abandon)

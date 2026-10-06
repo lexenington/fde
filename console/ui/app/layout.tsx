@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/labs/integration">02 Enterprise integration</Link>
               <Link href="/labs/ai-engineering">03 AI engineering</Link>
               <Link href="/labs/deploy">04 Deploy anywhere</Link>
-              <a className="soon">05 Unfamiliar territory</a>
+              <Link href="/labs/ramp">05 Unfamiliar territory</Link>
               <div className="nav-h">Customer: Adom Logistics</div>
               <Link href="/systems/crm">CRM</Link>
               <Link href="/systems/identity">Identity (IdP)</Link>

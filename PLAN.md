@@ -112,7 +112,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 **Do**
 
 - `02-technical-depth/04-deploy-anywhere`: the Terraform lab, with the customer/vendor accounts. **`terraform destroy` after every session.** Write `RUNBOOK.md` and `HANDOVER.md`. Save `terraform show -json` of your plan to `lab/infra/plan.json` and review it on the Console's *04 Deploy anywhere* page, which also times your teardown drill.
-- `02/05`: Ramp #1 on Odoo or ERPNext, timeboxed to one day.
+- `02/05`: Ramp #1 on Odoo or ERPNext, timeboxed to one day. Run the clock on the Console's *05 Unfamiliar territory* page and tick milestones as you go: it gives you the timeline for `RAMP-LOG.md`.
 - **Re-score the self-assessment (week 8).** Be honest about which scores moved and why.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [13 Terraform plan review](katas/13-terraform-plan-review/README.md).
 

@@ -54,6 +54,7 @@ app.include_router(crm.router, prefix="/crm/v3", tags=["CRM API (what your app c
 app.include_router(admin.router, prefix="/admin", tags=["Console admin"])
 app.include_router(admin.checks, prefix="/checks", tags=["Lab checkers"])
 app.include_router(admin.chat, prefix="/chat", tags=["Stakeholder chat"])
+app.include_router(admin.ramp_router, prefix="/labs/ramp", tags=["Lab 02/05 ramp clock"])
 app.include_router(admin.deploy_router, prefix="/labs/deploy", tags=["Lab 02/04 reviewer"])
 app.include_router(admin.ai_router, prefix="/labs/ai", tags=["Lab 02/03 run viewer"])
 app.include_router(admin.messy_router, prefix="/labs/messy", tags=["Lab 02/01 scorer"])

@@ -1,4 +1,4 @@
-"""First contact with the real Claude API: does every feature that depends on it actually work?
+"""First contact with the real model API (Claude or another provider): does every feature that depends on it actually work?
 
     docker compose exec sim python -m sim.llm_check
 
@@ -31,7 +31,10 @@ def _stage(name, fn):
 def run() -> bool:
     print(f"Chat model:  {llm.CHAT_MODEL}\nJudge model: {llm.JUDGE_MODEL}\n")
     if not llm.configured():
-        print("ANTHROPIC_API_KEY is not set in this container. Export it where you run `docker compose up`, then `docker compose up -d sim`.")
+        for m in sorted({llm.CHAT_MODEL, llm.JUDGE_MODEL}):
+            need = "ANTHROPIC_API_KEY" if llm.is_claude(m) else "FDE_OPENAI_BASE_URL (and FDE_OPENAI_API_KEY)"
+            print(f"{m} needs {need}.")
+        print("Set it in console/.env (or export it where you run `docker compose up`), then `docker compose up -d sim`.")
         return False
 
     saved = (config.PRACTICE_DIR, config.LABS_DIR)

@@ -35,7 +35,12 @@ services:
       ENGAGEMENTS_DIR: /engagements
       SAVANNA_DIR: /data/savanna
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}   # export it before `docker compose up`; needed for stakeholder chat and card feedback
-      # FDE_CHAT_MODEL / FDE_JUDGE_MODEL default to claude-opus-5-5; set claude-sonnet-5-5 here to cut cost
+      # Models: claude-* names go to Anthropic; any other name goes to the OpenAI-compatible endpoint below.
+      # Set these in console/.env, e.g. FDE_CHAT_MODEL=deepseek-chat (see console/README.md, "Using other models")
+      FDE_CHAT_MODEL: ${FDE_CHAT_MODEL:-claude-opus-5-5}
+      FDE_JUDGE_MODEL: ${FDE_JUDGE_MODEL:-claude-opus-5-5}
+      FDE_OPENAI_BASE_URL: ${FDE_OPENAI_BASE_URL:-}
+      FDE_OPENAI_API_KEY: ${FDE_OPENAI_API_KEY:-}
       CRM_API_KEY: ${CRM_API_KEY:-crm-dev-key}
       CRM_WEBHOOK_SECRET: ${CRM_WEBHOOK_SECRET:-whsec_dev_adom}
       SCIM_TOKEN: ${SCIM_TOKEN:-scim-dev-token}

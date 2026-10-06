@@ -47,7 +47,40 @@ $env:ANTHROPIC_API_KEY = "sk-ant-..."     # before `docker compose up`, in the s
 docker compose up --build
 ```
 
-Calls and reviews default to `claude-opus-5-5`. Set `FDE_CHAT_MODEL` / `FDE_JUDGE_MODEL` in `docker-compose.yml` (for example `claude-sonnet-5-5`) to cut cost. A full call plus debrief is a few tens of thousands of tokens.
+Calls and reviews default to `claude-opus-5-5`. A full call plus debrief is a few tens of thousands of tokens. To cut cost, see below.
+
+### Using other models
+
+Two roles, set separately in `console/.env` (compose reads it automatically; it isn't committed):
+- `FDE_CHAT_MODEL` plays the stakeholders. The cheapest place to save: role-play tolerates a weaker model.
+- `FDE_JUDGE_MODEL` scores your debriefs and card replies. Keep this one strong: a cheap judge gives you confident, wrong feedback.
+
+Any name starting with `claude-` goes to Anthropic (`ANTHROPIC_API_KEY`). **Any other name goes to an OpenAI-compatible endpoint**, which almost every provider offers:
+
+```ini
+# console/.env: pick one endpoint block
+FDE_CHAT_MODEL=deepseek-chat
+FDE_JUDGE_MODEL=claude-sonnet-5-5
+
+# DeepSeek
+FDE_OPENAI_BASE_URL=https://api.deepseek.com
+FDE_OPENAI_API_KEY=sk-...
+
+# OpenRouter: one key, hundreds of models (names look like "provider/model")
+# FDE_OPENAI_BASE_URL=https://openrouter.ai/api/v1
+# Groq:   FDE_OPENAI_BASE_URL=https://api.groq.com/openai/v1
+# Gemini: FDE_OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+# OpenAI: FDE_OPENAI_BASE_URL=https://api.openai.com/v1
+# Ollama on this machine (free, no key): FDE_OPENAI_BASE_URL=http://host.docker.internal:11434/v1
+```
+
+Then `docker compose up -d sim` and check both roles with `docker compose exec sim python -m sim.llm_check` (a few cents). Use the exact model name from your provider's model list; the names change often.
+
+Cheaper Claude options need no new key: `claude-sonnet-5-5` ($2 / $10 per million tokens in/out) and `claude-haiku-4-5` ($1 / $5), against `claude-opus-5-5` at $4 / $20.
+
+How it works: there's no structured-output feature that every provider supports, so for non-Claude models the simulator puts the expected JSON shape in the prompt, validates the answer, and asks once for a fix if it doesn't fit. Small models sometimes fail twice on the long debrief; the error says so, and the fix is a stronger judge model.
+
+**Make it a lab:** before trusting a cheap judge, run the same 5 calls through two judge models and compare the scores. If they disagree by more than a point on a dimension, the cheap one isn't good enough for grading you. That's the judge-validation exercise from 02/03, applied to your own tools.
 
 **Don't read `sim/content/`.** It holds the stakeholders' hidden facts and the cards' effects and rubrics. It is the answer key, like `.truth/` in the messy-data lab.
 

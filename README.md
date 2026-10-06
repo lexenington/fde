@@ -27,12 +27,15 @@ The difference from what you do now isn't the code. It's **who defines the probl
 | 05 | [Getting hired](05-getting-hired/README.md) | Target companies, remote-from-Ghana strategy, résumé, interview loop, visibility | 2 weeks (overlaps) |
 | 06 | [Beyond](06-beyond/README.md) | Roles these skills unlock, and turning Webfront360 into a business | ongoing |
 | 07 | [AI-startup FDE](07-ai-startup-fde/README.md) | Running many customers on one AI product: implementation playbooks, simulation testing, release checks, startup interviews and offers | 1.5 weeks (before applying to tier B) |
+| 🖥 | [FDE Field Console](console/README.md) | A local web app that plays the customer (IdP, SCIM, CRM, webhooks) and scores your lab code against it. `docker compose up` in `console/` | use from 02/02 on |
+| 🥋 | [Katas](katas/README.md) | Thirteen 30-60 minute drills with the tests already written and red: idempotency, JWT validation, rate limits, record matching, policy chunking, Terraform plan review. One per week, on Monday | weeks 2-13, see PLAN.md |
 | ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 6–16 |
 
 **Total: ~16–18 weeks at 10–15 hrs/week** (07 and the AWS track overlap with other modules). Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
 
 ## How to use this repo
 
+0. **Open [PLAN.md](PLAN.md).** It says what to do this week, session by session, with the tool to use and what "done" looks like. The Console's *This week* page (http://localhost:3300/plan) shows the same, with your progress.
 1. Read 00 and 01 first, in full. They set the target, and everything else follows from them.
 2. Every technical module has a **"Prove it"** check up top. If you can already do it, skip the module and move on. Don't re-learn what you know.
 3. Labs live inside their module (`lab/` folders). Do the work in this repo and commit it. **The git history is evidence.**
@@ -49,7 +52,7 @@ Done: Python 3.12 is installed (winget, user scope), `.venv` has the packages fr
 
 Commit after every lab step. **The git history is your evidence trail.**
 
-You'll also need Docker Desktop (for Postgres in the data lab) and an Anthropic API key (`ANTHROPIC_API_KEY`) for the AI lab.
+You'll also need Docker Desktop (for Postgres in the data lab, and for the [Field Console](console/README.md)) and an Anthropic API key (`ANTHROPIC_API_KEY`) for the AI lab.
 
 ## The one-sentence goal
 

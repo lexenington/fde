@@ -32,11 +32,13 @@ Salesforce (SOQL, Bulk API, governor limits), ServiceNow, Zendesk/Intercom, HubS
 | Reconciliation job | Webhooks *will* be missed; a nightly diff against source of truth catches it |
 
 ### Security & compliance vocabulary
-SOC 2 Type II, ISO 27001, GDPR / Ghana Data Protection Act 2012, DPA, data residency, encryption at rest/in transit, customer-managed keys, audit logs, pen-test reports, the CAIQ/SIG questionnaires. You don't need to be a security engineer. You need to answer these questions without panicking and know when to bring one in.
+SOC 2 Type II, ISO 27001, GDPR / Ghana Data Protection Act 2012, DPA, data residency, encryption at rest/in transit, customer-managed keys, audit logs, pen-test reports, the CAIQ/SIG questionnaires. For AI features, add: what data is sent to the model provider and whether it's retained or used for training, zero-data-retention options, and the AI governance frameworks (NIST AI RMF, ISO/IEC 42001, EU AI Act) covered in 02/03. You don't need to be a security engineer. You need to answer these questions without panicking and know when to bring one in.
 
 ## Lab: "Enterprise-ready" RunMySales
 
 Take your own RunMySales (or a minimal clone) and make it something a 2,000-person company's IT team would approve.
+
+**The customer is simulated for you.** `cd console && docker compose up --build`, then open http://localhost:3300. It plays Adom Logistics (2,000 staff): their identity provider (Keycloak, standing in for Okta/Entra), their SCIM provisioning and their CRM (rate limits, flaky signed webhooks). It also scores your app with 22 checks. Read [`lab/CONTRACT.md`](lab/CONTRACT.md) first; it's the integration spec their IT team sent you. You no longer need an Okta tenant or a HubSpot account to start. Once you pass about half the checks, draw **inject cards** in the Console: six curveballs (a quota cut, duplicate and late webhooks, secret rotation, an IdP claim change, a moved deadline, a security questionnaire), each with a check and a written reply to write. And run a **stakeholder call** with Nana Adjei and Kwabena Ofori *before* you write `SCOPE.md`. Doing deliverable 1 against a real Okta or Entra dev tenant afterwards is still worth it, because it's what you'll meet at customers.
 
 ### Deliverables
 1. **OIDC SSO** against a free Okta developer tenant *or* Microsoft Entra ID dev tenant. Validate tokens properly (issuer, audience, signature via JWKS, expiry, nonce). Write a test that a token for the wrong audience is rejected.
@@ -51,6 +53,8 @@ Take your own RunMySales (or a minimal clone) and make it something a 2,000-pers
 6. **`SECURITY.md`**: answer these 15 questionnaire items for your app as if a customer asked: data flow diagram; where data is stored and in which region; encryption at rest/in transit; subprocessors (Anthropic, hosting); retention & deletion; access control; SSO/MFA; logging; incident response; backup/restore; vulnerability management; pen testing; employee access; LLM-specific: is customer data used for training, prompt-injection mitigations, PII handling.
 
 ### Acceptance tests to write (pytest)
+The Console's checker covers these from the outside. Write them anyway, as your own tests: the checker tells you *that* something broke, and your tests tell you *where*.
+
 - Replayed webhook (same signature, old timestamp) → 401
 - Same webhook delivered 3× → processed once
 - CRM returns 429 with `Retry-After: 2` → client waits and succeeds

@@ -1,0 +1,122 @@
+{
+  "realm": "adom",
+  "displayName": "Adom Logistics (customer IdP)",
+  "enabled": true,
+  "sslRequired": "none",
+  "accessTokenLifespan": 300,
+  "groups": [
+    { "name": "sales-reps", "path": "/sales-reps" },
+    { "name": "sales-managers", "path": "/sales-managers" }
+  ],
+  "clients": [
+    {
+      "clientId": "runmysales",
+      "name": "RunMySales (your app)",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": ["http://localhost:8000/*", "http://localhost:3000/*"],
+      "webOrigins": ["+"],
+      "attributes": { "pkce.code.challenge.method": "S256" },
+      "protocolMappers": [
+        {
+          "name": "audience-runmysales",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "runmysales",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "claim.name": "groups",
+            "full.path": "false",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "other-app",
+      "name": "Some other internal app (tokens for it must NOT work on yours)",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "protocolMappers": [
+        {
+          "name": "audience-other-app",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.client.audience": "other-app",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        },
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "config": {
+            "claim.name": "groups",
+            "full.path": "false",
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "kofi.mensah@adom.example",
+      "email": "kofi.mensah@adom.example",
+      "firstName": "Kofi",
+      "lastName": "Mensah",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Passw0rd!", "temporary": false }],
+      "groups": ["/sales-reps"]
+    },
+    {
+      "username": "ama.owusu@adom.example",
+      "email": "ama.owusu@adom.example",
+      "firstName": "Ama",
+      "lastName": "Owusu",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Passw0rd!", "temporary": false }],
+      "groups": ["/sales-reps"]
+    },
+    {
+      "username": "efua.asante@adom.example",
+      "email": "efua.asante@adom.example",
+      "firstName": "Efua",
+      "lastName": "Asante",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Passw0rd!", "temporary": false }],
+      "groups": ["/sales-managers"]
+    },
+    {
+      "username": "yaw.boateng@adom.example",
+      "email": "yaw.boateng@adom.example",
+      "firstName": "Yaw",
+      "lastName": "Boateng",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "Passw0rd!", "temporary": false }],
+      "groups": ["/sales-reps"]
+    }
+  ]
+}

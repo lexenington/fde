@@ -15,12 +15,16 @@ Curated, not exhaustive. If you only do the starred ones, you're fine.
 - OWASP Top 10 for LLM Applications
 - ★ modelcontextprotocol.io: spec, quickstarts for building servers, and the authorization section
 - Claude Agent SDK docs (code.claude.com/docs/en/agent-sdk) and Managed Agents docs, to know when each fits
+- Anthropic, "How we built our multi-agent research system" (anthropic.com/engineering): when multi-agent pays off and what it costs
+- NIST AI Risk Management Framework (nist.gov/itl/ai-risk-management-framework) + its Generative AI Profile; skim ISO/IEC 42001 and the EU AI Act risk tiers
 - Masakhane (masakhane.io) and Ghana NLP: research and datasets for African languages, useful for building Twi/Ewe/Ga eval slices
 
 ## Data
 - ★ dbt docs: "How we structure our dbt projects"
 - Peter Christen, *Data Matching*: entity resolution
 - Martin Kleppmann, *Designing Data-Intensive Applications*: chapters 3, 5, 11
+- Airflow docs: "Fundamental concepts" and the docker compose quickstart
+- Spark docs "Quick start" (enough to read a customer's job); DuckDB docs for when one machine is enough
 
 ## Integration & security
 - ★ oauth.net/2 and the OIDC Core spec intro, then implement against an Okta / Entra dev tenant
@@ -37,6 +41,9 @@ Curated, not exhaustive. If you only do the starred ones, you're fine.
 - ★ Terraform tutorials (developer.hashicorp.com/terraform/tutorials), AWS track
 - AWS Well-Architected Framework: Security and Operational Excellence pillars
 - OpenTelemetry docs: Python getting-started
+- Azure Architecture Center and Google Cloud Architecture Center: reference architectures for private, enterprise deployments
+- vLLM docs (docs.vllm.ai) and NVIDIA's "Mastering LLM Techniques: Inference Optimization" post
+- Chip Huyen, *Designing Machine Learning Systems*: the MLOps vocabulary customers' ML teams use
 
 ## Customer craft
 - ★ Rob Fitzpatrick, *The Mom Test*

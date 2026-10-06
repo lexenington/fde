@@ -9,6 +9,9 @@ Lakeside Clinics runs 14 outpatient clinics across Greater Accra and Ashanti. Pa
 - **Head of front desk:** "My staff are worried about their jobs. Also, half of our messages are voice notes."
 - **IT contractor:** "Bookings live in a Postgres DB behind a PHP app I wrote in 2019. No API. I can give you a read replica and a stored procedure for creating bookings."
 
+## The world
+The customer's systems are simulated for you: [04-engagements/lakeside/WORLD.md](lakeside/WORLD.md). `docker compose up --build` in `console/`, then *Engagements → 1 Lakeside Clinics* at http://localhost:3300 gives you the legacy database, the WhatsApp provider, speech-to-text, a patient phone to test with, and the customer's acceptance test.
+
 ## Constraints
 - Patient data is sensitive health data (Ghana Data Protection Act 2012). Data minimisation, a retention policy and access logging are required.
 - Clinics have intermittent connectivity; the front-desk escalation inbox must work on low bandwidth.

@@ -27,4 +27,6 @@ In **one timeboxed day**:
 4. Make one small real change behind a flag, with a test. Example for Odoo/ERPNext: an AI-suggested invoice category field.
 5. Write `RAMP-LOG.md`: what you did hour by hour, where you lost time, and what you'll do faster next time.
 
+**Console:** *05 Unfamiliar territory* (http://localhost:3300/labs/ramp) is the clock. Start the day, tick each of the six milestones as you reach them with a one-line note, and it builds the timeline for `RAMP-LOG.md`, flags a day that ran over, checks that your four documents have the right shape (put them in `lab/`), and lines ramp #2 up against ramp #1.
+
 Repeat with a second codebase two weeks later and compare the ramp logs. The second ramp should be noticeably faster. Being able to say you've practised this deliberately is good interview material.

@@ -1,6 +1,7 @@
 # Progress
 
-Started: ____  ·  Target finish: ____ (≈16 weeks)
+Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: [PLAN.md](PLAN.md)
+<!-- Write the start date as YYYY-MM-DD (e.g. Started: 2026-10-12) and the Console's "This week" page will track you -->
 
 ## Phase 1: Orient (week 1)
 - [ ] Read 00 The role
@@ -12,21 +13,28 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 
 ## Phase 2: Technical depth (weeks 2–8)
 ### 02/01 Messy data
-- [ ] SCOPE.md · [ ] profile.md · [ ] pipeline → Postgres · [ ] F1 ≥ 0.92 (`check.py`) · [ ] review queue < 10% · [ ] REPORT.md for ops manager · [ ] stretch: incremental load
+- [ ] SCOPE.md · [ ] profile.md · [ ] pipeline → Postgres · [ ] F1 ≥ 0.92 (`check.py`) · [ ] review queue < 10% · [ ] REPORT.md for ops manager · [ ] stretch: incremental load · [ ] stretch: Airflow DAG + backfill
 ### 02/02 Enterprise integration
+- [ ] Console up (`console/`) · [ ] Console checker ≥ 100/124 · [ ] Console checker 124/124
+- [ ] Inject cards handled (code + written reply): ☐ quota-cut ☐ late-events ☐ secret-rotation ☐ claims-change ☐ deadline-moved ☐ questionnaire
 - [ ] OIDC SSO (Okta/Entra) · [ ] SCIM provision/deprovision · [ ] group → role mapping · [ ] idempotent CRM sync · [ ] signed webhooks + DLQ · [ ] reconciliation job · [ ] audit log · [ ] SECURITY.md · [ ] 5 acceptance tests green
 ### 02/03 AI engineering & evals
-- [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO
+- [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO · [ ] stretch: versioned prompts + rollback · [ ] stretch: governance pack
+- [ ] Can explain out loud: memory & state design · why (not) multi-agent · NIST AI RMF in 2 minutes
 ### 02/04 Deploy anywhere
-- [ ] Customer + vendor AWS accounts · [ ] cross-account role policy · [ ] Terraform private deploy · [ ] OIDC CI deploy · [ ] dashboard + alarms · [ ] teardown/rebuild < 30 min · [ ] RUNBOOK.md · [ ] HANDOVER.md
+- [ ] Customer + vendor AWS accounts · [ ] cross-account role policy · [ ] Terraform private deploy · [ ] OIDC CI deploy · [ ] dashboard + alarms · [ ] teardown/rebuild < 30 min · [ ] RUNBOOK.md · [ ] HANDOVER.md · [ ] stretch: AZURE.md · [ ] stretch: self-hosted model eval table
 ### 02/05 Unfamiliar territory
 - [ ] Ramp #1 (ARCHITECTURE · GLOSSARY · DATA-MAP · change + test · RAMP-LOG) · [ ] Ramp #2, faster
 ### Extras
 - [ ] Invoice extractor wrapped as an MCP server · [ ] grader tests green (`pytest`) · [ ] Twi/code-switched eval slice (engagement 1)
 
+### Katas (green = tests pass, and you can explain each edge case)
+- [ ] 01 idempotency · [ ] 02 token bucket · [ ] 03 retry/backoff · [ ] 04 webhook signature · [ ] 05 JWT validation · [ ] 06 phone numbers · [ ] 07 clusters + F1 · [ ] 08 rule as-of · [ ] 09 policy chunking · [ ] 10 policy as code · [ ] 11 routing table · [ ] 12 SQL analysis · [ ] 13 Terraform plan review
+
 ## Phase 3: Customer craft (weeks 2–8, in parallel)
 - [ ] Read *The Mom Test*
-- [ ] Mock discovery calls: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
+- [ ] Mock discovery calls (Console → Stakeholder calls; transcripts in `03-customer-craft/practice/`): ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
+- [ ] A call averaging 4/5 with talk ratio ≤ 35%: ☐ Adom ☐ Lakeside ☐ Savanna
 - [ ] Scoping docs written within 24 h: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
 - [ ] 90-second exec explanation recorded
 - [ ] Real SME discovery call done
@@ -35,7 +43,9 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)
 
 ## Phase 4: Engagements (weeks 9–14)
 - [ ] 1 Lakeside Clinics: scope · build · eval · demo · case study published
+  - [ ] Console acceptance test: booking slice ≥ 90% · safety slice 0 failures · runs committed in `04-engagements/lakeside/runs/`
 - [ ] 2 Savanna Microfinance: scope · build · eval · deploy · case study published
+  - [ ] Console acceptance test: answer + citation accuracy reported · all 6 isolation checks pass · audit export passes · runs committed in `04-engagements/savanna/runs/`
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 
 ## Phase 5: Hired (weeks 10–16+)

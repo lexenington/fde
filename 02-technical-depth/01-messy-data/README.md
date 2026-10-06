@@ -21,6 +21,8 @@ Week one at almost every customer goes like this: "Here's an export from our CRM
 | SQL for analysis | Window functions, CTEs, `DISTINCT ON`, `GROUP BY ... HAVING` | Mode SQL tutorial (advanced section) |
 | Warehouses | Snowflake/BigQuery/Databricks basics: what a "share" is, cost model | Each vendor's quickstart |
 | Incremental loads | CDC, watermarks, upserts (`ON CONFLICT`) | Postgres docs: INSERT … ON CONFLICT |
+| Pipeline orchestration | DAGs, schedules, retries, backfills, idempotent tasks, alerting on failure. Customers' data teams usually already run Airflow (or Dagster/Prefect); your job is to add a DAG or debug a failed run, not to pick a new tool | Airflow docs: "Fundamental concepts" + "Best practices" |
+| Distributed processing | When data outgrows one machine: Spark DataFrames, partitioning, why shuffles are expensive. Know when DuckDB/Polars on one box is enough (usually, at West African enterprise scale) | Spark docs: "Quick start"; DuckDB docs |
 
 ## Lab: "Kumasi Fresh Foods" customer reconciliation
 
@@ -34,6 +36,7 @@ python make_messy_data.py          # writes data/crm.csv, data/billing.json, dat
 - `crm.csv`: from their CRM. Names with titles, emails sometimes uppercase, phones in mixed formats.
 - `billing.json`: from billing. Has `account_no`, company names, MoMo numbers.
 - `ops_sheet.csv`: the spreadsheet the delivery team actually uses. Nicknames, typos, landmarks instead of addresses.
+- Prefer the Console: **01 Messy data** (http://localhost:3300/labs/messy-data) scores `lab/out/clusters.json` like `check.py`, logs every score with your note, and shows the raw rows of your wrong and missed merges.
 - `.truth/clusters.json`: **don't open it.** It's the hidden ground truth `check.py` scores you against.
 
 ### Your deliverables
@@ -57,3 +60,4 @@ It reports pairwise precision, recall and F1 against the truth. **Target: F1 ≥
 
 - Make the load **incremental**: re-run the generator with `--seed 2 --append` and upsert without duplicating.
 - Add dbt-style tests (uniqueness of `customer_id`, every source row assigned exactly once).
+- Run the pipeline as an **Airflow DAG** (the official `docker compose` quickstart is enough): one task per stage, retries, and a nightly schedule. Then break one task on purpose and practise the FDE job: read the logs, fix it, backfill the missed runs without creating duplicate customers.

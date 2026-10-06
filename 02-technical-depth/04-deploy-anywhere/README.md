@@ -27,6 +27,9 @@ LLM-specific wrinkle: customers increasingly want models served through *their* 
 | **Delivery** | CI/CD with environments, blue/green or rolling deploys, DB migrations that are backward-compatible, rollback plan |
 | **Constrained environments** | Air-gapped installs (vendored images, offline package mirrors), on-prem K8s, and low-bandwidth edge sites. Your EatryCloud offline-first experience applies directly here |
 | **Multi-tenant vs single-tenant** | Why big customers demand dedicated deployments, and what that costs you operationally |
+| **Azure & GCP equivalents** | The lab is AWS, but many enterprises (banks and telcos especially) are Microsoft shops. Be able to translate the lab into Azure (Entra ID, VNet + Private Endpoints, Key Vault, Container Apps or AKS, Azure Monitor, Claude via Microsoft Foundry) and GCP (VPC + Private Service Connect, Secret Manager, Cloud Run or GKE, Cloud Logging, Claude via Vertex AI). Terraform providers differ; the shape of the design doesn't |
+| **Self-hosted models & inference optimisation** | When option (2) above is the only option: serving open-weight models with vLLM/TGI, GPU sizing, quantisation (quality vs memory trade-off), distillation, batching and response caching. Measure tokens/sec, p95 latency and cost per task, and always put the eval score next to them |
+| **MLOps & managed ML services** | Some customers already have an ML platform (SageMaker, Vertex AI, Azure ML) and want your work to live in it. Know the vocabulary: model registry, versioned data and models, training vs inference pipelines, drift monitoring. You don't need to train models; you need to deploy into *their* platform without fighting it |
 
 ## Lab: deploy the invoice extractor "into the customer's account"
 
@@ -41,5 +44,9 @@ LLM-specific wrinkle: customers increasingly want models served through *their* 
 5. **Tear it down and bring it back up from zero** in under 30 minutes. Time it.
 6. Write `RUNBOOK.md`: how to deploy, roll back, rotate the API key, read the dashboard, and what each alarm means and what to do about it.
 7. Write `HANDOVER.md`: what the customer's team owns now, what they need to learn, open risks.
+
+### Stretch
+- **Azure variant (paper or real):** write `AZURE.md` mapping every resource in your Terraform to its Azure equivalent, with the one or two places the design has to change. If you have credits, deploy it.
+- **Self-hosted fallback:** run an open-weight model with vLLM or Ollama, point the extractor at it, and re-run the 02/03 eval. Write the table a customer would need: quality, latency and cost per 1,000 invoices vs Claude in their cloud boundary. Then try a quantised variant and add a row.
 
 **Cost guard:** NAT gateways and ALBs cost money even when idle. Run `terraform destroy` at the end of every session, and set an AWS Budget alert at $20 before you start.

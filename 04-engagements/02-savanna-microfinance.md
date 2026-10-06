@@ -24,5 +24,6 @@ Savanna Microfinance has 22 branches across the Northern, Upper East and Bono re
 
 ## What a strong submission includes
 - A memo to the Head of Risk explaining, in plain language, how the system can be wrong and what controls exist.
+- An AI governance pack for Risk & Compliance: intended use and prohibited uses (e.g. the copilot never makes or recommends a credit decision), human oversight points, how answer quality is monitored after go-live, the incident process when it gives a wrong policy answer, and a check of member summaries for unfair differences by region or gender. Written so Risk could hand it to the Bank of Ghana.
 - A decision record: Bedrock vs. first-party API vs. egress proxy, with trade-offs.
 - Field feedback on what a "regulated financial services" deployment kit should contain.

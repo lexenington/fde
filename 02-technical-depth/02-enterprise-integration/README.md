@@ -32,7 +32,7 @@ Salesforce (SOQL, Bulk API, governor limits), ServiceNow, Zendesk/Intercom, HubS
 | Reconciliation job | Webhooks *will* be missed; a nightly diff against source of truth catches it |
 
 ### Security & compliance vocabulary
-SOC 2 Type II, ISO 27001, GDPR / Ghana Data Protection Act 2012, DPA, data residency, encryption at rest/in transit, customer-managed keys, audit logs, pen-test reports, the CAIQ/SIG questionnaires. You don't need to be a security engineer. You need to answer these questions without panicking and know when to bring one in.
+SOC 2 Type II, ISO 27001, GDPR / Ghana Data Protection Act 2012, DPA, data residency, encryption at rest/in transit, customer-managed keys, audit logs, pen-test reports, the CAIQ/SIG questionnaires. For AI features, add: what data is sent to the model provider and whether it's retained or used for training, zero-data-retention options, and the AI governance frameworks (NIST AI RMF, ISO/IEC 42001, EU AI Act) covered in 02/03. You don't need to be a security engineer. You need to answer these questions without panicking and know when to bring one in.
 
 ## Lab: "Enterprise-ready" RunMySales
 

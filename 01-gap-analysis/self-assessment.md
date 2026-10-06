@@ -11,6 +11,9 @@ Be harsh. Note the **evidence** (a link or file) for every 4 or 5.
 | Reconcile two datasets with no shared key and report match confidence | | | | |
 | Write Terraform that deploys an app into a private subnet with no public IP | | | | |
 | Build an MCP server for an internal system with scoped permissions | | | | |
+| Explain to a risk team how an AI system is governed (NIST AI RMF / ISO 42001 terms) | | | | |
+| Add a DAG to an existing Airflow setup and backfill it safely | | | | |
+| Translate an AWS deployment to Azure or GCP and justify the differences | | | | |
 | Ramp on an unknown codebase and make a safe change within one day | | | | |
 | Run a 45-min discovery call and produce a one-page scoping doc the same day | | | | |
 | Build a business case a CFO would accept | | | | |

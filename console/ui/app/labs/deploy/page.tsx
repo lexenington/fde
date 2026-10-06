@@ -42,10 +42,10 @@ export default function Deploy() {
           <p>{st.plan.resources} resources would be created or changed. Components the brief requires:</p>
           <p>{st.plan.present?.map((p) => <span key={p.id} className={`pill ${p.ok ? "pass" : "fail"}`} style={{ marginRight: 6, display: "inline-block", marginBottom: 6 }}>{p.ok ? "✓" : "✗"} {p.label}</span>)}</p>
           {st.plan.findings?.length === 0 ? <p><span className="pill pass">No exposure findings.</span> Read the plan yourself anyway: this checks a short list.</p> : (
-            <table>
+            <div style={{ overflowX: "auto" }}><table>
               <thead><tr><th>Resource</th><th>Rule</th><th>Why they will push back</th><th>Fix</th></tr></thead>
               <tbody>{st.plan.findings?.map((f, i) => <tr key={i}><td><code>{f.address}</code></td><td>{f.rule}</td><td>{f.why}</td><td>{f.fix}</td></tr>)}</tbody>
-            </table>
+            </table></div>
           )}
         </>
       )}

@@ -42,7 +42,7 @@ export default function Katas() {
       </p>
       {err && <div className="err">{err}</div>}
       {katas && katas.length === 0 && <div className="err">No katas found. Is <code>../katas</code> mounted into the sim container?</div>}
-      <div style={{ display: "grid", gap: 10 }}>
+      <div style={{ display: "grid", gap: 10, gridTemplateColumns: "minmax(0, 1fr)" }}>
         {katas?.map((k) => {
           const r = results[k.id];
           return (

@@ -67,14 +67,14 @@ export default function AiLab() {
         <>
           <h2>Run {d.id.slice(0, 15)}{d.compare_to ? <span style={{ color: "var(--muted)", fontWeight: 400, fontSize: 14 }}> vs the one before</span> : null}</h2>
           {d.compare_to && (
-            <p>
+            <div>
               {Object.entries(d.deltas).map(([k, v]) => (
                 <span key={k} className={`pill ${v.better ? "pass" : "fail"}`} style={{ marginRight: 6 }}>{k} {v.was} → {v.now}</span>
               ))}
               {Object.keys(d.deltas).length === 0 && <span>No headline metric moved.</span>}
               {d.regressions.length > 0 && <div className="err">Regressions: {d.regressions.join(", ")}. These passed last time.</div>}
               {d.fixed.length > 0 && <div>Fixed: {d.fixed.join(", ")}</div>}
-            </p>
+            </div>
           )}
 
           <h3>Failures ({d.failures.length})</h3>

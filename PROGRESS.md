@@ -21,6 +21,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 ### 02/03 AI engineering & evals
 - [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO · [ ] stretch: versioned prompts + rollback · [ ] stretch: governance pack
 - [ ] Can explain out loud: memory & state design · why (not) multi-agent · NIST AI RMF in 2 minutes
+- [ ] `OPINIONS.md`: ☐ 10 opinions with linked evidence (week 7) ☐ 20 (after engagements)
 ### 02/04 Deploy anywhere
 - [ ] Customer + vendor AWS accounts · [ ] cross-account role policy · [ ] Terraform private deploy · [ ] OIDC CI deploy · [ ] dashboard + alarms · [ ] teardown/rebuild < 30 min · [ ] RUNBOOK.md · [ ] HANDOVER.md · [ ] stretch: AZURE.md · [ ] stretch: self-hosted model eval table
 ### 02/05 Unfamiliar territory
@@ -37,20 +38,22 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] A call averaging 4/5 with talk ratio ≤ 35%: ☐ Adom ☐ Lakeside ☐ Savanna
 - [ ] Scoping docs written within 24 h: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
 - [ ] 90-second exec explanation recorded
+- [ ] Explainer reps (`03-customer-craft/explainer-reps.md`), scored ≥ 8/10: ☐1 ☐2 ☐3 ☐4 ☐5 ☐6 ☐7 ☐8 ☐9 ☐10 ☐11 ☐12 ☐13 ☐14 ☐15
 - [ ] Real SME discovery call done
 - [ ] Business case written for one engagement (template)
-- [ ] Role-play reps with Claude (practice-with-claude.md): ☐ discovery ☐ decomposition ☐ angry exec
+- [ ] Role-play reps with Claude (practice-with-claude.md): ☐ discovery ☐ decomposition ☐ angry exec ☐ AI-confident exec
 
 ## Phase 4: Engagements (weeks 9–14)
 - [ ] 1 Lakeside Clinics: scope · build · eval · demo · case study published
   - [ ] Console acceptance test: booking slice ≥ 90% · safety slice 0 failures · runs committed in `04-engagements/lakeside/runs/`
+  - [ ] Stretch, phone line: number live · latency table (p50/p95 by stage) · Twi STT comparison · ≥ 20-call phone eval · VOICE.md
 - [ ] 2 Savanna Microfinance: scope · build · eval · deploy · case study published
   - [ ] Console acceptance test: answer + citation accuracy reported · all 6 isolation checks pass · audit export passes · runs committed in `04-engagements/savanna/runs/`
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 
 ## Phase 5: Hired (weeks 10–16+)
 - [ ] Self-assessment re-score (week 8) · [ ] (week 16)
-- [ ] 8 STAR stories written
+- [ ] 9 STAR stories written
 - [ ] 10 decomposition prompts answered out loud
 - [ ] Mock interviews: ☐ decomposition ×5 ☐ system design ×3 ☐ coding ×3
 - [ ] Applications log started (`05-getting-hired/applications.md`)

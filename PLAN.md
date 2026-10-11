@@ -10,7 +10,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 | **Tue, Wed, Thu** | Build sessions, 90 minutes each. One capability per session, then run the checker | 4.5 h |
 | **Friday** | Run the checker, **draw an inject card** if the lab has them, write the weekly update ([template](03-customer-craft/templates/weekly-update.md)), tick `PROGRESS.md`, commit | 1.5 h |
 | **Weekend** | One long block (3 h): the hardest item of the week, a stakeholder call, or outreach | 3 h |
-| **Every week** | One **stakeholder call** in the Console and one **outreach message** to a real business (see below) | in the blocks above |
+| **Every week** | One **stakeholder call** in the Console, one **outreach message** to a real business (see below), and two **explainer reps** ([how](03-customer-craft/explainer-reps.md)), 10 minutes each | in the blocks above |
 
 **Rules that keep it honest**
 
@@ -101,7 +101,8 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 - Improve extraction one change at a time, with a `CHANGELOG.md` of metric deltas. The same page diffs each run against the one before and flags regressions. Tune the review threshold (the page prices the routing table in cedis once you enter the two costs). Red-team (4 injection cases). Cost per 1,000 invoices.
 - Write `REPORT.md` for the CFO. Stretch: versioned prompts with a rollback, the governance pack, the MCP server.
-- Explain out loud in two minutes: memory and state design, why (not) multi-agent, the NIST AI RMF.
+- Explain out loud in two minutes: memory and state design, why (not) multi-agent, the NIST AI RMF. Record them as [explainer reps](03-customer-craft/explainer-reps.md).
+- Write up what your runs settled in [`OPINIONS.md`](02-technical-depth/03-ai-engineering/OPINIONS.md): 10 opinions, each linked to a run.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [11 routing table](katas/11-routing-table/README.md) and [10 policy as code](katas/10-policy-as-code/README.md).
 
 **Done when:** the threshold table, 4 injections pass, REPORT.md for the CFO.
@@ -126,6 +127,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 - **Stakeholder calls** with all four Lakeside people (Kwame, Dr. Sarpong, Akosua, Kojo). Aim for 4/5 on average with a talk ratio under 35%.
 - Process map ([template](03-customer-craft/templates/process-map.md)), then the scoping doc that **renegotiates** "every patient, 24/7, in six weeks" into phases.
 - Read `04-engagements/lakeside/WORLD.md`. Build the booking path against the Console's provider and database.
+- If you plan to do the [phone-line stretch](04-engagements/01-lakeside-clinics.md#stretch-the-phone-line), apply for a voice number now: provisioning can take days.
 
 **Done when:** four calls, process map, scoping doc, a bot that books, cancels and escalates.
 
@@ -148,6 +150,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 - Fix what the acceptance test found. The reminder flow and the no-show impact model, using the 12-month history, with assumptions stated.
 - Front-desk escalation inbox, runbook, handover, a 5-minute recorded demo of the **user's** workflow, and the field-feedback note.
 - Publish the **case study** ([template](04-engagements/case-study-template.md)).
+- Stretch, once the bar is met: the [phone line](04-engagements/01-lakeside-clinics.md#stretch-the-phone-line). Drop it before anything else if you're behind.
 
 **Done when:** the bar met with the run committed, a published case study.
 
@@ -201,7 +204,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Do**
 
-- Re-score the self-assessment. Eight STAR stories written and rehearsed. Three posts published, one open-source MCP server, one meetup.
+- Re-score the self-assessment. Nine STAR stories written and rehearsed. Three posts published, one open-source MCP server, one meetup.
 - Tier A applications now (two case studies are public). Three referral conversations.
 - Decide on the AWS route: book AIP-C01 if you're targeting AWS partners.
 

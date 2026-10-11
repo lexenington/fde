@@ -54,7 +54,7 @@ Add a **"Selected deployments"** section linking the module-04 case studies.
 | System design (customer flavour) | Design for *their* constraints: security, data residency, existing systems, rollout | Practise with engagement 2 out loud |
 | **Decomposition / customer case** | Take a vague business problem, structure it, ask the right questions, pick an MVP, define success | The most important round. See the bank. Do 10 out loud |
 | AI-specific (labs, AI startups) | Prompting, agent design, evals, failure modes, cost | 02/03 + your own RunMySales numbers |
-| Behavioural | Ownership, ambiguity, conflict with customers, failure | 8 STAR stories, listed in the bank |
+| Behavioural | Ownership, ambiguity, conflict with customers, failure | 9 STAR stories, listed in the bank |
 | Sometimes: take-home / presentation | Build a small thing, then present it to "the customer" | Treat it like engagement 1, compressed: scope doc + demo + eval |
 
 ## Practising

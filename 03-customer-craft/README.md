@@ -72,6 +72,8 @@ These are the mistakes that end engagements, and FDE careers, fastest:
 | Skill | Drill |
 |---|---|
 | **Explain to execs** | Record yourself explaining "why the AI sometimes gets invoices wrong and what we do about it" in 90 seconds, no jargon. Re-record until a non-technical friend can repeat it back |
+| **Explainer reps** | The habit behind the line above: record a 2-minute explanation of one technical concept a few times a week, score it, log it. 15 concepts, a rubric and a log: [explainer-reps.md](explainer-reps.md) |
+| **Hold the room** | When an exec says "ChatGPT told me this ships next Friday", be the calm, evidence-led voice without making them feel small. Role-play #6 in [practice-with-claude.md](../05-getting-hired/practice-with-claude.md) |
 | **Explain to engineers** | Whiteboard your RunMySales architecture in 5 minutes, including failure modes |
 | **Say no** | Practise the scope-trade-off line above until it's automatic |
 | **Bad news** | Write the email: "the go-live will slip 2 weeks because your IT team hasn't granted DB access." Firm on facts, no blame, clear ask |

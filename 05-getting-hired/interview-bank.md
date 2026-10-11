@@ -51,8 +51,12 @@ Answer out loud, timed, and record yourself. Write your best answers in `05-gett
 6. Cost per conversation is 3× what the customer budgeted. What levers do you pull, in what order?
 7. RAG vs. putting the whole corpus in a long context window: how do you decide?
 8. How did you decide when RunMySales should escalate to a human? How would you measure whether that rule is right?
+9. Walk me through how you use AI coding tools day to day. What do you hand them, and what do you never hand them?
+10. Tell me about a time an AI tool gave you confident, wrong code or advice. How did you catch it, and what do you check now that you didn't before?
+11. Router, orchestrator-worker, or a single agent with more tools: pick one for a real problem you've built, and tell me what would make you switch.
+12. What temperature (or other sampling settings) do you use for extraction vs. conversation, and how do you know it matters? (Answer from [OPINIONS.md](../02-technical-depth/03-ai-engineering/OPINIONS.md), with a number.)
 
-## Behavioural: prepare 8 STAR stories
+## Behavioural: prepare 9 STAR stories
 | # | Theme | Your candidate story |
 |---|---|---|
 | 1 | Requirements were wrong / the client asked for the wrong thing | (Verisage or freelance) |
@@ -63,5 +67,8 @@ Answer out loud, timed, and record yourself. Write your best answers in `05-gett
 | 6 | Disagreement with a stakeholder | |
 | 7 | Failure and what you changed | |
 | 8 | Made a product better from field feedback | RunMySales escalation design |
+| 9 | Overrode an AI tool: you caught it confidently wrong and didn't ship what it gave you | (Claude Code / Copilot on a client codebase) |
+
+"Cracked with AI tooling" in a posting means *uses these tools every day*. The interviewer also wants to see that you aren't just passing along whatever the model says. Story 9 is where you show both.
 
 **"Why FDE and not SWE?"** Draft: *"I'm at my best when I can see the person whose problem I'm solving. Building EatryCloud meant standing in restaurant kitchens watching orders get lost when the internet dropped. That's where I figured out what to build. FDE is that, as a job."*

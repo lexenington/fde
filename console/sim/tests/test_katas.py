@@ -8,7 +8,8 @@ import pytest
 from sim import config, katas
 
 SOLUTIONS = Path(__file__).resolve().parents[1] / "content" / "katas" / "solutions"
-REPO_KATAS = Path(__file__).resolve().parents[3] / "katas"
+_here = Path(__file__).resolve()
+REPO_KATAS = _here.parents[3] / "katas" if len(_here.parents) > 3 else Path("/nonexistent-repo/katas")     # the Docker image has no repo checkout
 
 pytestmark = pytest.mark.skipif(not REPO_KATAS.exists(), reason="needs a repo checkout (the katas folder is not in the Docker image)")
 

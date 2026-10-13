@@ -69,7 +69,9 @@ def _run() -> bool:
             return f"average {r['average']}/5, discovery {r['discovery_pct']}%, talk ratio {r['talk_ratio']}"
 
         def card():
-            c = injects.draw("integration")
+            # a card with no effect on the customer's systems: drawing the others would, for example, change the IdP's claim format
+            quiet = next(c["id"] for c in injects._deck("integration")["cards"] if not c.get("effect"))
+            c = injects.draw("integration", quiet)
             r = injects.respond("integration", c["id"],
                                 "Thanks for flagging this. Short version: we are not going to miss the date, and here is exactly what changes. "
                                 "I will confirm the new limit with your team today, adjust our client to back off on 429s, and send you a one-line status tomorrow morning.")

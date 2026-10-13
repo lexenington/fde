@@ -58,4 +58,4 @@ Offline-first, flaky connectivity and local payment rails are **exactly** the ki
 
 ## Exercise
 
-Open [self-assessment.md](self-assessment.md). Score yourself 1–5 on every row **now** (week 1), then again at weeks 8 and 16, with a link or file as evidence for any 4 or 5. The full list lives there, and it is longer than the summary you'd write from memory: that is deliberate.
+Open [self-assessment.md](self-assessment.md). Score yourself 1–5 on every row **now** (week 1), then again at weeks 10 and 18, with a link or file as evidence for any 4 or 5. The full list lives there, and it is longer than the summary you'd write from memory: that is deliberate.

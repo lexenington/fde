@@ -1,6 +1,6 @@
-# The 16-week plan
+# The 18-week plan
 
-About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by skipping the engagements. Progress is tracked in [PROGRESS.md](PROGRESS.md); this file says what to do *this week*. The Console's **This week** page (http://localhost:3300/plan) shows the current week and your progress.
+About **12 hours a week**. If you only have 8, stretch it to 22-27 weeks, not by skipping the engagements. Progress is tracked in [PROGRESS.md](PROGRESS.md); this file says what to do *this week*. The Console's **This week** page (http://localhost:3300/plan) shows the current week and your progress.
 
 ## The weekly rhythm
 
@@ -82,7 +82,35 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** 124/124 committed, six cards answered, SECURITY.md, the scoping doc sent.
 
-## Week 6: AI engineering and evals (1/2)
+## Week 6: Enterprise platforms (1/2): ServiceNow, and the tool-layer pattern
+**Goal:** put an agent's hands inside a ticketing system without duplicating anything or crashing when it has a bad day.
+
+**Do**
+
+- Read `02-technical-depth/06-enterprise-platforms/README.md` and the [ServiceNow page](02-technical-depth/06-enterprise-platforms/servicenow.md). **SCOPE.md first**: which tools, who may use each, what the agent may never do.
+- **Stakeholder calls** with Akua Danso (ServiceNow) and Ebenezer Boadu (SAP). Find out what the earlier integration did wrong, and how long real access takes.
+- Console → *06 Enterprise platforms*: build `create_incident`, `add_comment` and `my_incidents` until the ServiceNow checks pass. Open *ServiceNow & SAP* beside it and watch your calls.
+- Sign up for a free **Salesforce Developer Edition** org now (it needs to exist next week), and a ServiceNow **Personal Developer Instance** if you want the stretch.
+- **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [15 incident to case mapping](katas/15-field-mapping/README.md).
+- Real customer: keep the outreach going. If your discovery call is booked, hold it this week or next.
+
+**Done when:** SCOPE.md, two calls done, every ServiceNow check passing, a Salesforce org ready.
+
+## Week 7: Enterprise platforms (2/2): SAP, Salesforce, and the report for IT
+**Goal:** the whole tool layer at 28/28, a Salesforce sync you can evidence, and a report Volta's IT lead would sign.
+
+**Do**
+
+- Read the [SAP page](02-technical-depth/06-enterprise-platforms/sap.md), then build `order_status`, `orders_summary` and `hold_order` against the Console's SAP. Read `$metadata` first.
+- **Stakeholder call** with Adwoa Pokuaa (Salesforce), then build the sync in [lab/SALESFORCE.md](02-technical-depth/06-enterprise-platforms/lab/SALESFORCE.md) in your own org, and commit the evidence.
+- Run the checker, read the *first* failure only, and repeat until 28/28.
+- Put Claude on top of your tools with a tool-use loop and write a **20-case eval of the agent**, including one case where the right action is to refuse.
+- Write `REPORT.md` for Volta's IT lead: the exact roles and permissions the agent needs in each system, what it can never do, and what happens on each failure. Cut it by 30%.
+- **Katas**: [14 OData for SAP](katas/14-odata-query/README.md).
+
+**Done when:** 28/28 committed, the Salesforce self-check passes with evidence, the agent eval, REPORT.md.
+
+## Week 8: AI engineering and evals (1/2)
 **Goal:** a baseline you trust before you improve anything.
 
 **Do**
@@ -94,7 +122,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** gold set ≥ 30, failure notes, `pytest` green, the customer's baseline number written down.
 
-## Week 7: AI engineering and evals (2/2)
+## Week 9: AI engineering and evals (2/2)
 **Goal:** a threshold you can justify in cedis.
 
 **Do**
@@ -107,19 +135,19 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** the threshold table, 4 injections pass, REPORT.md for the CFO.
 
-## Week 8: Deploy anywhere, and ramping fast
+## Week 10: Deploy anywhere, and ramping fast
 **Goal:** run your work in someone else's cloud account, and ramp on an unfamiliar codebase in one day.
 
 **Do**
 
 - `02-technical-depth/04-deploy-anywhere`: the Terraform lab, with the customer/vendor accounts. **`terraform destroy` after every session.** Write `RUNBOOK.md` and `HANDOVER.md`. Save `terraform show -json` of your plan to `lab/infra/plan.json` and review it on the Console's *04 Deploy anywhere* page, which also times your teardown drill.
 - `02/05`: Ramp #1 on Odoo or ERPNext, timeboxed to one day. Run the clock on the Console's *05 Unfamiliar territory* page and tick milestones as you go: it gives you the timeline for `RAMP-LOG.md`.
-- **Re-score the self-assessment (week 8).** Be honest about which scores moved and why.
+- **Re-score the self-assessment (week 10).** Be honest about which scores moved and why.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [13 Terraform plan review](katas/13-terraform-plan-review/README.md).
 
-**Done when:** teardown/rebuild < 30 min, the runbook, ramp #1 documented, week-8 scores in.
+**Done when:** teardown/rebuild < 30 min, the runbook, ramp #1 documented, week-10 scores in.
 
-## Week 9: Engagement 1, Lakeside (1/3): scope and build
+## Week 11: Engagement 1, Lakeside (1/3): scope and build
 **Goal:** a signed-off scope and a bot that books safely.
 
 **Do**
@@ -131,7 +159,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** four calls, process map, scoping doc, a bot that books, cancels and escalates.
 
-## Week 10: Engagement 1, Lakeside (2/3): your eval, then the customer's
+## Week 12: Engagement 1, Lakeside (2/3): your eval, then the customer's
 **Goal:** your own 100+ conversation eval, and the first acceptance run.
 
 **Do**
@@ -142,7 +170,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** 100+ conversations, the Twi slice reviewed, acceptance run committed.
 
-## Week 11: Engagement 1, Lakeside (3/3): bar, handover, case study
+## Week 13: Engagement 1, Lakeside (3/3): bar, handover, case study
 **Goal:** booking ≥ 90%, zero safety failures, and a case study someone would read.
 
 **Do**
@@ -154,7 +182,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** the bar met with the run committed, a published case study.
 
-## Week 12: Engagement 2, Savanna (1/3): scope and ingest
+## Week 14: Engagement 2, Savanna (1/3): scope and ingest
 **Goal:** the policy ingested properly, and your own question set.
 
 **Do**
@@ -166,19 +194,19 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** four calls, scope and decision record, your eval, a first RAG baseline measured against it.
 
-## Week 13: Engagement 2, Savanna (2/3): permissions, members, audit
+## Week 15: Engagement 2, Savanna (2/3): permissions, members, audit
 **Goal:** branch isolation that holds up under attack.
 
 **Do**
 
 - Resolve members across the three sources (SFTP, field sheets) and build your own 30-member truth set by hand.
 - Row-level permissions in retrieval *and* SQL. The audit export. Run the acceptance test and read every leak.
-- Deploy into the customer's account with your Terraform from week 8. Real customer: go live with real users, even five.
+- Deploy into the customer's account with your Terraform from week 10. Real customer: go live with real users, even five.
 - **Katas** (30-60 minutes each, tests already written, [see all](katas/README.md)): [08 rule as of](katas/08-rule-as-of/README.md).
 
 **Done when:** all isolation and audit checks pass, a redeploy from zero, the real customer live.
 
-## Week 14: Engagement 2, Savanna (3/3): case study; the real customer's first measured week
+## Week 16: Engagement 2, Savanna (3/3): case study; the real customer's first measured week
 **Goal:** the memo to Esi, the case study, and the first week of real numbers.
 
 **Do**
@@ -188,7 +216,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** the memo, case study #2 published, week-1 numbers recorded.
 
-## Week 15: The real customer, and interviews
+## Week 17: The real customer, and interviews
 **Goal:** a measured result and a quote.
 
 **Do**
@@ -199,7 +227,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 
 **Done when:** case study #3, the quote, 5 + 3 + 3 mock interviews, applications log started.
 
-## Week 16: Hired
+## Week 18: Hired
 **Goal:** the loop, with three case studies behind you.
 
 **Do**
@@ -208,7 +236,7 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 - Tier A applications now (two case studies are public). Three referral conversations.
 - Decide on the AWS route: book AIP-C01 if you're targeting AWS partners.
 
-**Done when:** week-16 scores in, stories written, applications sent. Then keep going: the offer is the goal, not week 16.
+**Done when:** week-18 scores in, stories written, applications sent. Then keep going: the offer is the goal, not week 18.
 
 ---
 
@@ -218,5 +246,5 @@ About **12 hours a week**. If you only have 8, stretch it to 20-24 weeks, not by
 |---|---|
 | Missed a week | Don't double up. Cut stretch items, keep the engagements |
 | A lab is stuck | Time-box to two sessions, then book a stakeholder call or ask Claude to review (not solve) your code with `practice-with-claude.md` prompt 4 |
-| No real customer replied | Send 5 more messages this week; widen to friends-of-friends. Fall back to a simulated third engagement only after week 8, and say so in the case study |
+| No real customer replied | Send 5 more messages this week; widen to friends-of-friends. Fall back to a simulated third engagement only after week 10, and say so in the case study |
 | You already know a module | Do its "Prove it" check cold. If it passes, skip it and use the time on an engagement |

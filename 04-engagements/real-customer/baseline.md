@@ -1,6 +1,6 @@
 # The baseline (measure before you build)
 
-Without a number from **before**, you have a story, not a result. Fill this in during week 6, before any code touches their process. Keep the evidence (photos of logs, exported sheets, a stopwatch record).
+Without a number from **before**, you have a story, not a result. Fill this in during week 8, before any code touches their process. Keep the evidence (photos of logs, exported sheets, a stopwatch record).
 
 **Process:** [what happens, start to finish, in one line]
 **Who does it today, and how often:** [people, volume per day or week]

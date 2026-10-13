@@ -108,6 +108,8 @@ tr:last-child td { border-bottom: none; }
 
 .md { max-width: 860px; }
 .md table { margin: 10px 0; }
+.md-scroll { overflow-x: auto; max-width: 100%; }
+.md code { overflow-wrap: anywhere; }
 .err { background: var(--fail-bg); color: var(--fail); padding: 10px 12px; border-radius: 8px; margin: 10px 0; }
 .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 6px; }
 .dot.ok { background: var(--pass); } .dot.bad { background: var(--fail); } .dot.wait { background: var(--warn); }

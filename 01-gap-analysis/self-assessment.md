@@ -3,7 +3,7 @@
 Scale: 1 = never done it · 2 = read about it · 3 = done it with help · 4 = done it alone · 5 = could teach it / did it under pressure for a customer.
 Be harsh. Note the **evidence** (a link or file) for every 4 or 5.
 
-| Skill | Wk 1 | Wk 8 | Wk 16 | Evidence |
+| Skill | Wk 1 | Wk 10 | Wk 18 | Evidence |
 |---|---|---|---|---|
 | Write an eval set + grader for an LLM feature and report precision/recall | | | | |
 | Explain SAML vs OIDC and implement OIDC login against an enterprise IdP | | | | |

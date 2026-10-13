@@ -21,9 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/labs/ai-engineering">03 AI engineering</Link>
               <Link href="/labs/deploy">04 Deploy anywhere</Link>
               <Link href="/labs/ramp">05 Unfamiliar territory</Link>
+              <Link href="/labs/platforms">06 Enterprise platforms</Link>
               <div className="nav-h">Customer: Adom Logistics</div>
               <Link href="/systems/crm">CRM</Link>
               <Link href="/systems/identity">Identity (IdP)</Link>
+              <div className="nav-h">Customer: Volta Industrial</div>
+              <Link href="/systems/platforms">ServiceNow &amp; SAP</Link>
               <div className="nav-h">Engagements</div>
               <Link href="/engagements/lakeside">1 Lakeside Clinics</Link>
               <Link href="/engagements/savanna">2 Savanna Microfinance</Link>

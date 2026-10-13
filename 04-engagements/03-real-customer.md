@@ -19,10 +19,11 @@ Runs alongside everything else, not after it ([PLAN.md](../PLAN.md)):
 | 2-3 | Outreach, five messages a week; book a first conversation from any reply |
 | 4 | The real discovery call |
 | 5 | Scoping doc, sent within 24 hours of the call |
-| 6 | Measure the baseline, before you build |
-| 7-12 | Build against the baseline in your spare sessions; the simulated engagements come first when time is short |
-| 13 | Go live with real users, even five |
-| 14-15 | Measure two weeks against the baseline; get the quote in writing; write the case study |
+| 6-7 | Keep outreach and any follow-ups going: the enterprise-platforms weeks are heavy, so keep this to 30 minutes a week |
+| 8 | Measure the baseline, before you build |
+| 9-14 | Build against the baseline in your spare sessions; the simulated engagements come first when time is short |
+| 15 | Go live with real users, even five |
+| 16-17 | Measure two weeks against the baseline; get the quote in writing; write the case study |
 
 ## Rules
 - Run real discovery ([template](../03-customer-craft/templates/discovery-call.md)). Don't decide the solution before the call.

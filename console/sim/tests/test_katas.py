@@ -25,8 +25,8 @@ def katas_dir(monkeypatch, tmp_path):
     return dst
 
 
-def test_there_are_thirteen_katas():
-    assert len(kata_dirs()) == 13
+def test_there_are_fifteen_katas():
+    assert len(kata_dirs()) == 15
 
 
 @pytest.mark.parametrize("kata", kata_dirs())
@@ -42,6 +42,6 @@ def test_stub_is_red_and_solution_is_green(kata, katas_dir):
 
 def test_listing_and_detail(katas_dir):
     listed = katas.list_katas()
-    assert len(listed) == 13 and listed[0]["id"].startswith("01-") and listed[0]["timebox"]
+    assert len(listed) == 15 and listed[0]["id"].startswith("01-") and listed[0]["timebox"]
     assert "Kata" in katas.detail(listed[0]["id"])["readme"]
     assert katas.detail("../etc") is None and katas.run("nope") is None

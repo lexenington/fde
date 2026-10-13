@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from . import admin, bsp, crm, lakeside_routes, savanna_sftp, savanna_world
+from . import admin, bsp, crm, lakeside_routes, platforms, sap, savanna_sftp, savanna_world, snow
 from .keycloak_admin import IdPAdminError, set_groups_full_path
 
 
@@ -50,10 +50,30 @@ async def log_crm_calls(request: Request, call_next):
     return response
 
 
+@app.middleware("http")
+async def log_platform_calls(request: Request, call_next):
+    path = request.url.path
+    system = "servicenow" if path.startswith("/servicenow/") else "sap" if path.startswith("/sap/") else None
+    if not system:
+        return await call_next(request)
+    response = await call_next(request)
+    platforms.note({
+        "t": time.time(), "at": time.strftime("%H:%M:%S"), "system": system, "method": request.method,
+        "path": path.split("/api/now/table/")[-1] if system == "servicenow" else path.split("API_SALES_ORDER_SRV/")[-1],
+        "query": request.url.query, "status": response.status_code, "content_type": response.headers.get("content-type", ""),
+        "accept": request.headers.get("accept", ""), "auth_in_query": any(k.lower() in ("password", "user", "username", "pwd") for k in request.query_params),
+        "has_auth": bool(request.headers.get("authorization")), "note": "",
+    })
+    return response
+
+
 app.include_router(crm.router, prefix="/crm/v3", tags=["CRM API (what your app calls)"])
 app.include_router(admin.router, prefix="/admin", tags=["Console admin"])
 app.include_router(admin.checks, prefix="/checks", tags=["Lab checkers"])
 app.include_router(admin.chat, prefix="/chat", tags=["Stakeholder chat"])
+app.include_router(snow.router, prefix="/servicenow", tags=["Volta: ServiceNow Table API (what your agent calls)"])
+app.include_router(sap.router, prefix="/sap/opu/odata/sap/API_SALES_ORDER_SRV", tags=["Volta: SAP Sales Order OData v2 (what your agent calls)"])
+app.include_router(admin.platforms_router, prefix="/platforms", tags=["Volta platforms (Console)"])
 app.include_router(admin.ramp_router, prefix="/labs/ramp", tags=["Lab 02/05 ramp clock"])
 app.include_router(admin.deploy_router, prefix="/labs/deploy", tags=["Lab 02/04 reviewer"])
 app.include_router(admin.ai_router, prefix="/labs/ai", tags=["Lab 02/03 run viewer"])

@@ -1,6 +1,6 @@
-# The 18-week plan
+# The 19-week plan
 
-About **12 hours a week**. If you only have 8, stretch it to 22-27 weeks, not by skipping the engagements. Progress is tracked in [PROGRESS.md](PROGRESS.md); this file says what to do *this week*. The Console's **This week** page (http://localhost:3300/plan) shows the current week and your progress.
+About **12 hours a week**. If you only have 8, stretch it to 23-29 weeks, not by skipping the engagements. Progress is tracked in [PROGRESS.md](PROGRESS.md); this file says what to do *this week*. The Console's **This week** page (http://localhost:3300/plan) shows the current week and your progress.
 
 ## The weekly rhythm
 
@@ -216,18 +216,32 @@ About **12 hours a week**. If you only have 8, stretch it to 22-27 weeks, not by
 
 **Done when:** the memo, case study #2 published, week-1 numbers recorded.
 
-## Week 17: The real customer, and interviews
+## Week 17: The AI-startup FDE: one product, three tenants
+**Goal:** run several customers on one product without breaking any of them, and have the evidence for the startup interview loop.
+
+**Do**
+
+- Read `07-ai-startup-fde/README.md`. Run the baseline: `python simulate.py --all` in `07-ai-startup-fde/lab`, and read the failures before you change anything. (First `export ANTHROPIC_API_KEY`, or pick cheaper models per the README.)
+- Onboard **ChopBox**, then **MedPlus**, then **SikaSave**: configuration, at least 25 scenarios each, and the hard rules (refund limits, prescription rules, identity checks) enforced in tools, not prompts. Time each onboarding: the third should be clearly faster than the first.
+- Change something in the *shared* product, run `--all`, and catch a regression in at least one tenant. Write up what broke and why.
+- Fill in the implementation playbook and write the weekly account report for one tenant.
+- This is the heaviest week in the plan. If you are behind, cut the scenarios per tenant to 15, never the hard-rules-in-code or the release check.
+- Real customer: pull the second week of numbers (30 minutes), before the case study next week.
+
+**Done when:** three tenants passing a bar you can defend, a caught regression written up, the playbook, timings recorded.
+
+## Week 18: The real customer, and interviews
 **Goal:** a measured result and a quote.
 
 **Do**
 
-- Finish the 2 measured weeks. Write the case study with the real number. **Get the quote in writing.**
+- Write the case study with the real number (the two measured weeks are done). **Get the quote in writing.**
 - Interviews: **5** decomposition questions out loud (use `practice-with-claude.md` prompt 2), **3** system designs, **3** coding exercises from the interview bank.
 - Start applications to tiers B, D and E.
 
 **Done when:** case study #3, the quote, 5 + 3 + 3 mock interviews, applications log started.
 
-## Week 18: Hired
+## Week 19: Hired
 **Goal:** the loop, with three case studies behind you.
 
 **Do**
@@ -236,7 +250,7 @@ About **12 hours a week**. If you only have 8, stretch it to 22-27 weeks, not by
 - Tier A applications now (two case studies are public). Three referral conversations.
 - Decide on the AWS route: book AIP-C01 if you're targeting AWS partners.
 
-**Done when:** week-18 scores in, stories written, applications sent. Then keep going: the offer is the goal, not week 18.
+**Done when:** week-19 scores in, stories written, applications sent. Then keep going: the offer is the goal, not week 19.
 
 ---
 

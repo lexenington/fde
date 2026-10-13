@@ -53,8 +53,8 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
   - [ ] Console acceptance test: answer + citation accuracy reported · all 6 isolation checks pass · audit export passes · runs committed in `04-engagements/savanna/runs/`
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 
-## Phase 5: Hired (weeks 12–18+)
-- [ ] Self-assessment re-score (week 10) · [ ] (week 18)
+## Phase 5: Hired (weeks 12–19+)
+- [ ] Self-assessment re-score (week 10) · [ ] (week 19)
 - [ ] 9 STAR stories written
 - [ ] 10 decomposition prompts answered out loud
 - [ ] Mock interviews: ☐ decomposition ×5 ☐ system design ×3 ☐ coding ×3
@@ -63,7 +63,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] Visibility: ☐ 3 posts published ☐ open-source MCP server ☐ 1 meetup ☐ 3 referral conversations
 - [ ] Offer 🎯
 
-## 07 AI-startup FDE (before tier-B applications)
+## 07 AI-startup FDE (week 17, before tier-B applications)
 - [ ] Baseline simulator run (`python simulate.py --all`) and failures read
 - [ ] ChopBox: config · ≥25 scenarios · hard rules in tools · passing bar · onboarding time ___ days
 - [ ] MedPlus: config · ≥25 scenarios · hard rules in tools · passing bar · onboarding time ___ days
@@ -73,7 +73,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] 3-hour "build a support agent" timed practice
 - [ ] Startup due-diligence questions + equity basics ready for offers
 
-## AWS FDE track (weeks 8–18, in parallel)
+## AWS FDE track (weeks 8–19, in parallel)
 - [ ] Ground: ontology.md · machine-usable ontology · eval with vs. without ontology
 - [ ] Orchestrate: per-user identity on tool calls · crash-and-resume without duplicate writes · approval gate
 - [ ] Prove: policy-as-code that survives a jailbreak in the eval

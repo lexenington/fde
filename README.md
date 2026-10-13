@@ -26,12 +26,12 @@ The difference from what you do now isn't the code. It's **who defines the probl
 | 04 | [Engagements](04-engagements/README.md) | Three simulated end-to-end customer deployments = your new portfolio | 4–5 weeks |
 | 05 | [Getting hired](05-getting-hired/README.md) | Target companies, remote-from-Ghana strategy, résumé, interview loop, visibility | 2 weeks (overlaps) |
 | 06 | [Beyond](06-beyond/README.md) | Roles these skills unlock, and turning Webfront360 into a business | ongoing |
-| 07 | [AI-startup FDE](07-ai-startup-fde/README.md) | Running many customers on one AI product: implementation playbooks, simulation testing, release checks, startup interviews and offers | 1.5 weeks (before applying to tier B) |
+| 07 | [AI-startup FDE](07-ai-startup-fde/README.md) | Running many customers on one AI product: implementation playbooks, simulation testing, release checks, startup interviews and offers | 1.5 weeks (week 17, before applying to tier B) |
 | 🖥 | [FDE Field Console](console/README.md) | A local web app that plays the customer (IdP, SCIM, CRM, webhooks) and scores your lab code against it. `docker compose up` in `console/` | stakeholder calls and the plan from week 1, the lab pages as you reach them |
 | 🥋 | [Katas](katas/README.md) | Fifteen 30-60 minute drills with the tests already written and red: idempotency, JWT validation, rate limits, record matching, policy chunking, Terraform plan review, OData for SAP. One per week, on Monday | weeks 2-13, see PLAN.md |
-| ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 8–18 |
+| ☁ | [AWS FDE track](aws-fde-track/README.md) | AWS's Ground / Orchestrate / Prove FDE pathways mapped to this repo, extra labs, and the AIP-C01 route | in parallel, weeks 8–19 |
 
-**Total: ~18–20 weeks at 10–15 hrs/week** (07 and the AWS track overlap with other modules). Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
+**Total: ~19–21 weeks at 10–15 hrs/week** (07 and the AWS track overlap with other modules). Track it in [PROGRESS.md](PROGRESS.md). Reading list in [resources.md](resources.md).
 
 ## How to use this repo
 
@@ -68,6 +68,6 @@ You'll also need Docker Desktop (for Postgres in the data lab, and for the [Fiel
 
 ## The one-sentence goal
 
-By week 18 you should be able to say, with links to prove it:
+By week 19 you should be able to say, with links to prove it:
 
 > *"I take an ambiguous business problem inside someone else's systems, scope it with the stakeholders, ship an AI-enabled solution into their environment, measure that it works, and leave them able to run it. Here are three times I did that."*

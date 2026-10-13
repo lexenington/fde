@@ -23,7 +23,8 @@ Runs alongside everything else, not after it ([PLAN.md](../PLAN.md)):
 | 8 | Measure the baseline, before you build |
 | 9-14 | Build against the baseline in your spare sessions; the simulated engagements come first when time is short |
 | 15 | Go live with real users, even five |
-| 16-17 | Measure two weeks against the baseline; get the quote in writing; write the case study |
+| 16-17 | Measure two weeks against the baseline (week 17 is the AI-startup week, so pulling the second week's numbers is a 30-minute job) |
+| 18 | Write the case study with the real number; get the quote in writing |
 
 ## Rules
 - Run real discovery ([template](../03-customer-craft/templates/discovery-call.md)). Don't decide the solution before the call.

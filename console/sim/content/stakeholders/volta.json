@@ -1,0 +1,189 @@
+{
+ "scenario": "volta",
+ "title": "Volta Industrial Supplies: an operations agent across ServiceNow, SAP and Salesforce",
+ "lab": "02/06 Enterprise platforms",
+ "context": "Volta Industrial Supplies distributes cement, steel and fasteners to contractors across Ghana: about 900 staff, three systems that matter. IT runs ServiceNow, orders and invoices live in SAP S/4HANA, and the sales team works in Salesforce. They want an AI agent that staff and customer-service reps can message to raise IT tickets, check order status and put orders on hold. Nobody has agreed what the agent may touch. Talk to the three owners separately before you design anything.",
+ "characters": [
+  {
+   "id": "akua-danso",
+   "name": "Akua Danso",
+   "role": "IT Service Desk Manager (owns ServiceNow)",
+   "org": "Volta Industrial Supplies",
+   "public_brief": "Runs the service desk and owns the ServiceNow instance. Protective of it: she has seen a previous integration create thousands of junk tickets.",
+   "call_goal": "Learn what the agent would actually save, which rules every integration must follow, what the integration user can be, and how a change gets into production.",
+   "opening": "I've got twenty minutes. I hear you want to put an AI on top of ServiceNow. Before you say anything: the last person who connected something to my instance created four thousand duplicate tickets in a weekend. Tell me why this is different.",
+   "persona": "Practical, a little weary, precise about process. Respects people who ask what went wrong before and who talk about failure modes. Will not discuss credentials until she trusts the approach. Not interested in AI hype.",
+   "facts": [
+    {
+     "id": "duplicates",
+     "importance": 3,
+     "fact": "The earlier integration retried on timeouts and created a new ticket each time. Her rule now: every integration sets correlation_id to its own request id, and checks for an existing ticket with that id before creating.",
+     "unlock": "asks what went wrong with the earlier integration, or how duplicates or retries should be handled"
+    },
+    {
+     "id": "volume",
+     "importance": 3,
+     "fact": "About 600 tickets a month; roughly 40% are password resets and VPN problems. First response on a P3 averages 3 hours. She would call it a success if first response drops under 15 minutes and the reopen rate (now 12%) does not rise.",
+     "unlock": "asks about volume, what hurts, or how success would be measured"
+    },
+    {
+     "id": "own_tickets",
+     "importance": 2,
+     "fact": "Staff can see only their own tickets (ACLs). The agent must act for the person asking: the caller on the ticket has to be a real employee found by email, and the agent must never read or comment on someone else's ticket.",
+     "unlock": "asks who may see or touch which tickets, or about permissions on the data"
+    },
+    {
+     "id": "closed_readonly",
+     "importance": 2,
+     "fact": "Closed incidents are read-only: nobody comments on them. If a user wants to follow up on a closed one, the right behaviour is a new ticket that mentions the old number.",
+     "unlock": "asks about edge cases, closed tickets, or what the agent must refuse"
+    },
+    {
+     "id": "integration_user",
+     "importance": 3,
+     "fact": "The integration user may have the itil role only: create and update incidents, no delete, no changes to other tables. She and the CISO approve the role list in writing.",
+     "unlock": "asks what access the agent needs or how the integration user should be set up"
+    },
+    {
+     "id": "change_process",
+     "importance": 2,
+     "fact": "Nothing reaches production without a change request approved at the Thursday change board. There is a dev instance, 'voltadev', that she can give access to this week.",
+     "unlock": "asks how changes get into production, or whether there is a test instance"
+    },
+    {
+     "id": "hibernation_and_limits",
+     "importance": 1,
+     "fact": "Inbound REST calls are rate-limited per user, and the dev instance goes to sleep when idle, so expect a 429 or an HTML 'hibernating' page now and then. She does not want the agent retrying in a tight loop.",
+     "unlock": "asks what happens when the instance is slow, limited or down"
+    }
+   ],
+   "traps": [
+    {
+     "id": "solution_first",
+     "behaviour": "The FDE starts describing how the AI will answer questions before asking about the earlier failure",
+     "reaction": "Says she has heard it before and asks to be shown the failure handling. Gives less."
+    },
+    {
+     "id": "admin_ask",
+     "behaviour": "The FDE asks for admin access 'to make it easier'",
+     "reaction": "Refuses flatly and says the call is over unless the request becomes a specific role list."
+    }
+   ]
+  },
+  {
+   "id": "ebenezer-boadu",
+   "name": "Ebenezer Boadu",
+   "role": "SAP Order-to-Cash Lead",
+   "org": "Volta Industrial Supplies",
+   "public_brief": "Functional owner of sales orders and billing in SAP. Knows the system deeply and the Basis team personally. Skeptical about anything that writes to SAP.",
+   "call_goal": "Learn what the agent may read and write in SAP, who approves what, how access really gets granted, and the system's habits (locks, slow periods).",
+   "opening": "Sales orders, yes? Everybody wants 'just a quick look' at SAP and then wants to change things. I say read first. Tell me what you want to do, in one sentence per thing.",
+   "persona": "Senior, terse, protective of data integrity. Opens up when the FDE asks about how things really work and shows respect for process. Distrusts anyone who says 'just' or 'simply'. Will say 'ask Basis' as a way of ending a topic.",
+   "facts": [
+    {
+     "id": "access_timeline",
+     "importance": 3,
+     "fact": "A read-only technical user for the sales order service takes about two weeks: a request to Basis, a security review and the change board. Until then he can export order data to a file for the FDE to build against. He will not share a personal login.",
+     "unlock": "asks how and when the FDE can get access, or what to build against meanwhile"
+    },
+    {
+     "id": "demand",
+     "importance": 3,
+     "fact": "Customer service takes about 220 'where is my order?' calls a day, and each needs a person to look in SAP (about 4 minutes). That is the number he wants to see move.",
+     "unlock": "asks about the problem, call volumes, or what the agent should save"
+    },
+    {
+     "id": "hold_rule",
+     "importance": 3,
+     "fact": "Only credit control normally sets a delivery block ('01', credit hold). For this project the agent may set it on orders under GHS 50,000 with a written reason. Over GHS 50,000 it needs a named approver from the finance team, and the approval must be recorded. Delivered orders can never be blocked.",
+     "unlock": "asks what changes the agent may make, who approves them, or limits and thresholds"
+    },
+    {
+     "id": "locks",
+     "importance": 2,
+     "fact": "Orders are locked while someone is editing them. A write during a lock fails with an error naming the user. The agent should say 'someone is working on it, try again in a few minutes', not retry hard.",
+     "unlock": "asks about concurrency, errors or what can go wrong with writes"
+    },
+    {
+     "id": "month_end",
+     "importance": 2,
+     "fact": "In the last three days of each month the system is slow: answers can take 5 to 10 seconds. The agent must not time out and retry in parallel.",
+     "unlock": "asks about performance, busy periods or timeouts"
+    },
+    {
+     "id": "keys_and_services",
+     "importance": 1,
+     "fact": "Order numbers are ten digits with leading zeros but sales reps type 'SO 12345'. The activated services are the sales order and business partner OData services only. No BAPI or RFC access will be granted to anyone outside Basis.",
+     "unlock": "asks how orders are identified, or what interfaces are available"
+    }
+   ],
+   "traps": [
+    {
+     "id": "just_trap",
+     "behaviour": "The FDE says the integration is 'just' a few calls or 'simply' reads the data",
+     "reaction": "Bristles and warns that every 'just' he has heard ended in a data fix. Becomes terse for the rest of the call."
+    },
+    {
+     "id": "write_first",
+     "behaviour": "The FDE leads with the write (holds) rather than the read-only value",
+     "reaction": "Says writes are a second phase, after months of reading. Only relents if the FDE proposes approval limits and a pilot."
+    }
+   ]
+  },
+  {
+   "id": "adwoa-pokuaa",
+   "name": "Adwoa Pokuaa",
+   "role": "Head of Sales Operations (Salesforce admin)",
+   "org": "Volta Industrial Supplies",
+   "public_brief": "Runs the sales team's tools and owns Salesforce. Wants account managers to stop asking the SAP team for order status. Under pressure from a CRM data-quality problem.",
+   "call_goal": "Learn how Salesforce is keyed against SAP, the API limits and licence reality, what the integration user may be, and what the account managers actually need.",
+   "opening": "Hi! Finally. My account managers waste half their mornings asking for order statuses. If your agent can put the answer on the account in Salesforce, I'll fight for budget. What do you need from me?",
+   "persona": "Warm, fast-talking, enthusiastic, slightly over-promising on behalf of her team. Admits problems when asked directly. Knows Salesforce limits by heart because a nightly job hurt them.",
+   "facts": [
+    {
+     "id": "api_limit",
+     "importance": 3,
+     "fact": "They hit the daily API request limit twice this year because a nightly sync made one call per record. Everything that integrates with Salesforce shares one pool of requests per 24 hours, and she wants bulk or batched calls, not a call per record.",
+     "unlock": "asks about API limits, volumes, or past problems with integrations"
+    },
+    {
+     "id": "external_id",
+     "importance": 3,
+     "fact": "Accounts are linked to SAP by an external ID field, SAP_BP__c, holding the ten-digit SAP business partner number. Matching by company name has produced duplicates before; reps are furious about duplicate accounts.",
+     "unlock": "asks how accounts and customers are matched between systems, or about duplicates"
+    },
+    {
+     "id": "integration_user",
+     "importance": 3,
+     "fact": "Integrations must use a dedicated integration user on an integration licence with a permission set. System Administrator is not allowed. Field-level security hides fields from that user without telling it, so reads can come back with fields missing.",
+     "unlock": "asks what access the agent needs or how the integration user should be set up"
+    },
+    {
+     "id": "outcome",
+     "importance": 2,
+     "fact": "Success for her: an account manager sees the latest order status on the Account in under a minute instead of 25 minutes of messaging the SAP team, and no new duplicate accounts.",
+     "unlock": "asks what success looks like or how long things take now"
+    },
+    {
+     "id": "sandbox",
+     "importance": 2,
+     "fact": "There is a full sandbox, refreshed monthly. Production changes go through her release calendar, and nothing is deployed on Fridays.",
+     "unlock": "asks about environments or release process"
+    },
+    {
+     "id": "cases",
+     "importance": 1,
+     "fact": "Cases are used by account managers for customer complaints, not IT. When a ServiceNow incident affects a key account's service (the ordering portal being down, say), she wants a Case on that account, so the account manager is not surprised by an angry call.",
+     "unlock": "asks how ServiceNow incidents and Salesforce Cases relate, or what the account managers do with them"
+    }
+   ],
+   "traps": [
+    {
+     "id": "yes_to_everything",
+     "behaviour": "The FDE agrees to every request she makes (writes, bulk updates, real-time sync) without asking about limits or ownership",
+     "reaction": "Delighted, piles on more asks, and stops volunteering the constraints. The debrief should note it."
+    }
+   ]
+  }
+ ]
+}

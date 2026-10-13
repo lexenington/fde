@@ -19,7 +19,7 @@ Or open the Console's **Katas** page (http://localhost:3300/katas): brief, run b
 - Time-box it. If you're at twice the time, write down the case you're stuck on and ask Claude to review your code with `practice-with-claude.md` prompt 4. Don't ask for the solution: the reference solutions are not in this repo on purpose.
 - Done means green **and** you can say in one sentence why each edge-case test exists. Commit when green.
 
-## The thirteen
+## The fifteen
 
 | # | Kata | Time | Where it pays off |
 |---|---|---|---|
@@ -36,6 +36,8 @@ Or open the Console's **Katas** page (http://localhost:3300/katas): brief, run b
 | 11 | [The routing table](11-routing-table/README.md) | 30 min | 02/03 the CFO's threshold table |
 | 12 | [SQL analysis](12-sql-analysis/README.md) | 45 min | 02/01, Lakeside no-show analysis |
 | 13 | [Terraform plan review](13-terraform-plan-review/README.md) | 45 min | 02/04, the customer's change board |
+| 14 | [OData v2 for SAP](14-odata-query/README.md) | 45 min | 02/06 SAP half of the lab |
+| 15 | [Incident ↔ Case mapping](15-field-mapping/README.md) | 45 min | 02/06 Salesforce half of the lab |
 
 [PLAN.md](../PLAN.md) puts each one on a Monday (or a build session) in the week it helps.
 

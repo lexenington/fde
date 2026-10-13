@@ -42,4 +42,4 @@ Keep it short and keep it current. When a run contradicts an opinion, change the
 
 ## Opinions
 
-<!-- Start here. Aim for 10 with evidence by the end of week 7, and 20 by the end of the engagements. -->
+<!-- Start here. Aim for 10 with evidence by the end of week 9, and 20 by the end of the engagements. -->

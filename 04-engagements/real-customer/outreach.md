@@ -19,7 +19,7 @@ Copy a row per person. Update it the day something happens.
 | 9 | | | | | | | |
 | 10 | | | | | | | |
 
-**Targets**: week 2, 5 sent. Week 3, 5 more and a conversation booked. Week 4, a **discovery call held**. Week 5, scoping doc sent. Week 6, baseline measured. If you're behind these numbers, send more messages, not better ones.
+**Targets**: week 2, 5 sent. Week 3, 5 more and a conversation booked. Week 4, a **discovery call held**. Week 5, scoping doc sent. Week 8, baseline measured (after the two enterprise-platforms weeks). If you're behind these numbers, send more messages, not better ones.
 
 ## Who to ask
 

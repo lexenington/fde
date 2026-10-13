@@ -1,7 +1,7 @@
 """Registry of lab checkers. Each one writes its runs into the lab's own `runs/` folder (committed = evidence)."""
 
 from .. import config
-from . import integration, lakeside, savanna
+from . import integration, lakeside, platforms, savanna
 
 SUITES = {
     "integration": {
@@ -19,6 +19,12 @@ SUITES = {
         "run": savanna.run,
         "suite": savanna.suite,
         "runs_dir": config.ENGAGEMENTS_DIR / "savanna" / "runs",
+        "async": True,
+    },
+    "platforms": {
+        "run": platforms.run,
+        "suite": platforms.suite,
+        "runs_dir": config.LABS_DIR / "06-enterprise-platforms" / "lab" / "runs",
         "async": True,
     },
 }

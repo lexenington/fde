@@ -11,7 +11,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] Rewrite RunMySales / EatryCloud / Verisage in outcome language with real numbers
 - [ ] Update résumé + portfolio copy (05 → "Résumé rewrite")
 
-## Phase 2: Technical depth (weeks 2–8)
+## Phase 2: Technical depth (weeks 2–10)
 ### 02/01 Messy data
 - [ ] SCOPE.md · [ ] profile.md · [ ] pipeline → Postgres · [ ] F1 ≥ 0.92 (`check.py`) · [ ] review queue < 10% · [ ] REPORT.md for ops manager · [ ] stretch: incremental load · [ ] stretch: Airflow DAG + backfill
 ### 02/02 Enterprise integration
@@ -21,18 +21,20 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 ### 02/03 AI engineering & evals
 - [ ] Baseline run + failure notes · [ ] gold set ≥ 30 docs · [ ] CHANGELOG with metric deltas · [ ] threshold table (auto % vs error %) · [ ] 4 injection cases pass · [ ] cost per 1,000 docs · [ ] REPORT.md for CFO · [ ] stretch: versioned prompts + rollback · [ ] stretch: governance pack
 - [ ] Can explain out loud: memory & state design · why (not) multi-agent · NIST AI RMF in 2 minutes
-- [ ] `OPINIONS.md`: ☐ 10 opinions with linked evidence (week 7) ☐ 20 (after engagements)
+- [ ] `OPINIONS.md`: ☐ 10 opinions with linked evidence (week 9) ☐ 20 (after engagements)
 ### 02/04 Deploy anywhere
 - [ ] Customer + vendor AWS accounts · [ ] cross-account role policy · [ ] Terraform private deploy · [ ] OIDC CI deploy · [ ] dashboard + alarms · [ ] teardown/rebuild < 30 min · [ ] RUNBOOK.md · [ ] HANDOVER.md · [ ] stretch: AZURE.md · [ ] stretch: self-hosted model eval table
 ### 02/05 Unfamiliar territory
 - [ ] Ramp #1 (ARCHITECTURE · GLOSSARY · DATA-MAP · change + test · RAMP-LOG) · [ ] Ramp #2, faster
+### 02/06 Enterprise platforms
+- [ ] SCOPE.md · [ ] calls: Akua Danso, Ebenezer Boadu, Adwoa Pokuaa · [ ] ServiceNow checks green · [ ] SAP checks green · [ ] Console checker 28/28 · [ ] Salesforce Developer org + sync with evidence (`SALESFORCE-EVIDENCE.md`) · [ ] 20-case agent eval incl. a refusal · [ ] REPORT.md for Volta's IT lead
 ### Extras
 - [ ] Invoice extractor wrapped as an MCP server · [ ] grader tests green (`pytest`) · [ ] Twi/code-switched eval slice (engagement 1)
 
 ### Katas (green = tests pass, and you can explain each edge case)
-- [ ] 01 idempotency · [ ] 02 token bucket · [ ] 03 retry/backoff · [ ] 04 webhook signature · [ ] 05 JWT validation · [ ] 06 phone numbers · [ ] 07 clusters + F1 · [ ] 08 rule as-of · [ ] 09 policy chunking · [ ] 10 policy as code · [ ] 11 routing table · [ ] 12 SQL analysis · [ ] 13 Terraform plan review
+- [ ] 01 idempotency · [ ] 02 token bucket · [ ] 03 retry/backoff · [ ] 04 webhook signature · [ ] 05 JWT validation · [ ] 06 phone numbers · [ ] 07 clusters + F1 · [ ] 08 rule as-of · [ ] 09 policy chunking · [ ] 10 policy as code · [ ] 11 routing table · [ ] 12 SQL analysis · [ ] 13 Terraform plan review · [ ] 14 OData for SAP · [ ] 15 incident↔case mapping
 
-## Phase 3: Customer craft (weeks 2–8, in parallel)
+## Phase 3: Customer craft (weeks 2–10, in parallel)
 - [ ] Read *The Mom Test*
 - [ ] Mock discovery calls (Console → Stakeholder calls; transcripts in `03-customer-craft/practice/`): ☐1 ☐2 ☐3 ☐4 ☐5 ☐6
 - [ ] A call averaging 4/5 with talk ratio ≤ 35%: ☐ Adom ☐ Lakeside ☐ Savanna
@@ -43,7 +45,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] Business case written for one engagement (template)
 - [ ] Role-play reps with Claude (practice-with-claude.md): ☐ discovery ☐ decomposition ☐ angry exec ☐ AI-confident exec
 
-## Phase 4: Engagements (weeks 9–14)
+## Phase 4: Engagements (weeks 11–16)
 - [ ] 1 Lakeside Clinics: scope · build · eval · demo · case study published
   - [ ] Console acceptance test: booking slice ≥ 90% · safety slice 0 failures · runs committed in `04-engagements/lakeside/runs/`
   - [ ] Stretch, phone line: number live · latency table (p50/p95 by stage) · Twi STT comparison · ≥ 20-call phone eval · VOICE.md
@@ -51,8 +53,8 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
   - [ ] Console acceptance test: answer + citation accuracy reported · all 6 isolation checks pass · audit export passes · runs committed in `04-engagements/savanna/runs/`
 - [ ] 3 Real customer: discovery · baseline · live · 2 wks measured · testimonial · case study published
 
-## Phase 5: Hired (weeks 10–16+)
-- [ ] Self-assessment re-score (week 8) · [ ] (week 16)
+## Phase 5: Hired (weeks 12–18+)
+- [ ] Self-assessment re-score (week 10) · [ ] (week 18)
 - [ ] 9 STAR stories written
 - [ ] 10 decomposition prompts answered out loud
 - [ ] Mock interviews: ☐ decomposition ×5 ☐ system design ×3 ☐ coding ×3
@@ -71,7 +73,7 @@ Started: ____  ·  Target finish: ____ (≈16 weeks)  ·  What to do this week: 
 - [ ] 3-hour "build a support agent" timed practice
 - [ ] Startup due-diligence questions + equity basics ready for offers
 
-## AWS FDE track (weeks 6–16, in parallel)
+## AWS FDE track (weeks 8–18, in parallel)
 - [ ] Ground: ontology.md · machine-usable ontology · eval with vs. without ontology
 - [ ] Orchestrate: per-user identity on tool calls · crash-and-resume without duplicate writes · approval gate
 - [ ] Prove: policy-as-code that survives a jailbreak in the eval

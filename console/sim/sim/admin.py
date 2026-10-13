@@ -5,7 +5,7 @@ import threading
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import config, deploycheck, injects, katas as katas_mod, evalview, llm, messy, ramp, stakeholders, tokens
+from . import config, deploycheck, platforms, injects, katas as katas_mod, evalview, llm, messy, ramp, stakeholders, tokens
 from .checks import SUITES
 from .checks.base import list_runs, save_run
 from .crm import deliver_with_retries, store, user_add_note, user_change_stage
@@ -436,3 +436,34 @@ def ramp_unmark(key: str):
 @ramp_router.post("/finish")
 def ramp_finish(abandon: bool = False):
     return _ramp(ramp.finish, abandon)
+
+
+platforms_router = APIRouter()
+
+
+class PlatformChaos(BaseModel):
+    snow_429: int | None = None
+    snow_503: int | None = None
+    sap_slow_ms: int | None = None
+    sap_locked: list[str] | None = None
+    sap_etag_bump: int | None = None
+
+
+@platforms_router.get("/state")
+def platforms_state():
+    return platforms.public_state()
+
+
+@platforms_router.post("/reset")
+def platforms_reset():
+    platforms.seed()
+    platforms.log.clear()
+    return platforms.public_state()
+
+
+@platforms_router.post("/chaos")
+def platforms_chaos(body: PlatformChaos):
+    with platforms.lock:
+        for k, v in body.model_dump(exclude_none=True).items():
+            platforms.chaos[k] = v
+    return platforms.public_state()

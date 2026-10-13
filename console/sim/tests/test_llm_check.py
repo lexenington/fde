@@ -40,3 +40,12 @@ def test_it_leaves_the_configured_folders_as_it_found_them():
     before = (config.PRACTICE_DIR, config.LABS_DIR)
     llm_check.run()
     assert (config.PRACTICE_DIR, config.LABS_DIR) == before
+
+
+def test_it_never_applies_a_card_effect(monkeypatch):
+    llm.set_backend(backend)
+    applied = []
+    monkeypatch.setattr(injects, "apply_effect", lambda effect: applied.append(effect))
+    for _ in range(25):        # the draw used to be random, so a single run proved little
+        assert llm_check.run() is True
+    assert all(e is None for e in applied)
